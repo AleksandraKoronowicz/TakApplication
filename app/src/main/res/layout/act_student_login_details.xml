@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="com.application.tak.takapplication.actStudentLogin$PlaceholderFragment">
+
+    <TextView
+            android:id="@+id/section_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/krok_3_uzupe_nij_szczeg_y"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:hint="@string/imie"
+            android:layout_below="@+id/imageView" android:layout_centerHorizontal="true"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:hint="@string/nazwisko1"
+            android:layout_below="@+id/editText2" android:layout_alignLeft="@+id/editText2"
+            android:layout_alignStart="@+id/editText2"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text|phone"
+            android:ems="10"
+            android:id="@+id/editText3"
+            android:hint="@string/szkola"
+            android:layout_below="@+id/editText4" android:layout_alignLeft="@+id/editText4"
+            android:layout_alignStart="@+id/editText4"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/editText6"
+            android:hint="@string/miasto2"
+            android:layout_below="@+id/editText3" android:layout_alignLeft="@+id/editText3"
+            android:layout_alignStart="@+id/editText3"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/editText7"
+            android:hint="@string/telefon2"
+            android:layout_below="@+id/editText6" android:layout_alignLeft="@+id/editText6"
+            android:layout_alignStart="@+id/editText6"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/editText8" android:hint="@string/e_mail2"
+            android:layout_below="@+id/editText7" android:layout_alignLeft="@+id/editText7"
+            android:layout_alignStart="@+id/editText7"/>
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton"
+            android:text="@string/akceptuje_regulamin"
+            android:layout_below="@+id/editText8" android:layout_alignLeft="@+id/editText8"
+            android:layout_alignStart="@+id/editText8"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp" app:srcCompat="@drawable/user"
+            android:id="@+id/imageView"
+            android:contentDescription=""
+            tools:ignore="ContentDescription"
+            android:layout_below="@+id/section_label" android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp"/>
+    <Button
+            android:text="@string/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3" android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/radioButton" android:layout_alignStart="@+id/radioButton"
+            android:layout_marginLeft="23dp" android:layout_marginStart="23dp" tools:text="tak"/>
+
+</RelativeLayout>
