@@ -88,7 +88,8 @@
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:id="@+id/txtNewCustomerPostcode">
 
                 <AutoCompleteTextView
                         android:id="@+id/customerKod"

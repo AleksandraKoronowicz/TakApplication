@@ -14,7 +14,10 @@ public class User
     private Integer _IsActive;
     private Integer _AdressId;
     private Integer _ClassId;
+    private String _Password;
 
+    //for local db purposes
+    private Integer _IsLoggedIn;
 
     public Integer get_Id() {
         return _Id;
@@ -86,5 +89,21 @@ public class User
 
     public void set_ClassId(Integer _ClassId) {
         this._ClassId = _ClassId;
+    }
+
+    public String get_Password() {
+        return _Password;
+    }
+
+    public void set_Password(String _Password) {
+        this._Password = _Password;
+    }
+
+    public Integer get_IsLoggedIn() {
+        return _IsLoggedIn;
+    }
+
+    public void set_IsLoggedIn(Integer _IsLoggedIn) {
+        this._IsLoggedIn = _IsLoggedIn;
     }
 }

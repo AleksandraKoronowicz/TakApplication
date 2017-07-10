@@ -154,4 +154,5 @@
     <string name="title_activity_act__client__task">act_Client_Task</string>
     <string name="title_actclienttasknotselected_list">act_Client_Task_NotSelected</string>
     <string name="title_actclienttasknotselected_detail">act_Client_Task_NotSelected Detail</string>
+    <string name="title_activity_act_first_usage">actFirstUsage</string>
 </resources>

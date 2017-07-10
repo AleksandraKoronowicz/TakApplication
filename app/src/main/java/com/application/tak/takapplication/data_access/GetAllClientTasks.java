@@ -20,7 +20,7 @@ import java.util.List;
 public class GetAllClientTasks extends GetJSONData
 {
     private static final String URL = Config.SERVER_NAME +"get_all_client_tasks.php";
-    private static final String TAG_RESULTS="result";
+    private static final String TAG_RESULTS="client_taska";
     private static final String TAG_ID="ID";
     private static final String TAG_CATEGORY_NAME="CATEGORY_NAME";
     private static final String TAG_TIME_FROM="TIME_FROM";
@@ -55,6 +55,7 @@ public class GetAllClientTasks extends GetJSONData
     JSONArray tasks = null;
 
     public List<Task_V> _tasks;
+    public DB_result dbResult = null;
 
     public GetAllClientTasks(Context ctx, User client)
     {
@@ -65,7 +66,7 @@ public class GetAllClientTasks extends GetJSONData
     @Override
     protected String doInBackground(String... params)
     {
-
+        String result ="";
         String uri = params[0];
         String client_id = params[1];
 
@@ -79,7 +80,8 @@ public class GetAllClientTasks extends GetJSONData
             OutputStream os=con.getOutputStream();
 
             String data=
-                    URLEncoder.encode("creator_id","UTF-8")+"="+URLEncoder.encode(client_id,"UTF-8");
+                    URLEncoder.encode("creator_id","UTF-8")+"="+URLEncoder.encode(client_id,"UTF-8")+"&"+
+                            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
 
             BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
             bufferedWriter.write(data);
@@ -95,9 +97,11 @@ public class GetAllClientTasks extends GetJSONData
                 while ((json = bufferedReader.readLine()) != null) {
                     sb.append(json + "\n");
                 }
-                return sb.toString().trim();
+                result = sb.toString().trim();
+
+                ProcessData(result);
             }
-                return "0";
+                return result;
         }
         catch(Exception e)
         {
@@ -108,17 +112,15 @@ public class GetAllClientTasks extends GetJSONData
 
     }
 
-    @Override
-    protected void onPostExecute(String s)
+    private void ProcessData(String json)
     {
-        super.onPostExecute(s);
-        JsonResult = s;
         _tasks = new ArrayList<Task_V>();
         JSONObject jsonObject;
         try
         {
-            jsonObject = new JSONObject(JsonResult.substring(JsonResult.indexOf("{"), JsonResult.lastIndexOf("}") + 1));
-
+            jsonObject = new JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1));
+if(!jsonObject.isNull(TAG_RESULTS))
+{
             tasks = jsonObject.getJSONArray(TAG_RESULTS);
 
             for(int i=0;i<tasks.length();i++)
@@ -158,13 +160,20 @@ public class GetAllClientTasks extends GetJSONData
                 _tasks.add(t);
             }
         }
+        else{
+
+}           Helper returnData = new Helper();
+            returnData.ProcessData(json);
+            dbResult = returnData.resultset;
+        }
         catch (Exception ex)
         {
             Toast t = Toast.makeText( _context, ex.toString(), Toast.LENGTH_LONG);
+            t.show();
         }
-        pDialog.dismiss();
-        mListener.onDBRequestFinished();
     }
+
+
 
 
 }

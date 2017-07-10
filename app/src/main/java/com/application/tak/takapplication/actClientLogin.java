@@ -1,9 +1,11 @@
 package com.application.tak.takapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,7 +13,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
+import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.application.tak.takapplication.data_access.Config;
+import com.application.tak.takapplication.data_access.CreateClient;
+import com.application.tak.takapplication.data_access.DB_result;
+import com.application.tak.takapplication.data_access.Helper;
+import com.application.tak.takapplication.data_model.Adress;
+import com.application.tak.takapplication.data_model.User;
+import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
+import com.application.tak.takapplication.local_db.LocalDB;
+
+import java.util.List;
 
 public class actClientLogin extends AppCompatActivity {
 
@@ -23,6 +37,8 @@ public class actClientLogin extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
+
+    private Context ctx;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     public void gotoTutorial(View v){
         Intent tutorialPage = new Intent (this, actStudentMainAllTaskListActivity.class);
@@ -32,18 +48,22 @@ public class actClientLogin extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
+    TextInputLayout txtCustomerPostcode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_client_login);
+        ctx = this;
+
+        final LocalDB localDb = new LocalDB(this.getApplicationContext());
+        List<User> users = localDb.GetAllUsera();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
+        txtCustomerPostcode = (TextInputLayout) findViewById(R.id.txtNewCustomerPostcode);
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -51,13 +71,65 @@ public class actClientLogin extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        String adj = "to jest tekst";
+        try{
+        String encrypted = Config.encrypt(adj);
+        String decrypted = Config.decrypt(encrypted);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                final CreateClient newClient = new CreateClient(ctx);
+                User u = new User();
+                u.set_Username("testowyzaplikacji");
+                u.set_FName("ania");
+                u.set_LName("zet");
+                u.set_PhoneNo("12345");
+                Adress a = new Adress();
+                a.set_City("gorolowice");
+                a.set_Road("goralska");
+                a.set_RoadNo("10/15");
+                a.set_PostCode("ww");
+
+                newClient.setDBRequestFinishedListener(new OnDBRequestFinished() {
+                    @Override
+                    public void onDBRequestFinished() {
+                        Config.LoggedInClient = newClient.newClient;
+                        User addedUser = (User) Config.LoggedInClient;
+                        if(addedUser != null)
+                        {
+                        addedUser.set_IsLoggedIn(1);
+                        localDb.AddUser(addedUser);
+                        startActivity(new Intent(ctx, actClientTaskNotSelectedListActivity.class));
+                        finish();
+                        }
+                        else
+                        {
+                            DB_result retData = newClient.dbResult;
+                            if(retData != null)
+                            {
+                                Toast t = Toast.makeText(ctx,retData.getMSG(),Toast.LENGTH_LONG);
+                                t.show();
+                            }
+                            else
+                            {
+                                Toast t = Toast.makeText(ctx,"Nastąpił nieoczekiwany błąd. Spróbuj później.",Toast.LENGTH_LONG);
+                                t.show();
+                            }
+                        }
+                    }});
+
+                newClient.InsertClient(u,a);
                 //    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //     .setAction("Action", null).show();
-              startActivity(new Intent(view.getContext(), actClientTaskNotSelectedListActivity.class));
+
                // startActivity(new Intent(view.getContext(), actClientTaskNotSelectedListActivity.class));
                 //   Intent i = new Intent( null, actClientTask.class);
              //  startActivity(i);

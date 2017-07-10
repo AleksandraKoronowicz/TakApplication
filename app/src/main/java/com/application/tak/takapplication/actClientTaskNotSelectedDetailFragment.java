@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.application.tak.takapplication.data_model.Category;
 import com.application.tak.takapplication.dummy.DummyContent;
 
 /**
@@ -26,7 +27,7 @@ public class actClientTaskNotSelectedDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private DummyContent.DummyItem mItem;
+    private Category mItem;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -48,7 +49,7 @@ public class actClientTaskNotSelectedDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.task);
+                appBarLayout.setTitle(mItem.get_CategoryName());
             }
         }
     }
@@ -59,8 +60,8 @@ public class actClientTaskNotSelectedDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.actclienttasknotselected_detail)).setText(mItem.place);
-            ((TextView) rootView.findViewById(R.id.actclienttasknotselected_detail)).setText(mItem.phoneNumber);
+            ((TextView) rootView.findViewById(R.id.actclienttasknotselected_detail)).setText(mItem.get_CategoryName());
+            ((TextView) rootView.findViewById(R.id.actclienttasknotselected_detail)).setText(mItem.get_Id());
 
         }
 

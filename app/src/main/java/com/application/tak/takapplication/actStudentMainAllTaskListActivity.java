@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.application.tak.takapplication.data_model.Category;
 import com.application.tak.takapplication.dummy.DummyContent;
 
 import java.util.List;
@@ -73,9 +74,9 @@ public class actStudentMainAllTaskListActivity extends AppCompatActivity{
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<Category> mValues;
 
-        public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
+        public SimpleItemRecyclerViewAdapter(List<Category> items) {
             mValues = items;
         }
 
@@ -89,15 +90,15 @@ public class actStudentMainAllTaskListActivity extends AppCompatActivity{
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).phoneNumber);
+            holder.mIdView.setText(mValues.get(position).get_CategoryName());
+            holder.mContentView.setText(mValues.get(position).get_CategoryName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(actStudentMainAllTaskDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        arguments.putInt(actStudentMainAllTaskDetailFragment.ARG_ITEM_ID, holder.mItem.get_Id());
                         actStudentMainAllTaskDetailFragment fragment = new actStudentMainAllTaskDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -106,7 +107,7 @@ public class actStudentMainAllTaskListActivity extends AppCompatActivity{
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, actStudentMainAllTaskDetailActivity.class);
-                        intent.putExtra(actStudentMainAllTaskDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        intent.putExtra(actStudentMainAllTaskDetailFragment.ARG_ITEM_ID, holder.mItem.get_Id());
 
                         context.startActivity(intent);
                     }
@@ -123,7 +124,7 @@ public class actStudentMainAllTaskListActivity extends AppCompatActivity{
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContent.DummyItem mItem;
+            public Category mItem;
 
             public ViewHolder(View view) {
                 super(view);

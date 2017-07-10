@@ -15,8 +15,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.application.tak.takapplication.data_access.GetCategories;
+import com.application.tak.takapplication.data_model.Category;
 import com.application.tak.takapplication.dummy.DummyContent;
+import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,12 +38,13 @@ public class actClientTaskNotSelectedListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_client_task_notselected_list);
-
+        ctx = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
@@ -66,15 +71,32 @@ fab.hide();
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS, ctx));
     }
 
     public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<DummyContent.DummyItem> mValues;
+        public SimpleItemRecyclerViewAdapter(Context ctx)
+        {
+            final GetCategories allCategories = new GetCategories(ctx);
+            allCategories.setDBRequestFinishedListener(new OnDBRequestFinished() {
+                @Override
+                public void onDBRequestFinished() {
+                    mValues = allCategories._categories;
+                }
+            });
+        }
 
-        public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
-            mValues = items;
+        private List<Category> mValues = new ArrayList<Category>();
+
+        public SimpleItemRecyclerViewAdapter(List<Category> items, Context ctx) {
+            final GetCategories allCategories = new GetCategories(ctx);
+            allCategories.setDBRequestFinishedListener(new OnDBRequestFinished() {
+                @Override
+                public void onDBRequestFinished() {
+                    mValues = allCategories._categories;
+                }
+            });
         }
 
         @Override
@@ -86,8 +108,8 @@ fab.hide();
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
-            holder.mIdView.setText(mValues.get(position).task);
-            holder.mContentView.setText(mValues.get(position).dateTime);
+            holder.mIdView.setText(mValues.get(position).get_CategoryName());
+            //holder.mContentView.setText(mValues.get(position).dateTime);
 
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -95,14 +117,14 @@ fab.hide();
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(actClientTaskNotSelectedDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        arguments.putInt(actClientTaskNotSelectedDetailFragment.ARG_ITEM_ID, holder.mItem.get_Id());
                         actClientTaskNotSelectedDetailFragment fragment = new actClientTaskNotSelectedDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction().replace(R.id.actclienttasknotselected_detail_container, fragment).commit();
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, actClientTaskNotSelectedDetailActivity.class);
-                        intent.putExtra(actClientTaskNotSelectedDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        intent.putExtra(actClientTaskNotSelectedDetailFragment.ARG_ITEM_ID, holder.mItem.get_Id());
 
                         context.startActivity(intent);
                     }
@@ -119,7 +141,7 @@ fab.hide();
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContent.DummyItem mItem;
+            public Category mItem;
 
             public ViewHolder(View view) {
                 super(view);
