@@ -154,4 +154,12 @@
     <string name="title_activity_act__client__task">act_Client_Task</string>
     <string name="title_actclienttasknotselected_list">act_Client_Task_NotSelected</string>
     <string name="title_actclienttasknotselected_detail">act_Client_Task_NotSelected Detail</string>
+    <string name="title_activity_act_client_task_new">actClientTaskNew</string>
+    <string name="title_activity_act_client_task_add">actClientTaskAdd</string>
+    <string name="gotowe">Gotowe?</string>
+    <string name="rodzaj_zadania">Rodzaj zadania</string>
+    <string name="podaj_szczeg_y_zadania">Podaj szczegóły zadania</string>
+    <string name="title_activity_act_client_task_add_new">actClientTaskAddNew</string>
+    <string name="title_activity_act_client_login_only">Zaloguj się</string>
+    <string name="title_activity_login">Sign in</string>
 </resources>

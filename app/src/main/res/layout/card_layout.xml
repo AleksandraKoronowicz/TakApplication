@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:orientation="vertical"
+            android:padding="0dp" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="W godzinach 15:00-16:00"
+                android:textSize="15sp"
+                android:layout_alignParentBottom="true"
+        />
+        <TextView
+                android:layout_width="186dp"
+                android:layout_height="wrap_content"
+                android:text="Kiedy: 2017-01-01"
+                android:textSize="18sp"
+
+                android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/person_photo"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wyrzucenie śmieci"
+                android:textStyle="bold"
+                android:textSize="20sp"
+             />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

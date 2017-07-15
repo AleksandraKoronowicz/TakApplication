@@ -57,7 +57,7 @@ public class actClientLogin extends AppCompatActivity {
             public void onClick(View view) {
                 //    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //     .setAction("Action", null).show();
-              startActivity(new Intent(view.getContext(), actClientTaskNotSelectedListActivity.class));
+              startActivity(new Intent(view.getContext(), actClientTask.class));
                // startActivity(new Intent(view.getContext(), actClientTaskNotSelectedListActivity.class));
                 //   Intent i = new Intent( null, actClientTask.class);
              //  startActivity(i);

@@ -1,14 +1,16 @@
 package com.application.tak.takapplication;
 
 import android.app.Activity;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.application.tak.takapplication.dummy.DummyContent;
+import com.application.tak.takapplication.dummy.DummyContent2;
+
+;
 
 /**
  * A fragment representing a single act_Client_Task_NotSelected detail screen.
@@ -26,7 +28,7 @@ public class actClientTaskNotSelectedDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private DummyContent.DummyItem mItem;
+    private DummyContent2.DummyItem mItem;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -43,7 +45,7 @@ public class actClientTaskNotSelectedDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            mItem = DummyContent2.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
@@ -53,17 +55,21 @@ public class actClientTaskNotSelectedDetailFragment extends Fragment {
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.item_act_client_task_notselected_detail, container, false);
+      @Override
+     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+          View rootView = inflater.inflate(R.layout.item_act_client_task_notselected_detail, container, false);
 
-        // Show the dummy content as text in a TextView.
-        if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.actclienttasknotselected_detail)).setText(mItem.place);
-            ((TextView) rootView.findViewById(R.id.actclienttasknotselected_detail)).setText(mItem.phoneNumber);
+          // Show the dummy content as text in a TextView.DRAG_FLAG_GLOBAL_PREFIX_URI_PERMISSION
+          if (mItem != null) {
+              ((TextView) rootView.findViewById(R.id.actclienttasknotselected_detail)).setText(mItem.place);
+              ((TextView) rootView.findViewById(R.id.actclienttasknotselected_detail)).setText(mItem.phoneNumber);
 
-        }
 
-        return rootView;
-    }
+              return rootView;
+          }
+
+          return rootView;
+      }
+
+
 }

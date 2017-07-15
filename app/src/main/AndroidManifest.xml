@@ -10,7 +10,7 @@
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
-            android:label="TAK !"
+            android:label="TAK!"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
@@ -22,6 +22,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+                android:name=".actClientLogin"
+                android:label="Logowanie klienta"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".act_Student_Main_Manu">
             <intent-filter>
@@ -69,16 +73,6 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".actClientTask"
-                android:label=" "
-                android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
                 android:name=".actClientTaskNotSelectedListActivity"
                 android:label="Lista zadań oczekujących na wybranie"
                 android:theme="@style/AppTheme.NoActionBar">
@@ -96,6 +90,20 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.application.tak.takapplication.actClientTaskNotSelectedListActivity"/>
+        </activity>
+        <activity
+                android:name=".actClientTaskAdd"
+                android:label="@string/title_activity_act_client_task_add"
+                android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".LoginActivity"
+                android:label="@string/title_activity_login">
         </activity>
     </application>
 

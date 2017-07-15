@@ -15,24 +15,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import com.application.tak.takapplication.dummy.DummyContent;
+import com.application.tak.takapplication.dummy.DummyContent2;
 
 import java.util.List;
 
-/**
- * An activity representing a list of act_Client_Task_NotSelected. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link actClientTaskNotSelectedDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- */
+
 public class actClientTaskNotSelectedListActivity extends AppCompatActivity {
 
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
     private boolean mTwoPane;
 
     @Override
@@ -52,6 +41,7 @@ public class actClientTaskNotSelectedListActivity extends AppCompatActivity {
             }
 ;        } );
 fab.hide();
+
         View recyclerView = findViewById(R.id.actclienttasknotselected_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -66,14 +56,15 @@ fab.hide();
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent2.ITEMS));
     }
 
-    public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+    public static class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<DummyContent2.DummyItem> mValues;
+        private boolean mTwoPane;
 
-        public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
+        public SimpleItemRecyclerViewAdapter(List<DummyContent2.DummyItem> items) {
             mValues = items;
         }
 
@@ -98,7 +89,7 @@ fab.hide();
                         arguments.putString(actClientTaskNotSelectedDetailFragment.ARG_ITEM_ID, holder.mItem.id);
                         actClientTaskNotSelectedDetailFragment fragment = new actClientTaskNotSelectedDetailFragment();
                         fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.actclienttasknotselected_detail_container, fragment).commit();
+                     //   getSupportFragmentManager().beginTransaction().replace(R.id.actclienttasknotselected_detail_container, fragment).commit();
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, actClientTaskNotSelectedDetailActivity.class);
@@ -115,11 +106,11 @@ fab.hide();
             return mValues.size();
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder {
+        public static class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContent.DummyItem mItem;
+            public DummyContent2.DummyItem mItem;
 
             public ViewHolder(View view) {
                 super(view);

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import com.application.tak.takapplication.dummy.DummyContent;
+import com.application.tak.takapplication.dummy.DummyContent2;
 
 import java.util.List;
 
@@ -67,15 +67,15 @@ public class actStudentMainAllTaskListActivity extends AppCompatActivity{
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent2.ITEMS));
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<DummyContent2.DummyItem> mValues;
 
-        public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
+        public SimpleItemRecyclerViewAdapter(List<DummyContent2.DummyItem> items) {
             mValues = items;
         }
 
@@ -123,7 +123,7 @@ public class actStudentMainAllTaskListActivity extends AppCompatActivity{
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContent.DummyItem mItem;
+            public DummyContent2.DummyItem mItem;
 
             public ViewHolder(View view) {
                 super(view);

@@ -28,45 +28,45 @@
                 android:id="@+id/email_login_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical" android:weightSum="1">
 
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
                         android:id="@+id/imie"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:hint="@string/customerName"
+                        android:layout_height="46dp"
+                        android:hint="Imię"
                         android:maxLines="1"
-                />
+                        tools:ignore="HardcodedText"/>
 
 
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
                         android:id="@+id/nazwisko"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:hint="@string/customerNazwosko"
+                        android:layout_height="44dp"
+                        android:hint="Nazwisko"
                         android:maxLines="1"
-                />
+                        tools:ignore="HardcodedText"/>
 
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
                         android:id="@+id/customrtUlica"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="59dp"
                         android:hint="@string/customerulica"
                         android:maxLines="1"
                 />
@@ -75,12 +75,12 @@
 
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
                         android:id="@+id/customerMiasto"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="61dp"
                         android:hint="@string/customermiasto"
                         android:maxLines="1"
                 />
@@ -88,12 +88,12 @@
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
                         android:id="@+id/customerKod"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="57dp"
                         android:hint="@string/customerkodpocztowy"
                         android:maxLines="1"
                 />
@@ -102,7 +102,7 @@
 
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="38dp">
+                    android:layout_height="wrap_content">
 
                 <EditText
                         android:id="@+id/password"
