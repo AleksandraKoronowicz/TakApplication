@@ -27,7 +27,7 @@
 
     <TextView
             android:id="@+id/year"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_height="wrap_content" />

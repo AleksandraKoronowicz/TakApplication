@@ -11,12 +11,40 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import com.application.tak.takapplication.adapters.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class actClientTask extends AppCompatActivity {
-    private List<Movie> movieList = new ArrayList<>();
+
+    Toolbar toolbar;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    ViewPagerAdapter viewPagerAdapter;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.act_client_task_copy);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragments(new actClientTaskNotSelected(),"Oczekujące");
+        viewPagerAdapter.addFragments(new actClientTaskToDo(),"Zaakceptowane");
+        viewPagerAdapter.addFragments(new actClientTaskAddFragment(),"Nowe zadanie");
+
+
+
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+}
+/*
     private RecyclerView recyclerView;
 
 
@@ -26,6 +54,7 @@ public class actClientTask extends AppCompatActivity {
     /**
      * The {@link ViewPager} that will host the section contents.
      */
+/*
     private ViewPager mViewPager;
 
     @Override
@@ -47,15 +76,10 @@ public class actClientTask extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-
     }
 
 
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -91,7 +115,7 @@ public class actClientTask extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Oczekujące";
+                    return "Oczekuj&#x105;ce";
                 case 1:
                     return "W toku";
                 case 2:
@@ -100,6 +124,4 @@ public class actClientTask extends AppCompatActivity {
             return null;
         }
     }}
-
-
-
+*/

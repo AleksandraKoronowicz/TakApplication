@@ -13,41 +13,29 @@
             android:label="TAK!"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+
         <activity
-                android:name=".actClientLogin"
-                android:label="Logowanie klienta"
-                android:theme="@style/AppTheme.NoActionBar">
+            android:name=".actClientTask"
+            android:label="Panel Użytkownika - zadania"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-                android:name=".actClientLogin"
-                android:label="Logowanie klienta"
-                android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
         <activity android:name=".act_Student_Main_Manu">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".actStudentMainAllTaskListActivity"
                 android:label="@string/title_actstudentmainalltask_list"
                 android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".actStudentMainAllTaskDetailActivity"
                 android:label="@string/title_actstudentmainalltask_detail"
-                android:parentActivityName=".actStudentMainAllTaskListActivity"
+                android:parentActivityName=".actStudentMainAllTaskDetailActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -56,31 +44,11 @@
         <activity
                 android:name=".actClinetLoginMain"
                 android:label="Rejestracja">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".actClientLoginRegulation"
                 android:label="@string/title_activity_act_client_login_regulation"
                 android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".actClientTaskNotSelectedListActivity"
-                android:label="Lista zadań oczekujących na wybranie"
-                android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".actClientTaskNotSelectedDetailActivity"
@@ -91,20 +59,13 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.application.tak.takapplication.actClientTaskNotSelectedListActivity"/>
         </activity>
-        <activity
-                android:name=".actClientTaskAdd"
-                android:label="@string/title_activity_act_client_task_add"
-                android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+
         <activity
                 android:name=".LoginActivity"
                 android:label="@string/title_activity_login">
         </activity>
+
     </application>
 
 </manifest>

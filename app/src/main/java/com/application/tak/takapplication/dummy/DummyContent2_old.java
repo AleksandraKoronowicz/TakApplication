@@ -1,8 +1,5 @@
 package com.application.tak.takapplication.dummy;
 
-import com.application.tak.takapplication.data_access.GetCategories;
-import com.application.tak.takapplication.data_model.Category;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,22 +11,17 @@ import java.util.Map;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class DummyContent2 {
-
-
-    public DummyContent2()
-    {
-    }
+public class DummyContent2_old {
 
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<Category> ITEMS = new ArrayList<Category>();
+    public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<Integer, Category> ITEM_MAP = new HashMap<Integer, Category>();
+    public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
     //private static final int COUNT = 25;
 
@@ -37,7 +29,6 @@ public class DummyContent2 {
         // Add some sample items.
         //  for (int i = 1; i <= COUNT; i++) {
         // addItem(createDummyItem(i));
-       /* addItem(new DummyItem("1", "Wyrzuć smieci", "2 lipca 2015", "200 metrów od Twojej szkoły", "509 333 333"));
         addItem(new DummyItem("1", "Wyrzuć smieci", "2 lipca 2015", "200 metrów od Twojej szkoły", "509 333 333"));
         addItem(new DummyItem("1", "Wyrzuć smieci", "2 lipca 2015", "200 metrów od Twojej szkoły", "509 333 333"));
         addItem(new DummyItem("1", "Wyrzuć smieci", "2 lipca 2015", "200 metrów od Twojej szkoły", "509 333 333"));
@@ -49,17 +40,18 @@ public class DummyContent2 {
         addItem(new DummyItem("1", "Wyrzuć smieci", "2 lipca 2015", "200 metrów od Twojej szkoły", "509 333 333"));
         addItem(new DummyItem("1", "Wyrzuć smieci", "2 lipca 2015", "200 metrów od Twojej szkoły", "509 333 333"));
         addItem(new DummyItem("1", "Wyrzuć smieci", "2 lipca 2015", "200 metrów od Twojej szkoły", "509 333 333"));
-*/
+        addItem(new DummyItem("1", "Wyrzuć smieci", "2 lipca 2015", "200 metrów od Twojej szkoły", "509 333 333"));
+
     }
 
 
-    private static void addItem(Category item) {
+    private static void addItem(DummyItem item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.get_Id(), item);
+        ITEM_MAP.put(item.id, item);
     }
 
-    private static Category createDummyItem(int position) {
-        return new Category();
+    private static DummyItem createDummyItem(int position) {
+        return new DummyItem(String.valueOf(position), "Zadanie" + position,  "data wykonania zadania: ","Miejsce wykonania", "Numer telefonu:");
     }
 
     private static String makeDetails(int position) {
@@ -70,18 +62,18 @@ public class DummyContent2 {
         }
         return builder.toString();
     }
-}
+
     /**
      * A dummy item representing a piece of content.
      */
-   /*public static class DummyItem {
+    public static class DummyItem {
         public final String id;
         public final String task;
         public final String dateTime;
         public final String place;
         public final String phoneNumber;
 
-       public DummyItem(String id, String task, String dateTime, String place, String phoneNumber) {
+        public DummyItem(String id, String task, String dateTime, String place, String phoneNumber) {
             this.id = id;
             this.task = task;
             this.dateTime = dateTime;
@@ -93,4 +85,5 @@ public class DummyContent2 {
         public String toString() {
             return task;
         }
-    }*/
+    }
+}
