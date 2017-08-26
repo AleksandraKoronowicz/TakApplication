@@ -2,20 +2,20 @@ package com.application.tak.takapplication;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.application.tak.takapplication.data_access.GetCategories;
 import com.application.tak.takapplication.data_model.Category;
+import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -30,31 +30,58 @@ public class actClientTaskAddFragment extends Fragment {
     private ImageButton btn_time;
     private TextView dateText;
     private TextView timeText;
+    Spinner spinner;
     DateFormat dateFormat = new SimpleDateFormat("hh:mm");
-
-
+    List<Category> categoriesList;
+    GetCategories categories;
+    ArrayAdapter<String> adapter;
+    Context ctx;
+    String[] awayStrings;
     public actClientTaskAddFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+ctx = this.getContext();
 
         View view = inflater.inflate(R.layout.act_client_task_new2, container, false);
+         spinner = (Spinner) view.findViewById(R.id.spinner2);
         // Inflate the layout for this fragment
+        categories = new GetCategories(this.getContext());
+        categories.setDBRequestFinishedListener(new OnDBRequestFinished() {
+            @Override
+            public void onDBRequestFinished() {
+                categoriesList = categories._categories;
+                if(categories._categories != null)
+                {
+                 awayStrings = new String[categoriesList.size()];
+                int i= 0;
+                for(Category c: categoriesList)
+                {
+awayStrings[i] = c.get_CategoryName();
+        i++;
+                }
 
-        String[] awayStrings = {
-                "Wyrzuć śmieci",
-                "Zrób zakupy",
-                "Umyj okna",
-                "Wyprowadź psa",
-                "Prace w ogrodzie"
 
-        };
-        Spinner spinner = (Spinner) view.findViewById(R.id.spinner2);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, awayStrings);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner.setAdapter(adapter);
+                /*String[] awayStrings = {
+                        "Wyrzuć śmieci",
+                        "Zrób zakupy",
+                        "Umyj okna",
+                        "Wyprowadź psa",
+                        "Prace w ogrodzie"
+
+                };*/
+
+
+                adapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_spinner_item, awayStrings);
+                adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                spinner.setAdapter(adapter);}
+            }});
+
+
+        //ArrayAdapter<String>
+
 
 
         timeText = (TextView) view.findViewById(R.id.timepicker);

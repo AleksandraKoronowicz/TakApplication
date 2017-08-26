@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:allowBackup="true"
@@ -14,8 +15,21 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
 
+
         <activity
-            android:name=".actClientTask"
+                android:name=".actClientTask"
+                android:label="Logowanie"
+                android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".actStudentLogin"
             android:label="Panel Użytkownika - zadania"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -50,15 +64,7 @@
                 android:label="@string/title_activity_act_client_login_regulation"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity
-                android:name=".actClientTaskNotSelectedDetailActivity"
-                android:label="Szczegóły zadania"
-                android:parentActivityName=".actClientTaskNotSelectedListActivity"
-                android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.application.tak.takapplication.actClientTaskNotSelectedListActivity"/>
-        </activity>
+
 
 
         <activity

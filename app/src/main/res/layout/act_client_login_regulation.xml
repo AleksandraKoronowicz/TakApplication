@@ -11,12 +11,6 @@
 
     <include layout="@layout/content_act_client_login_regulation"/>
 
-    <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="95dp"
-            android:layout_height="86dp"
-            app:layout_anchorGravity="bottom|end"
-            app:srcCompat="@drawable/cooltext242813019605997"/>
     <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar"
             android:fitsSystemWindows="true"
@@ -43,4 +37,9 @@
             <!--tools:text="Czy akceptujesz poniższy regulamin?" -->
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="95dp"
+            android:layout_height="86dp"
+            app:srcCompat="@drawable/cooltext242813019605997"/>
 </android.support.design.widget.CoordinatorLayout>

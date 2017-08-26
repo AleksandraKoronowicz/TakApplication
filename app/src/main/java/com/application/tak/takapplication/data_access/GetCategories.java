@@ -27,6 +27,7 @@ public class GetCategories extends GetJSONData
     {
         super(ctx);
         execute(URL);
+
     }
 
     @Override
@@ -38,7 +39,7 @@ public class GetCategories extends GetJSONData
         JSONObject jsonObject;
         try
         {
-            jsonObject = new JSONObject(JsonResult);
+            jsonObject = new JSONObject(JsonResult.substring(JsonResult.indexOf("{"), JsonResult.lastIndexOf("}") + 1));
 
             categories = jsonObject.getJSONArray(TAG_RESULTS);
 
