@@ -74,7 +74,7 @@
                 android:id="@+id/imageView"
                 android:contentDescription=""
                 tools:ignore="ContentDescription"
-                android:layout_below="@+id/section_label" android:layout_centerHorizontal="true"
+               android:layout_centerHorizontal="true"
                 android:layout_marginTop="11dp"/>
             <EditText
             android:layout_width="wrap_content"
@@ -88,8 +88,8 @@
             <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_above="@+id/editText2" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true">
+                    android:layout_alignTop="@+id/imageView" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" android:layout_marginTop="48dp">
 
                 <AutoCompleteTextView
                         android:id="@+id/imie"
@@ -97,7 +97,7 @@
                         android:layout_height="45dp"
                         android:hint="Imię"
                         android:maxLines="1"
-                />
+                        tools:ignore="HardcodedText"/>
 
             </android.support.design.widget.TextInputLayout>
         </RelativeLayout>
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/radioButton"
             android:text="@string/akceptuje_regulamin"
-            android:layout_below="@+id/cv" android:layout_centerHorizontal="true" android:layout_marginTop="16dp"
-            style="@style/AppTheme"/>
+            style="@style/AppTheme" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+            android:layout_marginBottom="37dp"/>
 
 </RelativeLayout>

@@ -34,7 +34,7 @@ public class GetUserById extends GetJSONData
     private static final String TAG_ROAD="ROAD";
     private static final String TAG_POSTCODE="POSTCODE";
     private static final String TAG_ROAD_NO="ROAD_NO";
-    //for student and teacher only
+    //for usun and teacher only
     private static final String TAG_CLASS_NAME="CLASS_NAME";
     private static final String TAG_SCHOOL_ID="SCHOOL_ID";
     private static final String TAG_SIGNUP_CODE="SIGNUP_CODE";

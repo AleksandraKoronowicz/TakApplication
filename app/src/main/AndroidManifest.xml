@@ -17,8 +17,8 @@
 
 
         <activity
-                android:name=".actClientTask"
-                android:label="Logowanie"
+                android:name=".actStudentTask"
+                android:label="Panel Główny"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -39,6 +39,19 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+                android:name=".actClientTask"
+                android:label="Logowanie"
+                android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
         <activity android:name=".act_Student_Main_Manu">
         </activity>
         <activity

@@ -14,17 +14,15 @@
             android:layout_height="wrap_content"
             android:text="@string/krok_1_wyb_r_logowania"/>
     <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button2" android:background="@drawable/googleicon" android:layout_centerVertical="true"
-            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
-            android:layout_marginRight="36dp" android:layout_marginEnd="36dp"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/button" android:background="@drawable/facebookicon"
-            android:layout_alignBaseline="@+id/button2" android:layout_alignBottom="@+id/button2"
-            android:layout_alignRight="@+id/section_label" android:layout_alignEnd="@+id/section_label"
-            android:layout_marginRight="29dp" android:layout_marginEnd="29dp"/>
+            android:layout_width="100dp" android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:layout_above="@+id/button2" android:layout_centerHorizontal="true"/>
+    <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/button2" android:background="@drawable/googleicon"
+            android:layout_alignParentBottom="true" android:layout_alignRight="@+id/button"
+            android:layout_alignEnd="@+id/button" android:layout_marginBottom="181dp"/>
 
 </RelativeLayout>

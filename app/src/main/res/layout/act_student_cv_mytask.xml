@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="6dp">
+
+
+    <android.support.v7.widget.CardView
+            android:id="@+id/cv_student_mytask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:padding="9dp">
+
+            <TextView
+                    android:id="@+id/client_adress"
+                    android:text="Adres wykonania zadania"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <TextView
+                    android:id="@+id/task_date_mytask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25 lipca"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <TextView
+                    android:id="@+id/task_time_mytask"
+                    android:text="16:00 d0 17:00"
+                    android:textSize="10sp"
+                    android:textStyle="normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignBottom="@+id/imageView5" android:layout_toRightOf="@+id/imageView5"
+                    android:layout_toEndOf="@+id/imageView5"/>
+            <TextView
+                    android:id="@+id/client_name_mytask"
+                    android:text="Aleksandra Koronowicz"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView7" android:layout_toRightOf="@+id/imageView7"
+                    android:layout_toEndOf="@+id/imageView7"/>
+            <TextView
+                    android:id="@+id/client_phone_mytask"
+                    android:text="509 728 212"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView8" android:layout_toRightOf="@+id/imageView7"
+                    android:layout_toEndOf="@+id/imageView7"/>
+            <TextView
+                    android:id="@+id/task_topic_mytask"
+                    android:text="Wyrzuć śmieci"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true" android:layout_toRightOf="@+id/client_adress"
+                    android:layout_toEndOf="@+id/client_adress"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_myplaces"
+                    android:id="@+id/imageView7"
+                    android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@android:drawable/stat_sys_phone_call_on_hold"
+                    android:id="@+id/imageView8"
+                    android:layout_below="@+id/imageView7" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="?android:attr/textSelectHandleLeft"
+                    android:id="@+id/imageView5"
+                    android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

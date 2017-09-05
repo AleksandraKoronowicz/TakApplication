@@ -27,7 +27,8 @@
                                             android:layout_marginRight="16dp"
                                             app:layoutManager="LinearLayoutManager"
                                             tools:context="com.application.tak.takapplication.actStudentMainAllTaskListActivity"
-                                            tools:listitem="@layout/item_act_student_main_task_list_content"/>
+                                            tools:listitem="@layout/item_act_student_main_task_list_content"
+                                            android:layout_weight="0.40"/>
 
     <FrameLayout
             android:id="@+id/actstudentmainalltask_detail_container"
