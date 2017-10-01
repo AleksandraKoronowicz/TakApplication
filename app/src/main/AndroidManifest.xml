@@ -14,42 +14,48 @@
             android:label="TAK!"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
-
         <activity
-                android:name=".actStudentTask"
-                android:label="Panel Główny"
+                android:name=".actStudentLogin"
+                android:label="Rejrestracja"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
 
         <activity
-            android:name=".actStudentLogin"
-            android:label="Panel Użytkownika - zadania"
-            android:theme="@style/AppTheme.NoActionBar">
+                android:name=".actStudentTask"
+                android:label="Panel Użytkownika - zadania"
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
 
+        <activity
+                android:name=".actClientLogin"
+                android:label="Rejestracja"
+                android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity
                 android:name=".actClientTask"
-                android:label="Logowanie"
+                android:label="Panel główny"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
 
         <activity android:name=".act_Student_Main_Manu">
@@ -69,22 +75,19 @@
                     android:value="com.application.tak.takapplication.actStudentMainAllTaskListActivity"/>
         </activity>
         <activity
-                android:name=".actClinetLoginMain"
-                android:label="Rejestracja">
-        </activity>
-        <activity
-                android:name=".actClientLoginRegulation"
-                android:label="@string/title_activity_act_client_login_regulation"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-
-
-        <activity
                 android:name=".LoginActivity"
                 android:label="@string/title_activity_login">
         </activity>
+        <activity
+                android:name=".actStudentRegulation"
+                android:label="@string/title_activity_act_student_regulation"
+                android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

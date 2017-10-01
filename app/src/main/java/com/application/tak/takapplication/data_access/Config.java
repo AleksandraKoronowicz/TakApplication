@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Config
 {
-    public static final String SERVER_NAME = "http://192.168.1.91:80/";
+    public static final String SERVER_NAME = "http://192.168.0.104/";
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd_HHmm");
     public static final String ApplicationId = "9736362253343859";
     public static Client_V LoggedInClient = null;

@@ -1,5 +1,6 @@
 package com.application.tak.takapplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -14,7 +15,15 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.application.tak.takapplication.adapters.RVAdapter;
 import com.application.tak.takapplication.adapters.RVAdapterTaskNotSelected;
+import com.application.tak.takapplication.data_access.Config;
+import com.application.tak.takapplication.data_access.GetAllClientTasks;
+import com.application.tak.takapplication.data_access.GetAllClientTasksByStatus;
+import com.application.tak.takapplication.data_access.GetCategories;
 import com.application.tak.takapplication.data_list.TaskListNotSelected;
+import com.application.tak.takapplication.data_model.Category;
+import com.application.tak.takapplication.data_model.Task_V;
+import com.application.tak.takapplication.data_model.User;
+import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +39,18 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-    public class actClientTaskNotSelected extends android.support.v4.app.Fragment{
+    public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
 
     private RecyclerView recyclerview;
+    GetAllClientTasks clientTask;
+    User client = new User();
+    Task_V task;
+    GetAllClientTasks tasks;
+
     private List<TaskListNotSelected> memberList;
 
         public actClientTaskNotSelected()
         {
-
         }
 
         @Override
@@ -47,32 +60,58 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
             //  return inflater.inflate(R.layout.fragment_home, container, false);
 
             View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
-            // Inflate the layout for this fragment
-
-            String[] awayStrings = {
-                    "\nWyrzuc smieci,\n  kiedy: 2017-07-07, \n  o której godzinie: 16:00-17:00\n",
-                    "\nWyrzuc smieci,\n  kiedy: 2017-07-07, \n  o której godzinie: 16:00-17:00\n",
-                    "\nWyrzuc smieci,\n  kiedy: 2017-07-07, \n  o której godzinie: 16:00-17:00\n",
-                    "cos2",
-                    "cos",
-                    "cos2",
-                    "cos",
-                    "cos2",
-                    "cos"
-
-            };
             memberList = new ArrayList<TaskListNotSelected>();
+
+            User u = new User();
+            u.set_Id(1);
+             tasks = new GetAllClientTasks(this.getContext(),u);
+            tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
+                @Override
+                public void onDBRequestFinished() {
+if(tasks._tasks != null)
+{
+    Config.ClientTasks = tasks._tasks;
+    for (Task_V task : Config.ClientTasks) {
+
+        TaskListNotSelected member = new TaskListNotSelected(task);
+
+        memberList.add(member);
+
+        //  task.get_CreatorCity()
+    }
+}
+                }
+            });
+
+
+
+        /*    client.set_Id(1);
+            clientTask = new GetAllClientTasks(getContext(),client);
+            clientTask.setDBRequestFinishedListener(new OnDBRequestFinished() {
+                @Override
+                public void onDBRequestFinished() {
+                    categoriesList = categories._categories;
+                    if(categories._categories != null)
+                    {
+                        awayStrings = new String[categoriesList.size()];
+                        int i= 0;
+                        for(Category c: categoriesList)
+                        {
+                            awayStrings[i] = c.get_CategoryName();
+                            i++;
+
+                        }
+      *//*
             TaskListNotSelected member = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
             memberList.add(member);
             TaskListNotSelected member2 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
             memberList.add(member2);
             TaskListNotSelected member3 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
-            memberList.add(member3);
+            memberList.add(member3);*/
 
             recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             recyclerview.setLayoutManager(layoutManager);
-
 
             RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
             recyclerview.setAdapter(adapter);

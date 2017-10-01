@@ -6,10 +6,10 @@
 
               tools:context="com.application.tak.takapplication.actStudentTask">
 
-
+    <!-- TODO: Update blank fragment layout -->
 
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_alltask"
+            android:id="@+id/recyclerview_plantask"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />

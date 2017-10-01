@@ -61,6 +61,7 @@ ctx = this.getContext();
                 {
 awayStrings[i] = c.get_CategoryName();
         i++;
+
                 }
 
 

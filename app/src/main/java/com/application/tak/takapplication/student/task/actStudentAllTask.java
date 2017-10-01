@@ -1,6 +1,7 @@
 package com.application.tak.takapplication.student.task;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
 import com.application.tak.takapplication.R;
 import com.application.tak.takapplication.actStudentMainAllTaskListActivity;
 import com.application.tak.takapplication.adapters.RVAdapter;
@@ -37,8 +40,7 @@ public class actStudentAllTask extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //  return inflater.inflate(R.layout.fragment_home, container, false);
+
 
         View view = inflater.inflate(R.layout.act_student_alltask, container, false);
         // Inflate the layout for this fragment
@@ -55,9 +57,9 @@ public class actStudentAllTask extends Fragment {
         //  listViewv.setAdapter(lva);
 
         memberList = new ArrayList<AllTaskListStudent>();
-        AllTaskListStudent member = new AllTaskListStudent("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "Gliwice, Ostrudźka 43");
+        AllTaskListStudent member = new AllTaskListStudent("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "Gliwice, Długa 43");
         memberList.add(member);
-        AllTaskListStudent member2 = new AllTaskListStudent("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "Gliwice, Ostrudźka 43");
+        AllTaskListStudent member2 = new AllTaskListStudent("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Aleksandra Kicha", "Katowice, Sowińskiego 43");
         memberList.add(member2);
         AllTaskListStudent member3 = new AllTaskListStudent("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "Gliwice, Ostrudźka 43");
         memberList.add(member3);
@@ -70,6 +72,7 @@ public class actStudentAllTask extends Fragment {
         RVAdapterAllTaskStudent adapter = new RVAdapterAllTaskStudent(memberList, getActivity());
         recyclerview.setAdapter(adapter);
 
+        Button google_map = (Button) view.findViewById(R.id.btnAdresMap);
 
 
 
