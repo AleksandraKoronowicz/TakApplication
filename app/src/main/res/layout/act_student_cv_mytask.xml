@@ -15,9 +15,17 @@
             app:cardElevation="3dp"
             app:cardMaxElevation="10dp"
 
-            app:contentPadding="20dp" android:filterTouchesWhenObscured="false" android:animateLayoutChanges="true"
+            app:contentPadding="18dp" android:filterTouchesWhenObscured="false" android:animateLayoutChanges="true"
             android:alpha="10">
 
+        <android.support.design.widget.FloatingActionButton
+                android:clickable="true"
+                app:srcCompat="@android:drawable/ic_menu_call"
+                android:id="@+id/fabmytaskPhone"
+                android:layout_width="95dp"
+                app:fabSize="normal" android:layout_alignParentTop="true"
+                android:layout_marginLeft="100dp" android:layout_marginTop="45dp" android:layout_height="95dp"
+                app:elevation="11dp" app:rippleColor="?android:attr/colorActivatedHighlight"/>
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
@@ -45,20 +53,31 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_above="@+id/client_adress" android:layout_centerHorizontal="true"/>
-            <TextView
-                    android:id="@+id/client_name_mytask"
-                    android:text="Aleksandra Koronowicz"
-                    android:textSize="20sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
             <Button
                     android:id="@+id/buttonMenuMyTask" android:background="@drawable/settings"
                     android:elevation="3dp"
                     android:layout_width="23dp" android:textAlignment="textEnd"
                     android:layout_alignParentTop="true" android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" android:layout_height="23dp"/>
+            <TextView
+                    android:id="@+id/day_name_mytask"
+                    android:layout_width="267dp"
+                    android:layout_height="wrap_content"
+                    android:text="Czwartek"
+                    android:textStyle="bold"
+                    android:textSize="35sp"
+                    android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toLeftOf="@+id/buttonMenuMyTask" android:layout_toStartOf="@+id/buttonMenuMyTask"/>
+            <TextView
+                    android:id="@+id/client_name_mytask"
+                    android:text="Aleksandra Koronowicz"
+                    android:textSize="22sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:layout_below="@+id/dateMyTask" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
             <TextView
                     android:id="@+id/client_adress"
                     android:text="Gliwice, Kwiatowa 55/2"
@@ -69,46 +88,31 @@
                     android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"/>
             <TextView
+                    android:id="@+id/dateMyTask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25 lipiec"
+                    android:textSize="22sp"
+
+                    android:textAlignment="viewStart"
+                    android:layout_below="@+id/day_name_mytask" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <TextView
                     android:id="@+id/task_time_mytask"
                     android:text="16:00 do 17:00"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
 
-                    android:layout_above="@+id/client_name_mytask" android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"/>
-            <TextView
-                    android:id="@+id/dateMyTask"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="25 lipiec"
-                    android:textSize="20sp"
-
-                    android:layout_above="@+id/client_name_mytask" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
+                    android:textAlignment="textEnd"
+                    android:layout_alignBaseline="@+id/dateMyTask" android:layout_alignBottom="@+id/dateMyTask"
+                    android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+                    android:layout_alignLeft="@+id/imageView10" android:layout_alignStart="@+id/imageView10"/>
 
 
         </RelativeLayout>
-        <TextView
-                android:id="@+id/day_name_mytask"
-                android:layout_width="275dp"
-                android:layout_height="wrap_content"
-                android:text="Czwartek"
-                android:textStyle="bold"
-                android:textSize="35sp"
-                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-          android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
-        <android.support.design.widget.FloatingActionButton
-                android:clickable="true"
-                app:srcCompat="@android:drawable/ic_menu_call"
-                android:id="@+id/fabmytaskPhone"
-                android:layout_width="75dp"
-                app:fabSize="normal" android:layout_height="72dp" android:layout_alignParentTop="true"
-                android:layout_marginLeft="110dp" android:layout_marginTop="45dp"/>
 
     </android.support.v7.widget.CardView>
 

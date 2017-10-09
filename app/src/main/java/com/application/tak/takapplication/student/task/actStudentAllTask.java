@@ -57,11 +57,11 @@ public class actStudentAllTask extends Fragment {
         //  listViewv.setAdapter(lva);
 
         memberList = new ArrayList<AllTaskListStudent>();
-        AllTaskListStudent member = new AllTaskListStudent("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "Gliwice, Długa 43");
+        AllTaskListStudent member = new AllTaskListStudent("Wyrzuć śmieci", "25 sierpnia", "13:00 do 16:00", "Magłorzata Kicha", "Gliwice, Długa 43");
         memberList.add(member);
-        AllTaskListStudent member2 = new AllTaskListStudent("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Aleksandra Kicha", "Katowice, Sowińskiego 43");
+        AllTaskListStudent member2 = new AllTaskListStudent("Wyrzuć śmieci", "25 listopad", "13:00 do 16:00", "Aleksandra Kicha", "Katowice, Sowińskiego 43");
         memberList.add(member2);
-        AllTaskListStudent member3 = new AllTaskListStudent("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "Gliwice, Ostrudźka 43");
+        AllTaskListStudent member3 = new AllTaskListStudent("Wyrzuć śmieci", "25 grudzie", "13:00 do 16:00", "Magłorzata Kicha", "Gliwice, Ostrudźka 43");
         memberList.add(member3);
 
         recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview_alltask);

@@ -34,31 +34,20 @@
                     android:textSize="25dp"
                     android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
                     android:textColor="@android:color/white"/>
-            <TextView
-                    android:id="@+id/student_task_topic"
-                    android:text="Wyrzuć śmieci"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
-                    android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-                    android:textColor="?android:attr/textColorTertiary"/>
             <Button
                     android:text="Tu mnie znajdziesz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnAdresMap"
-                    android:textSize="12sp" android:lineSpacingExtra="4sp" android:textAlignment="inherit"
+                    android:textSize="14sp" android:textAlignment="inherit"
                     style="@style/Widget.AppCompat.Button.Borderless.Colored"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:elevation="0dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" android:background="?android:attr/selectableItemBackground"/>
+                    android:layout_alignParentEnd="true" android:background="?android:attr/actionModeSplitBackground"
+                    android:lineSpacingExtra="20sp"/>
 
             <android.support.design.widget.FloatingActionButton
                     android:clickable="true"
@@ -77,18 +66,31 @@
                     android:layout_height="15dp"/>
             <TextView
                     android:id="@+id/student_date_task"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:text="25 lipca"
                     android:textSize="20sp"
-                    android:layout_below="@+id/student_question" android:layout_alignLeft="@+id/fabPhone"
-                    android:layout_alignStart="@+id/fabPhone" android:textAlignment="center"/>
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/student_question"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" android:textAlignment="center"/>
+            <TextView
+                    android:id="@+id/student_task_topic"
+                    android:text="Wyrzuć śmieci"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="?android:attr/textColorTertiary"
+                    android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
             <TextView
                     android:id="@+id/student_task_time"
                     android:text="16:00 do 17:00"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="normal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/student_name" android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"/>
@@ -99,8 +101,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="?android:attr/textColorSecondary"
+                    android:textAlignment="textStart"
                     android:layout_below="@+id/student_date_task" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" android:textAlignment="textStart"/>
+                    android:layout_alignParentStart="true"/>
 
         </RelativeLayout>
 

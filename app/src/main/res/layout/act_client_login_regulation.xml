@@ -14,7 +14,7 @@
     <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar"
             android:fitsSystemWindows="true"
-            android:layout_height="@dimen/app_bar_height"
+            android:layout_height="169dp"
             android:layout_width="match_parent"
             android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:contentScrim="?attr/colorPrimary"
-             app:title="@string/czy_akceptujesz_poni_szy_regulamin"  >
+             app:title="Akceptujesz regilamin?"  >
 
 
             <android.support.v7.widget.Toolbar
@@ -42,5 +42,5 @@
             android:layout_width="95dp"
             android:layout_height="86dp"
             app:srcCompat="@drawable/cooltext242813019605997" android:layout_marginRight="15dp"
-            app:layout_anchorGravity="top|right" android:layout_gravity="bottom|left"/>
+            android:layout_gravity="top|right" app:layout_anchorGravity="center_vertical|right" app:elevation="11dp"/>
 </android.support.design.widget.CoordinatorLayout>

@@ -9,12 +9,12 @@
             android:id="@+id/cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="4dp"
+            app:cardCornerRadius="8dp"
             app:cardUseCompatPadding="true"
             app:cardBackgroundColor="@color/cardview_light_background"
             app:cardElevation="6dp"
             app:cardMaxElevation="10dp"
-           >
+            app:contentPadding="15dp">
 
         <RelativeLayout
                 android:layout_width="match_parent"

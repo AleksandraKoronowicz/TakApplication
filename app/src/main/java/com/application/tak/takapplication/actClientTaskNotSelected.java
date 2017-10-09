@@ -35,7 +35,6 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
  * An activity representing a list of act_Client_Task_NotSelected. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link actClientTaskNotSelectedDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
@@ -56,8 +55,6 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            // Inflate the layout for this fragment
-            //  return inflater.inflate(R.layout.fragment_home, container, false);
 
             View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
             memberList = new ArrayList<TaskListNotSelected>();
@@ -72,7 +69,8 @@ if(tasks._tasks != null)
 {
     Config.ClientTasks = tasks._tasks;
     for (Task_V task : Config.ClientTasks) {
-
+//to dobre
+        String x = task.get_CategoryName();
         TaskListNotSelected member = new TaskListNotSelected(task);
 
         memberList.add(member);
@@ -101,8 +99,8 @@ if(tasks._tasks != null)
                             i++;
 
                         }
-      *//*
-            TaskListNotSelected member = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
+      */
+         /*   TaskListNotSelected member = new TaskListNotSelected()
             memberList.add(member);
             TaskListNotSelected member2 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
             memberList.add(member2);

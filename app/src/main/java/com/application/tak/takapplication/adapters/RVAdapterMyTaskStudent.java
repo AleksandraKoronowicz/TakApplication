@@ -1,11 +1,18 @@
 package com.application.tak.takapplication.adapters;
 
 
+import android.Manifest;
 import android.animation.LayoutTransition;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,6 +31,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import static android.support.v4.app.ActivityCompat.requestPermissions;
 
 /**
  * Created by Aleksandra on 13.07.2017.
@@ -70,9 +79,9 @@ public class RVAdapterMyTaskStudent extends RecyclerView.Adapter<RVAdapterMyTask
         memberViewHolder.name_tv.setText(members.get(i).getmyclientName());
         memberViewHolder.place_tv.setText(members.get(i).getmytaskPlace());
         memberViewHolder.title_tv.setText(members.get(i).getmytitletask());
-        memberViewHolder.date_tv.setText(GetDayNameFromDate(members.get(i).getData()));
+        memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"EEEE"));
         memberViewHolder.time_tv.setText(members.get(i).getTime());
-        memberViewHolder.dayandmonth_tv.setText( ChangeDateString(members.get(i).getData()));
+        memberViewHolder.dayandmonth_tv.setText( ChangeDateString(members.get(i).getData(), "dd MMMM"));
         memberViewHolder.fab_phone.hide();
         memberViewHolder.option.setOnClickListener(new View.OnClickListener() {
 
@@ -115,6 +124,7 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                                                      TextView time = (TextView) v.findViewById(R.id.task_time_mytask);
                                                      TextView name = (TextView) v.findViewById(R.id.client_name_mytask);
                                                      TextView day_month = (TextView) v.findViewById(R.id.dateMyTask);
+                                                     TextView place_tv = (TextView) v.findViewById(R.id.client_adress);
 
                                                      //fadeOutCard.setBackgroundResource(R.color.colorFadeColor);
                                                    //  fadeOutCard.setCardBackgroundColor(Color.LTGRAY);
@@ -125,6 +135,7 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                                                      time.setAlpha(0.09f);
                                                      name.setAlpha(0.09f);
                                                      day_month.setAlpha(0.09f);
+                                                     place_tv.setEnabled(false);
 
                                                      Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_in);
                                                      Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
@@ -144,20 +155,92 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                                                              time.setAlpha(1f);
                                                              name.setAlpha(1f);
                                                              day_month.setAlpha(1f);
+                                                             place_tv.setEnabled(true);
 
                                                              fadeOutCard.setCardBackgroundColor(Color.WHITE);
                                                          }
-                                                 }
-                                             }
-);
+                                                 } });
+
+
+       memberViewHolder.place_tv.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // Setting Dialog Title
+                alertDialog.setTitle("Mapy");
+
+                // Setting Dialog Message
+                alertDialog.setMessage("Czy chcesz sprawdzić miejsce wykonania zadania na mapie goole?");
+
+                // Setting Icon to Dialog
+                alertDialog.setIcon(R.drawable.googlemaps);
+
+                // Setting Positive Yes Button
+                alertDialog.setPositiveButton("Jasne!",
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                                String place = members.get(i).getmytaskPlace();
+
+                                String map = "http://maps.google.co.in/maps?q=" + place; //"Katowice ul Sowińskiego 9";
+                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(map));
+                                context.startActivity(intent);
+
+                            }
+                        });
+                // Setting Negative No Button... Neutral means in between yes and cancel button
+
+                // Setting Positive "Cancel" Button
+                alertDialog.setNegativeButton("Anuluj",
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                                dialog.cancel();
+                            }
+                        });
+                alertDialog.show();
+
+            }
+        });
+
+        memberViewHolder.fab_phone.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+           //     Intent phoneIntent = new Intent(Intent.ACTION_CALL);
+                String phone = members.get(i).getmyclientPhonee();
+           //     phoneIntent.setData(Uri.parse("tel:509728212"));
+
+
+              // if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+             //      return;
+           //   }
+           //   context.startActivity(phoneIntent);
+
+                int permissionCheck = ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE
+                );
+
+              //  if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+
+                //}
+               // else {
+                   context.startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:"+phone)));
+                //}
+
+            }
+        });
+
 
     }
 
-    public String ChangeDateString(String dataToConvert )
+    public String ChangeDateString(String dataToConvert, String resultFormat )
     {
 
-        String strDateFormat = "dd MMMM";
-        SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+     //   String strDateFormat = "dd MMMM";
+        SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
 
         DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
         Date result = null;
@@ -170,21 +253,6 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
         return sdf.format(result).toString();
     }
 
-    public String GetDayNameFromDate(String intput)
-    {
-        String strDateFormat = "EEEE";
-        SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
-
-        DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-        Date result = null;
-        try {
-            result = format.parse(intput);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return sdf.format(result).toString();
-    }
 
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

@@ -71,7 +71,7 @@ public class actClientLogin extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        String adj = "to jest tekst";
+     /*   String adj = "to jest tekst";
         try{
         String encrypted = Config.encrypt(adj);
         String decrypted = Config.decrypt(encrypted);
@@ -139,7 +139,7 @@ public class actClientLogin extends AppCompatActivity {
 
             }
         });
-
+        */
     }
 
 
@@ -248,13 +248,13 @@ public class actClientLogin extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    fab.show();
+
                     return "Dane";
                 case 1:
-                    fab.hide();
+
                     return "Regulamin";
                 case 2:
-                    fab.show();
+
                     return "Tutorial";
             }
             return null;

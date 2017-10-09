@@ -42,9 +42,9 @@ public class actStudentMyTask extends Fragment {
         View view = inflater.inflate(R.layout.act_student_mytask, container, false);
 
         memberList = new ArrayList<MyTaskListStudent>();
-        MyTaskListStudent member = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213", "Gliwice, Ostrudźka 43");
+        MyTaskListStudent member = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "509728212", "Gliwice, Ostrudźka 43");
         memberList.add(member);
-        MyTaskListStudent member2 = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213", "Gliwice, Ostrudźka 43");
+        MyTaskListStudent member2 = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "509 728 212", "Gliwice, Ostrudźka 43");
         memberList.add(member2);
         MyTaskListStudent member3 = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213", "Gliwice, Ostrudźka 43");
         memberList.add(member3);
@@ -68,7 +68,7 @@ public class actStudentMyTask extends Fragment {
 
         return view;
     }
-
+///////////////////////////////// not used
     private void updateTextLabel(View w, List<MyTaskListStudent> list) throws ParseException {
         TextView nameDay = (TextView) w.findViewById(R.id.timepicker);
         String strDateFormat = "EEEE";
