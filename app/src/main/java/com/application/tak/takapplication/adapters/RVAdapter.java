@@ -1,6 +1,7 @@
 package com.application.tak.takapplication.adapters;
 
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -17,6 +18,7 @@ import com.application.tak.takapplication.R;
 import com.application.tak.takapplication.data_list.TaskList;
 
 import java.lang.reflect.Member;
+import java.nio.channels.FileLock;
 import java.util.ArrayList;
 
 /**
@@ -40,31 +42,44 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
         private TextView name_tv;
         private TextView phone_tv;
         private TextView time_tv;
-        private TextView date_tv;
-        private TextView title_tv;
-        private TextView place_tv;
+        private TextView shortdate_tv;
+        private TextView class_tv;
+        private TextView school_tv;
+        private FloatingActionButton phone;
+        private FloatingActionButton delete;
 
 
         public MemberViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cv);
             name_tv = (TextView) itemView.findViewById(R.id.executor_name);
-            phone_tv = (TextView) itemView.findViewById(R.id.executor_phone);
-            title_tv = (TextView) itemView.findViewById(R.id.task_topic);
-            place_tv = (TextView) itemView.findViewById(R.id.client_adress);
+          //  phone_tv = (TextView) itemView.findViewById(R.id.executor_phone);
+            school_tv = (TextView) itemView.findViewById(R.id.clientTaskToDo_studentSchool);
+            class_tv = (TextView) itemView.findViewById(R.id.client_studentClas);
             time_tv = (TextView) itemView.findViewById(R.id.task_time);
-            date_tv = (TextView) itemView.findViewById(R.id.task_to_do);
+            shortdate_tv = (TextView) itemView.findViewById(R.id.client_shotDate);
+            phone = (FloatingActionButton) itemView.findViewById(R.id.fabClientPhoneTaskToDo);
+            delete = (FloatingActionButton) itemView.findViewById(R.id.fabClientDeleteTaskToDo);
+
+
         }
     }
 
     @Override
     public void onBindViewHolder(MemberViewHolder memberViewHolder, int i) {
+
+        memberViewHolder.delete.hide();
+        memberViewHolder.phone.hide();
+
         memberViewHolder.name_tv.setText(members.get(i).getExecutorName());
-        memberViewHolder.phone_tv.setText(members.get(i).getExecutorPhone());
-        memberViewHolder.place_tv.setText(members.get(i).getTaskPlace());
-        memberViewHolder.title_tv.setText(members.get(i).getTitle());
-        memberViewHolder.date_tv.setText(members.get(i).getData());
+//        memberViewHolder.phone_tv.setText(members.get(i).getExecutorPhone());
+        memberViewHolder.class_tv.setText(members.get(i).getExecutorClass());
+        memberViewHolder.school_tv.setText(members.get(i).getExecutorSchool());
+        memberViewHolder.shortdate_tv.setText(members.get(i).getData());
         memberViewHolder.time_tv.setText(members.get(i).getTime());
+
+
+        // memberViewHolder.cardView
     }
 
     @Override

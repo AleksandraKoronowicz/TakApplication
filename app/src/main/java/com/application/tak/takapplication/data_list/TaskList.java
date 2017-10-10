@@ -5,26 +5,26 @@ package com.application.tak.takapplication.data_list;
  */
 public class TaskList {
 
-    public String title;
+    public String executorSchool;
     public String dataTask;
     public String dataTime;
     public String executorName;
+    public String executorClass;
     public String executorPhone;
-    public String taskPlace;
 
-    public TaskList(String title, String dataTask, String dataTime, String executorName, String executorPhone, String taskPlace)
+    public TaskList(String school, String dataTask, String dataTime, String executorName, String executorClass, String executorPhone)
     {
         this.dataTask = dataTask;
-        this.title = title;
+        this.executorSchool = school;
         this.dataTime = dataTime;
         this.executorName = executorName;
+        this.executorClass = executorClass;
         this.executorPhone = executorPhone;
-        this.taskPlace = taskPlace;
     }
 
-    public String getTitle()
+    public String getExecutorSchool()
     {
-        return this.title;
+        return this.executorSchool;
     }
     public String getData()
     {
@@ -39,14 +39,14 @@ public class TaskList {
         return this.executorName;
     }
     public String getExecutorPhone () {return  this.executorPhone; }
-    public String getTaskPlace()
+    public String getExecutorClass()
     {
-        return this.taskPlace;
+        return this.executorClass;
     }
 
 
-    public void settitle(String title) {
-        this.title = title;
+    public void setExecutorSchool(String title) {
+        this.executorSchool = executorSchool;
     }
     public void setDate(String datetask) {
         this.dataTask = dataTask;
@@ -54,6 +54,6 @@ public class TaskList {
     public void settaskTime(String dataTime) {this.dataTask = dataTime;}
     public void setExecutorName(String executorName) {this.executorName = executorName;}
     public void setExecutorPhone(String executorPhone) {this.executorPhone = executorPhone;}
-    public void setTaskPlace(String taskPlace) {this.taskPlace = taskPlace;}
+    public void setExecutorClass(String taskPlace) {this.executorClass = executorClass;}
 
 }

@@ -1,107 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+
               android:layout_height="wrap_content"
               android:padding="6dp">
-
 
     <android.support.v7.widget.CardView
             android:id="@+id/cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="8dp"
-            app:cardUseCompatPadding="true"
             app:cardBackgroundColor="@color/cardview_light_background"
-            app:cardElevation="6dp"
-            app:cardMaxElevation="10dp"
-            app:contentPadding="15dp">
+            app:cardElevation="0dp"
+            app:cardMaxElevation="5dp"
+            app:contentPadding="0dp" android:clickable="true"
+            android:layout_marginBottom="1dp">
 
         <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:padding="9dp">
+                android:layout_height="104dp"
+                android:padding="9dp" android:background="?android:attr/actionModeSplitBackground">
 
-            <TextView
-                    android:id="@+id/task_topic"
-                    android:text="Wyrzuć śmieci"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
-            <TextView
-                    android:id="@+id/task_to_do"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="25 lipca"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:srcCompat="@android:drawable/presence_away"
-                    android:id="@+id/imageView5"
-                    android:layout_alignBottom="@+id/task_time" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-            <TextView
-                    android:id="@+id/task_time"
-                    android:text="16:00 d0 17:00"
-                    android:textSize="10sp"
-                    android:textStyle="normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_below="@+id/task_to_do" android:layout_toRightOf="@+id/imageView5"
-                    android:layout_toEndOf="@+id/imageView5"/>
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:srcCompat="@android:drawable/stat_sys_phone_call_on_hold"
-                    android:id="@+id/imageView8"
-                    android:layout_alignLeft="@+id/executor_name"
-                    android:layout_alignStart="@+id/executor_name"
-                    android:layout_toStartOf="@+id/executor_phone"
-                    android:layout_alignBottom="@+id/executor_phone" android:layout_alignTop="@+id/executor_phone"
-                    android:layout_toLeftOf="@+id/executor_phone"/>
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_myplaces"
-                    android:id="@+id/imageView7"
-                    android:layout_below="@+id/task_time" android:layout_toLeftOf="@+id/imageView8"
-                    android:layout_toStartOf="@+id/imageView8"/>
-            <TextView
-                    android:id="@+id/executor_phone"
-                    android:text="509 728 212"
-                    android:textSize="15sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
-            <TextView
-                    android:id="@+id/executor_name"
-                    android:text="Aleksandra Koronowicz"
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/task_time" android:layout_alignLeft="@+id/task_topic"
-                    android:layout_alignStart="@+id/task_topic"/>
-            <TextView
-                    android:id="@+id/client_adress"
-                    android:text="Adres wykonania zadania"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
             <android.support.design.widget.FloatingActionButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     app:fabSize="mini" app:srcCompat="@drawable/cooltext242812233487143"
                     android:id="@+id/floatingActionButton"
-                    android:layout_toRightOf="@+id/task_topic"
+                    android:layout_toRightOf="@+id/clientTaskToDo_studentSchool"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginStart="25dp" android:layout_below="@+id/executor_phone"
+                    android:layout_marginStart="25dp"
                     android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"/>
+            <ImageView
+                    android:layout_width="15dp"
+                    app:srcCompat="@android:drawable/presence_away"
+                    android:id="@+id/imageView5"
+                    android:layout_above="@+id/task_time" android:layout_toRightOf="@+id/executor_name"
+                    android:layout_toEndOf="@+id/executor_name" android:layout_height="15dp"/>
+            <TextView
+                    android:id="@+id/executor_name"
+                    android:text="Aleksandra Koronowicz"
+                    android:textSize="28sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+                    android:textStyle="normal|bold"/>
+            <TextView
+                    android:id="@+id/client_shotDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mar 25"
+                    android:textSize="15sp"
+                    android:textColorLink="?android:attr/detailsElementBackground"
+                    android:textColor="@color/cardview_shadow_start_color" android:textStyle="normal|bold"
+                    android:layout_alignBottom="@+id/floatingActionButton" android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"/>
+            <TextView
+                    android:id="@+id/task_time"
+                    android:text="16:00 d0 17:00"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/cardview_shadow_start_color"
+                    android:layout_alignBottom="@+id/floatingActionButton" android:layout_centerHorizontal="true"
+                    android:textStyle="normal|bold"/>
+            <TextView
+                    android:id="@+id/client_studentClas"
+                    android:text="Klasa: 2b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/floatingActionButton" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" android:textColor="@color/cardview_shadow_start_color"
+                    android:textStyle="normal|bold"/>
+            <ImageView
+                    app:srcCompat="@android:drawable/ic_menu_recent_history"
+                    android:id="@+id/imageView14"
+                    android:layout_alignBottom="@+id/floatingActionButton" android:layout_toLeftOf="@+id/task_time"
+                    android:layout_toStartOf="@+id/task_time" android:layout_width="18dp" android:layout_height="18dp"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_myplaces"
+                    android:id="@+id/imageView7"
+                    android:layout_above="@+id/clientTaskToDo_studentSchool" android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"/>
+            <TextView
+                    android:id="@+id/clientTaskToDo_studentSchool"
+                    android:text="Zespół szkół im. Adama Mickiewicza, Gliwice"
+                    android:textSize="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_below="@+id/executor_name" android:layout_alignRight="@+id/imageView5"
+                    android:layout_alignEnd="@+id/imageView5"/>
+            <android.support.design.widget.FloatingActionButton
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:clickable="true"
+                    app:fabSize="normal" app:srcCompat="@android:drawable/ic_menu_call"
+                    android:id="@+id/fabClientPhoneTaskToDo" app:elevation="4dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="12dp" android:layout_alignTop="@+id/imageView7"
+                    android:layout_toLeftOf="@+id/imageView14" android:layout_toStartOf="@+id/imageView14"/>
+            <android.support.design.widget.FloatingActionButton
+                    android:layout_width="150dp"
+                    android:clickable="true"
+                    app:fabSize="normal" app:srcCompat="@android:drawable/ic_menu_delete"
+                    android:id="@+id/fabClientDeleteTaskToDo" app:elevation="4dp"
+                    android:layout_height="150dp"
+                    android:layout_alignTop="@+id/imageView7" android:layout_toRightOf="@+id/task_time"
+                    android:layout_toEndOf="@+id/task_time"/>
 
         </RelativeLayout>
 

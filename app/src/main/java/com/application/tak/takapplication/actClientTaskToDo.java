@@ -52,8 +52,10 @@ import java.util.List;
           //  listViewv.setAdapter(lva);
 
             memberList = new ArrayList<TaskList>();
-            TaskList member = new TaskList("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213","Gliwice, Ostrudźka 43");
+            TaskList member = new TaskList("Szkoła im. Fryderyka Chopina, Niechałkowice", "Sie 31", "13:00-16:00", "Magłorzata Kicha", "504 444 213","Klasa: 3f");
             memberList.add(member);
+            TaskList member4 = new TaskList("Szkoła im. Fryderyka Chopina, Niechałkowice", "Sie 31", "13:00-16:00", "Aleksandra Koronowicz", "504 444 213","Klasa: 3f");
+            memberList.add(member4);
             TaskList member2 = new TaskList("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213","Gliwice, Ostrudźka 43");
             memberList.add(member2);
             TaskList member3 = new TaskList("Wyrzuć śmieci", "25 lipca", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213","Gliwice, Ostrudźka 43");
