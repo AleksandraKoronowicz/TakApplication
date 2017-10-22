@@ -36,7 +36,7 @@ public class actFirstUsage extends AppCompatActivity {
 
         LocalDB localDB = new LocalDB(this.getApplicationContext());
 
-        final List<User> users = localDB.GetAllUsera();
+        final List<User> users = localDB.GetAllUsers();
 
         User u = getLoggedUser(users);
 

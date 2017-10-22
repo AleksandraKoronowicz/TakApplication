@@ -51,6 +51,10 @@ public class GetAllStudentTasks extends GetJSONData
     private static final String TAG_EXECUTOR_ROAD="EXECUTOR_ROAD";
     private static final String TAG_EXECUTOR_POSTCODE="EXECUTOR_POSTCODE";
     private static final String TAG_EXECUTOR_ROAD_NO="EXECUTOR_ROAD_NO";
+    private static final String TAG_EXECUTOR_SCHOOL_ID="EXECUTOR_SCHOOL_ID";
+    private static final String TAG_EXECUTOR_SCHOOL_NAME="EXECUTOR_SCHOOL_NAME";
+    private static final String TAG_EXECUTOR_CLASS_ID="EXECUTOR_CLASS_ID";
+    private static final String TAG_EXECUTOR_CLASS_NAME="EXECUTOR_CLASS_NAME";
 
     JSONArray tasks = null;
 
@@ -155,6 +159,11 @@ public class GetAllStudentTasks extends GetJSONData
                 t.set_ExecutorRoad(c.isNull(TAG_EXECUTOR_ROAD) ? null :c.getString(TAG_EXECUTOR_ROAD));
                 t.set_ExecutorRoadNo(c.isNull(TAG_EXECUTOR_ROAD_NO) ? null :c.getString(TAG_EXECUTOR_ROAD_NO));
                 t.set_ExecutorPostCode(c.isNull(TAG_EXECUTOR_POSTCODE) ? null :c.getString(TAG_EXECUTOR_POSTCODE));
+                t.set_ExecutorClassId(c.isNull(TAG_EXECUTOR_CLASS_ID) ? null:c.getInt(TAG_EXECUTOR_CLASS_ID));
+                t.set_ExecutorClassName(c.isNull(TAG_EXECUTOR_CLASS_NAME) ? null:c.getString(TAG_EXECUTOR_CLASS_NAME));
+                t.set_ExecutorSchoolId(c.isNull(TAG_EXECUTOR_SCHOOL_ID)? null:c.getInt(TAG_EXECUTOR_SCHOOL_ID));
+                t.set_ExecutorSchoolName(c.isNull(TAG_EXECUTOR_SCHOOL_NAME)?null:c.getString(TAG_EXECUTOR_SCHOOL_NAME));
+
                 _tasks.add(t);
             }
         }
