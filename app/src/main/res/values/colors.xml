@@ -3,9 +3,13 @@
     <color name="colorPrimary">#ecf8fd</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ff4081</color>
-    <color name="colorFadeColor">#eccfd0d1</color>
+    <color name="colorFadeColor">#b3cfd0d1</color>
     <color name="colorWhite">#fcfcfafa</color>
-    <color name="cardview_light_background">#fafafa</color>
+    <color name="cardview_light_background">#77fafafa</color>
     <color name="bluedark">#006399</color>
     <color name="PANEL">#fc004680</color>
+    <color name="buttonColor">#93e4ebeb</color>
+    <color name="btncolorgrey">#32dcdbdb</color>
+    <color name="greyimage">#49ebeaea</color>
+    <color name="spinercolor">#4ce6e6e6</color>
 </resources>

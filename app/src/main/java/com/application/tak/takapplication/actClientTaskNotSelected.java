@@ -41,10 +41,10 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
     public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
 
     private RecyclerView recyclerview;
-    GetAllClientTasks clientTask;
-    User client = new User();
-    Task_V task;
-    GetAllClientTasks tasks;
+    private GetAllClientTasks clientTask;
+    private User client = new User();
+    private  Task_V task;
+    private  GetAllClientTasks tasks;
 
     private List<TaskListNotSelected> memberList;
 
@@ -52,32 +52,42 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
         {
         }
 
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
             memberList = new ArrayList<TaskListNotSelected>();
-
             User u = new User();
             u.set_Id(1);
-             tasks = new GetAllClientTasks(this.getContext(),u);
+            tasks = new GetAllClientTasks(this.getContext(),u);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+
+            View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
+
+            recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
+            recyclerview.setLayoutManager(layoutManager);
+
+
+
             tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
+
                 @Override
                 public void onDBRequestFinished() {
 if(tasks._tasks != null)
 {
     Config.ClientTasks = tasks._tasks;
     for (Task_V task : Config.ClientTasks) {
-//to dobre
-        String x = task.get_CategoryName();
+
         TaskListNotSelected member = new TaskListNotSelected(task);
-
         memberList.add(member);
-
-        //  task.get_CreatorCity()
     }
+    RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
+    recyclerview.setAdapter(adapter);
 }
+//memberList = Stream.of(memberList.takeWhile(t -> t._StatusName == "fefsd"));
+
+
                 }
             });
 
@@ -107,17 +117,12 @@ if(tasks._tasks != null)
             TaskListNotSelected member3 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
             memberList.add(member3);*/
 
-            recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-            recyclerview.setLayoutManager(layoutManager);
+       //     recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
+     //       LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+    //        recyclerview.setLayoutManager(layoutManager);
 
-            RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
-            recyclerview.setAdapter(adapter);
-          //  ListView listViewv = (ListView) view.findViewById(R.id.ListView3);
-
-            //ArrayAdapter<String> lva = new ArrayAdapter<String>(
-              //      getActivity(), android.R.layout.select_dialog_item, awayStrings);
-           // listViewv.setAdapter(lva);
+          //  RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
+         ///   recyclerview.setAdapter(adapter);
 
             return view;
         }

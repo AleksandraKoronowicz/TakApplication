@@ -62,7 +62,7 @@ public class RVAdapterCalendarStudent extends ArrayAdapter<MyTaskListStudent> {
             TextView  nameCalendar = (TextView) itemView.findViewById(R.id.client_name_calendar);
             TextView  title_tv = (TextView) itemView.findViewById(R.id.task_topic_calendar);
             TextView  time_tv = (TextView) itemView.findViewById(R.id.task_time_calendar);
-            ListView lv = (ListView) itemView.findViewById(R.id.lvCalendar);
+          //  ListView lv = (ListView) itemView.findViewById(R.id.lvCalendar);
             FloatingActionButton fab_msg = (FloatingActionButton) itemView.findViewById(R.id.fabCalendarMessage);
             fab_msg.setVisibility(View.INVISIBLE);
             FloatingActionButton fab_ph = (FloatingActionButton) itemView.findViewById(R.id.fabCalendarPhone);

@@ -17,8 +17,14 @@ import com.application.tak.takapplication.R;
 import com.application.tak.takapplication.actStudentMainAllTaskListActivity;
 import com.application.tak.takapplication.adapters.RVAdapter;
 import com.application.tak.takapplication.adapters.RVAdapterAllTaskStudent;
+import com.application.tak.takapplication.data_access.Config;
+import com.application.tak.takapplication.data_access.GetAllStudentTasks;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
 import com.application.tak.takapplication.data_list.TaskList;
+import com.application.tak.takapplication.data_list.TaskListNotSelected;
+import com.application.tak.takapplication.data_model.Task_V;
+import com.application.tak.takapplication.data_model.User;
+import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +37,11 @@ public class actStudentAllTask extends Fragment {
 
     private RecyclerView recyclerview;
     private List<AllTaskListStudent> memberList;
-    private FloatingActionButton fab;
+
+    User client = new User();
+    Task_V task;
+   GetAllStudentTasks tasks;
+
     public actStudentAllTask()
     {
 
@@ -43,46 +53,41 @@ public class actStudentAllTask extends Fragment {
 
 
         View view = inflater.inflate(R.layout.act_student_alltask, container, false);
-        // Inflate the layout for this fragment
-
-
-        //  ListView listViewv = (ListView) view.findViewById(R.id.ListView);
-        // ArrayList<TaskListToDo> tasklist = new ArrayList<TaskListToDo>();
-
-        // tasklist.add(new  TaskListToDo("Wyrzuc smieci","2017-05-05","o 16:00 do 17:00"));
-        // tasklist.add(new  TaskListToDo("Wyrzuc smieci","2017-05-05","o 16:00 do 17:00"));
-
-        //     ArrayAdapter<String> lva = new ArrayAdapter<String>(
-        //        getActivity(), android.R.layout.select_dialog_item, awayStrings);
-        //  listViewv.setAdapter(lva);
 
         memberList = new ArrayList<AllTaskListStudent>();
-        AllTaskListStudent member = new AllTaskListStudent("Wyrzuć śmieci", "25 sierpnia", "13:00 do 16:00", "Magłorzata Kicha", "Gliwice, Długa 43");
-        memberList.add(member);
-        AllTaskListStudent member2 = new AllTaskListStudent("Wyrzuć śmieci", "25 listopad", "13:00 do 16:00", "Aleksandra Kicha", "Katowice, Sowińskiego 43");
-        memberList.add(member2);
-        AllTaskListStudent member3 = new AllTaskListStudent("Wyrzuć śmieci", "25 grudzie", "13:00 do 16:00", "Magłorzata Kicha", "Gliwice, Ostrudźka 43");
-        memberList.add(member3);
+        Button google_map = (Button) view.findViewById(R.id.btnAdresMap);
 
         recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview_alltask);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerview.setLayoutManager(layoutManager);
 
+        User u = new User();
+        u.set_Id(1);
+        //tasks = new GetAllClientTasks(getActivity(),u);
+        tasks = new GetAllStudentTasks(getContext(),u);
 
-        RVAdapterAllTaskStudent adapter = new RVAdapterAllTaskStudent(memberList, getActivity());
-        recyclerview.setAdapter(adapter);
+        tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
-        Button google_map = (Button) view.findViewById(R.id.btnAdresMap);
+                                               @Override
+                                               public void onDBRequestFinished() {
+                                                   if (tasks._tasks != null) {
+                                                       Config.ClientTasks = tasks._tasks;
+                                                       for (Task_V task : Config.ClientTasks) {
+//if (task.get_StatusName() == "Pending") {
+                                                           AllTaskListStudent member = new AllTaskListStudent(task);
+                                                             memberList.add(member);
 
+//}}
+                                                       }
+                                                   }
+                                                   RVAdapterAllTaskStudent adapter = new RVAdapterAllTaskStudent(memberList, getActivity());
+                                                   recyclerview.setAdapter(adapter);
+                                               }
 
+                                           });
 
         return view;
     }
 
-   // public void OnClickCardView (View v)
-  //  {
-   //     fab = (FloatingActionButton) v.findViewById(R.id.floatingActBtnYesAllTask);
-   //     fab.hide();
-   // }
 
 }

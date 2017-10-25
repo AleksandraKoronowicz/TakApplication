@@ -96,11 +96,8 @@ public class RVAdapterMyTaskStudent extends RecyclerView.Adapter<RVAdapterMyTask
                     public boolean onMenuItemClick(MenuItem item) {
 
                         switch (item.getItemId()) {
-                            case R.id.mytask_makeContact:
-                                Toast.makeText(context, "Wykonywanie połączenia", Toast.LENGTH_LONG).show();
-                                break;
-
                             case R.id.mytask_delete:
+                                ShowMessageBox();
                                 members.remove(position);
                                 notifyDataSetChanged();
                                 Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
@@ -212,24 +209,9 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
            //     Intent phoneIntent = new Intent(Intent.ACTION_CALL);
                 String phone = members.get(i).getmyclientPhonee();
-           //     phoneIntent.setData(Uri.parse("tel:509728212"));
-
-
-              // if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-             //      return;
-           //   }
-           //   context.startActivity(phoneIntent);
-
                 int permissionCheck = ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE
                 );
-
-              //  if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-
-                //}
-               // else {
                    context.startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:"+phone)));
-                //}
-
             }
         });
 
@@ -238,11 +220,9 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
     public String ChangeDateString(String dataToConvert, String resultFormat )
     {
-
-     //   String strDateFormat = "dd MMMM";
         SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
 
-        DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat format = new SimpleDateFormat("MMM d,yyyy");
         Date result = null;
         try {
             result = format.parse(dataToConvert);
@@ -253,6 +233,31 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
         return sdf.format(result).toString();
     }
 
+
+    public void ShowMessageBox()
+    {
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        alertDialog.setTitle("Jesteś pewien?");
+        alertDialog.setMessage("Rezygnacja z zadania automatycznie powiadomi drogą sms o odwołaniu wykonania zadania");
+        alertDialog.setIcon(R.drawable.message);
+        alertDialog.setPositiveButton("Tak",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+
+                    }
+                });
+        alertDialog.setNegativeButton("Anuluj",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.show();
+    }
 
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

@@ -23,7 +23,7 @@ public class Config
     public static final String ApplicationId = "9736362253343859";
     public static Client_V LoggedInClient = null;
     public static List<Task_V> ClientTasks = null;
-
+public static List<Task_V> StudentTask = null;
 
     private static final String ALGO = "AES";
     private static final byte[] keyValue = new String(ApplicationId).getBytes();

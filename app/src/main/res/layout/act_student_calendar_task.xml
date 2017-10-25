@@ -1,77 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" android:weightSum="1" app:layout_collapseParallaxMultiplier="1.0">
-    <android.support.v7.widget.CardView
-            android:id="@+id/cv_calendar_listTask"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:cardElevation="4dp"
-            android:clickable="true" app:contentPadding="2dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="90dp"
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:weightSum="1"
+    app:layout_collapseMode="pin"
+    app:layout_collapseParallaxMultiplier="1.0"
+    app:layout_scrollFlags="scroll">
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_calendar_listTask"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:scrollbars="horizontal"
+        android:soundEffectsEnabled="true"
+        app:cardBackgroundColor="?android:attr/textColorTertiaryInverse"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="5dp"
+        app:contentPadding="0dp">
+
+        <RelativeLayout
             android:id="@+id/calendar_tasklist"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" android:layout_weight="0.05" android:clickable="true"
-            android:clipChildren="true" android:clipToPadding="true" android:contextClickable="true"
-            android:focusable="true">
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.05"
+            android:background="?android:attr/actionModeSplitBackground"
+            android:clickable="false"
+            android:contextClickable="false"
+            android:soundEffectsEnabled="false">
 
-        <TextView
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@android:drawable/ic_menu_myplaces"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
                 android:id="@+id/client_name_calendar"
-                android:text="Aleksandra Koronowicz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="serif" android:textSize="24sp"
-                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
-        <TextView
+                android:text="Aleksandra Koronowicz"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />/>
+
+            <TextView
                 android:id="@+id/task_topic_calendar"
-                android:text="Wyrzuć śmieci"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
-                android:layout_below="@+id/client_name_calendar" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
-        <TextView
-                android:id="@+id/task_time_calendar"
-                android:text="16:00 do 17:00"
-                android:textSize="15sp"
-                android:textStyle="normal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView9" android:layout_centerHorizontal="true"/>
-        <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                app:fabSize="normal" app:srcCompat="@android:drawable/ic_dialog_email"
-                android:id="@+id/fabCalendarMessage"
-                app:elevation="6dp"
-                android:layout_alignParentTop="true" android:layout_toRightOf="@+id/imageView9"
-                android:layout_toEndOf="@+id/imageView9" android:layout_marginLeft="26dp"
-                android:layout_marginStart="26dp" android:layout_marginTop="13dp"/>
-        <android.support.design.widget.FloatingActionButton
-                android:clickable="true"
-                app:fabSize="normal" app:srcCompat="@android:drawable/stat_sys_speakerphone"
-                android:id="@+id/fabCalendarPhone"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                app:elevation="6dp"
-                android:layout_marginRight="13dp"
-                android:layout_marginEnd="13dp"
-                android:layout_alignTop="@+id/fabCalendarMessage" android:layout_toLeftOf="@+id/task_time_calendar"
-                android:layout_toStartOf="@+id/task_time_calendar"/>
-        <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp" app:srcCompat="@drawable/clock3"
-                android:id="@+id/imageView9"
-                android:layout_below="@+id/task_topic_calendar" android:layout_centerHorizontal="true"/>
+                android:text="Wyrzuć śmieci"
+                android:textAlignment="center"
+                android:textColor="?android:attr/textColorTertiary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/task_time_calendar"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@+id/client_name_calendar"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="16:00 do 17:00"
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_shadow_start_color"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabCalendarMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginStart="14dp"
+                android:clickable="true"
+                android:paddingTop="5dp"
+                app:elevation="6dp"
+                app:fabSize="normal"
+                app:srcCompat="@android:drawable/ic_dialog_email"
+                android:layout_below="@+id/client_name_calendar"
+                android:layout_alignLeft="@+id/task_time_calendar"
+                android:layout_alignStart="@+id/task_time_calendar" />
+            " />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabCalendarPhone"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.62"
+                android:clickable="true"
+                android:paddingTop="5dp"
+                app:elevation="6dp"
+                app:fabSize="normal"
+                app:srcCompat="@android:drawable/stat_sys_speakerphone"
+                android:layout_alignTop="@+id/fabCalendarMessage"
+                android:layout_alignLeft="@+id/client_name_calendar"
+                android:layout_alignStart="@+id/client_name_calendar"
+                android:layout_marginLeft="52dp"
+                android:layout_marginStart="52dp" />
+
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
+
 </LinearLayout>

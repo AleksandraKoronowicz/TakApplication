@@ -25,6 +25,10 @@ import android.widget.Toast;
 import com.application.tak.takapplication.R;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -75,7 +79,7 @@ private String task_place;
     public void onBindViewHolder(final MemberViewHolder memberViewHolder, final int i) {
         memberViewHolder.name_tv.setText(members.get(i).getclientName());
         memberViewHolder.title_tv.setText(members.get(i).getTitle());
-        memberViewHolder.date_tv.setText(members.get(i).getData());
+        memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"dd MMMM"));
         memberViewHolder.time_tv.setText(members.get(i).getTime());
 
         memberViewHolder.phone.hide();
@@ -99,7 +103,7 @@ private String task_place;
                                                              topic.setAlpha(0.0f);
                                                              time.setAlpha(0.3f);
                                                              name.setAlpha(0.3f);
-
+google_map.setAlpha(0.3f);
                                                              Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_in);
                                                              Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
 
@@ -126,6 +130,7 @@ private String task_place;
                                                                      topic.setAlpha(1f);
                                                                      time.setAlpha(1f);
                                                                      name.setAlpha(1f);
+                                                                     google_map.setAlpha(1f);
                                                                      google_map.setEnabled(true);
 
                                                                      fadeOutCard.setCardBackgroundColor(Color.WHITE);
@@ -153,6 +158,22 @@ String place = members.get(i).getTaskPlace();
 
     }
 
+    public String ChangeDateString(String dataToConvert, String resultFormat )
+    {
+
+        //   String strDateFormat = "dd MMMM";
+        SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
+
+        DateFormat format = new SimpleDateFormat("MMM d,yyyy");
+        Date result = null;
+        try {
+            result = format.parse(dataToConvert);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return sdf.format(result).toString();
+    }
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.act_student_cv_alltask, viewGroup, false);

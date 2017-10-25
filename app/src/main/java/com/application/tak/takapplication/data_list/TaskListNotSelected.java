@@ -28,8 +28,6 @@ public class TaskListNotSelected //extends Task_V
     public TaskListNotSelected(Task_V sup)
     {
         tsk = sup;
-        //this.set_CategoryId(sup.get_CategoryId());
-
         this.dataTask = DateFormat.getDateInstance().format(tsk.get_TimeFrom().getTime()).toString();
         this.title = tsk.get_CategoryName();
         this.dataTime=  getCzas();//tsk.get_TimeFrom().toString(); //+ "do " + tsk.get_TimeTo().toString();

@@ -27,7 +27,7 @@ public class Task_V extends Task
     private String _ExecutorRoadNo;
 
     private String _CategoryName;
-    private String _StatusName;
+    public String _StatusName;
 
     public String get_CreatorLName() {
         return _CreatorLName;

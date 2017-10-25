@@ -39,7 +39,7 @@ public class actClientTask extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new actClientTaskNotSelected(),"Oczekujące");
         viewPagerAdapter.addFragments(new actClientTaskToDo(),"Zaakceptowane");
-        viewPagerAdapter.addFragments(new actClientTaskAddFragment(),"Nowe zadanie");
+        viewPagerAdapter.addFragments(new actClientAddNewTask(),"Nowe zadanie");
 
 User u = new User();
 u.set_Id(1);

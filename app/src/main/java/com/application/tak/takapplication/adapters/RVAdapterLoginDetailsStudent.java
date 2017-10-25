@@ -39,7 +39,7 @@ public class RVAdapterLoginDetailsStudent extends RecyclerView.Adapter<RVAdapter
 
         public MemberViewHolder(View itemView) {
             super(itemView);
-            cardView = (CardView) itemView.findViewById(R.id.cvLoginDetailsStudent);
+            cardView = (CardView) itemView.findViewById(R.id.cv_student_alltask);
             btnyes = (FloatingActionButton) itemView.findViewById(R.id.fabGoToStudentTaSK);
         }
     }

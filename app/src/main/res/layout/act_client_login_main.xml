@@ -16,119 +16,141 @@
         <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
     <!-- Login progress -->
             <android.support.v7.widget.CardView
-                    android:id="@+id/cv"
-                    android:layout_width="match_parent"
-                    android:layout_below="@+id/imageView" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" android:layout_weight="0.26" android:layout_marginTop="80dp"
-                    tools:ignore="ObsoleteLayoutParam,UnknownIdInLayout" android:layout_height="wrap_content"
-                    app:cardElevation="5dp">
-    <ScrollView
-            android:id="@+id/login_form"
-            android:layout_width="match_parent"
-            android:layout_height="342dp" tools:ignore="NestedScrolling" android:clipToPadding="false"
-            android:elevation="5dp">
-
-        <LinearLayout
-                android:id="@+id/email_login_form"
+                android:id="@+id/cv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" android:layout_marginLeft="25dp" android:layout_marginRight="15dp"
-                tools:ignore="RtlHardcoded" android:layout_marginBottom="10dp">
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/imageView"
+                android:layout_marginTop="80dp"
+                android:layout_weight="0.26"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                tools:ignore="ObsoleteLayoutParam,UnknownIdInLayout">
 
-            <android.support.design.widget.TextInputLayout
+                <ScrollView
+                    android:id="@+id/login_form"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp" android:layout_marginLeft="30dp" android:layout_marginRight="30dp"
-                    android:layout_marginBottom="2dp" android:layout_marginTop="10dp">
+                    android:layout_height="342dp"
+                    android:clipToPadding="false"
+                    android:elevation="5dp"
+                    tools:ignore="NestedScrolling">
 
-                <AutoCompleteTextView
-                        android:id="@+id/imie"
+                    <LinearLayout
+                        android:id="@+id/email_login_form"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:hint="Imię"
-                        android:maxLines="1"
-                        tools:ignore="HardcodedText"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="vertical"
+                        tools:ignore="RtlHardcoded">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginTop="10dp">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/imie"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:hint="Imię"
+                                android:maxLines="1"
+                                tools:ignore="HardcodedText" />
 
 
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp" android:layout_marginLeft="30dp" android:layout_marginRight="30dp"
-                    android:layout_marginBottom="2dp">
+                        </android.support.design.widget.TextInputLayout>
 
-                <AutoCompleteTextView
-                        android:id="@+id/nazwisko"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:hint="Nazwisko"
-                        android:maxLines="1"
-                        tools:ignore="HardcodedText"/>
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/nazwisko"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:hint="Nazwisko"
+                                android:maxLines="1"
+                                tools:ignore="HardcodedText" />
 
 
-            </android.support.design.widget.TextInputLayout>
+                        </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"  android:layout_marginLeft="30dp" android:layout_marginRight="30dp">
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp">
 
-                <AutoCompleteTextView
-                        android:id="@+id/customrtUlica"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:hint="@string/customerulica"
-                        android:maxLines="1"
-                />
+                            <AutoCompleteTextView
+                                android:id="@+id/customrtUlica"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:hint="@string/customerulica"
+                                android:maxLines="1" />
 
-            </android.support.design.widget.TextInputLayout>
+                        </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"  android:layout_marginLeft="30dp" android:layout_marginRight="30dp">
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp">
 
-                <AutoCompleteTextView
-                        android:id="@+id/customerMiasto"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:hint="@string/customermiasto"
-                        android:maxLines="1"
-                />
+                            <AutoCompleteTextView
+                                android:id="@+id/customerMiasto"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:hint="@string/customermiasto"
+                                android:maxLines="1" />
 
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"  android:layout_marginLeft="30dp" android:layout_marginRight="30dp">
+                        </android.support.design.widget.TextInputLayout>
 
-                <AutoCompleteTextView
-                        android:id="@+id/txtNewCustomerPostcode"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:hint="@string/customerkodpocztowy"
-                        android:maxLines="1"
-                />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp">
 
-            </android.support.design.widget.TextInputLayout>
+                            <AutoCompleteTextView
+                                android:id="@+id/txtNewCustomerPostcode"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:hint="@string/customerkodpocztowy"
+                                android:maxLines="1" />
 
-            <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp" android:layout_marginLeft="30dp" android:layout_marginRight="30dp"
-                    android:layout_marginTop="5dp">
+                        </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="38dp"
-                        android:hint="@string/prompt_password"
-                        android:imeActionId="@+id/login"
-                        android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginTop="5dp">
 
-            </android.support.design.widget.TextInputLayout>
+                            <EditText
+                                android:id="@+id/password"
+                                android:layout_width="match_parent"
+                                android:layout_height="38dp"
+                                android:hint="@string/prompt_password"
+                                android:imeActionId="@+id/login"
+                                android:imeActionLabel="@string/action_sign_in_short"
+                                android:imeOptions="actionUnspecified"
+                                android:inputType="textPassword"
+                                android:maxLines="1" />
 
-        </LinearLayout>
-    </ScrollView>
-    </android.support.v7.widget.CardView>
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+            </android.support.v7.widget.CardView>
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" app:srcCompat="@drawable/edituser"

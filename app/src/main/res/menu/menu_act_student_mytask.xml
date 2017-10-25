@@ -3,5 +3,4 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.application.tak.takapplication.actClientTask">
     <item android:id="@+id/mytask_delete" android:title="Zrezugnuj"/>
-    <item android:id="@+id/mytask_makeContact" android:title="Skontaktuj się"/>
 </menu>

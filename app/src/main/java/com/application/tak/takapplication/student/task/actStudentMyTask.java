@@ -10,9 +10,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.application.tak.takapplication.R;
 import com.application.tak.takapplication.adapters.RVAdapter;
+import com.application.tak.takapplication.adapters.RVAdapterAllTaskStudent;
 import com.application.tak.takapplication.adapters.RVAdapterMyTaskStudent;
+import com.application.tak.takapplication.data_access.Config;
+import com.application.tak.takapplication.data_access.GetAllClientTasks;
+import com.application.tak.takapplication.data_access.GetAllClientTasksByStatus;
+import com.application.tak.takapplication.data_access.GetAllStudentTasks;
+import com.application.tak.takapplication.data_list.AllTaskListStudent;
 import com.application.tak.takapplication.data_list.MyTaskListStudent;
 import com.application.tak.takapplication.data_list.TaskList;
+import com.application.tak.takapplication.data_model.Task_V;
+import com.application.tak.takapplication.data_model.User;
+import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -30,6 +39,12 @@ public class actStudentMyTask extends Fragment {
     private DateFormat formDatetime = DateFormat.getDateTimeInstance();
     private RecyclerView recyclerview;
     private List<MyTaskListStudent> memberList;
+
+    User client = new User();
+    Task_V task;
+    GetAllClientTasks tasks;
+    GetAllClientTasksByStatus stustak;
+
     public actStudentMyTask()
     {
 
@@ -40,8 +55,34 @@ public class actStudentMyTask extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.act_student_mytask, container, false);
-
         memberList = new ArrayList<MyTaskListStudent>();
+        recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview_mytask);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerview.setLayoutManager(layoutManager);
+
+
+        User u = new User();
+        u.set_Id(1);
+
+        tasks = new GetAllClientTasks(getContext(),u);
+
+        tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
+
+            @Override
+            public void onDBRequestFinished() {
+                if (tasks._tasks != null) {
+                    Config.ClientTasks = tasks._tasks;
+                    for (Task_V task : Config.ClientTasks) {
+                        MyTaskListStudent member = new MyTaskListStudent(task);
+                        memberList.add(member);
+                    }
+                 }
+                RVAdapterMyTaskStudent adapter = new RVAdapterMyTaskStudent(memberList, getActivity());
+                recyclerview.setAdapter(adapter);
+            }
+        });
+
+   /*     memberList = new ArrayList<MyTaskListStudent>();
         MyTaskListStudent member = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "509728212", "Gliwice, Ostrudźka 43");
         memberList.add(member);
         MyTaskListStudent member2 = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "509 728 212", "Gliwice, Ostrudźka 43");
@@ -49,28 +90,16 @@ public class actStudentMyTask extends Fragment {
         MyTaskListStudent member3 = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213", "Gliwice, Ostrudźka 43");
         memberList.add(member3);
         MyTaskListStudent member4 = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213", "Gliwice, Ostrudźka 43");
-        memberList.add(member4);
-
-
-    //    try {
-     //      updateTextLabel(view, memberList );
-    //    } catch (ParseException e) {
-         //   e.printStackTrace();
-        //}
-
-
-        recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview_mytask);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerview.setLayoutManager(layoutManager);
-
-        RVAdapterMyTaskStudent adapter = new RVAdapterMyTaskStudent(memberList, getActivity());
-        recyclerview.setAdapter(adapter);
+        memberList.add(member4);*/
 
         return view;
     }
+
+
+
 ///////////////////////////////// not used
     private void updateTextLabel(View w, List<MyTaskListStudent> list) throws ParseException {
-        TextView nameDay = (TextView) w.findViewById(R.id.timepicker);
+
         String strDateFormat = "EEEE";
         SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
 
