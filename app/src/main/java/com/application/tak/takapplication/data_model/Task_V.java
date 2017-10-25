@@ -5,6 +5,7 @@ package com.application.tak.takapplication.data_model;
  */
 public class Task_V extends Task
 {
+<<<<<<< HEAD
     private String _CreatorLName;
     private String _CreatorFName;
     private String _CreatorUsername;
@@ -27,6 +28,34 @@ public class Task_V extends Task
     private String _ExecutorRoadNo;
 
     private String _CategoryName;
+=======
+    public String _CreatorLName;
+    public String _CreatorFName;
+    public String _CreatorUsername;
+    public String _CreatorPhoneNo;
+    public Integer _CreatorAdressId;
+    public String _CreatorCity;
+    public String _CreatorRoad;
+    public String _CreatorPostCode;
+    public String _CreatorRoadNo;
+
+
+    public String _ExecutorLName;
+    public String _ExecutorFName;
+    public String _ExecutorUsername;
+    public String _ExecutorPhoneNo;
+    public Integer _ExecutorAdressId;
+    public String _ExecutorCity;
+    public String _ExecutorRoad;
+    public String _ExecutorPostCode;
+    public String _ExecutorRoadNo;
+    public Integer _ExecutorClassId;
+    public String _ExecutorClassName;
+    public Integer _ExecutorSchoolId;
+    public String _ExecutorSchoolName;
+
+    public String _CategoryName;
+>>>>>>> origin/master
     public String _StatusName;
 
     public String get_CreatorLName() {
@@ -187,5 +216,37 @@ public class Task_V extends Task
 
     public void set_StatusName(String _StatusName) {
         this._StatusName = _StatusName;
+    }
+
+    public Integer get_ExecutorClassId() {
+        return _ExecutorClassId;
+    }
+
+    public void set_ExecutorClassId(Integer _ExecutorClassId) {
+        this._ExecutorClassId = _ExecutorClassId;
+    }
+
+    public String get_ExecutorClassName() {
+        return _ExecutorClassName;
+    }
+
+    public void set_ExecutorClassName(String _ExecutorClassName) {
+        this._ExecutorClassName = _ExecutorClassName;
+    }
+
+    public Integer get_ExecutorSchoolId() {
+        return _ExecutorSchoolId;
+    }
+
+    public void set_ExecutorSchoolId(Integer _ExecutorSchoolId) {
+        this._ExecutorSchoolId = _ExecutorSchoolId;
+    }
+
+    public String get_ExecutorSchoolName() {
+        return _ExecutorSchoolName;
+    }
+
+    public void set_ExecutorSchoolName(String _ExecutorSchoolName) {
+        this._ExecutorSchoolName = _ExecutorSchoolName;
     }
 }

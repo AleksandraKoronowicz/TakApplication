@@ -56,7 +56,7 @@ public class actClientLogin extends AppCompatActivity {
         ctx = this;
 
         final LocalDB localDb = new LocalDB(this.getApplicationContext());
-        List<User> users = localDb.GetAllUsera();
+        List<User> users = localDb.GetAllUsers();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
