@@ -174,6 +174,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
 
                     public void onClick(DialogInterface dialog, int which) {
 
+                          members.remove(i);
                         Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
                     }
                 });
