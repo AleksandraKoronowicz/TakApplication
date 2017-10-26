@@ -97,10 +97,8 @@ public class RVAdapterMyTaskStudent extends RecyclerView.Adapter<RVAdapterMyTask
 
                         switch (item.getItemId()) {
                             case R.id.mytask_delete:
-                                ShowMessageBox();
-                                members.remove(position);
-                                notifyDataSetChanged();
-                                Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
+                                ShowMessageBox(members, position);
+
                         }
                         return false;
                     }
@@ -234,18 +232,20 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    public void ShowMessageBox()
+    public void ShowMessageBox(List<MyTaskListStudent> member, final int position)
     {
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         alertDialog.setTitle("Jesteś pewien?");
         alertDialog.setMessage("Rezygnacja z zadania automatycznie powiadomi drogą sms o odwołaniu wykonania zadania");
-        alertDialog.setIcon(R.drawable.message);
+        alertDialog.setIcon(R.drawable.email2);
         alertDialog.setPositiveButton("Tak",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int which) {
-
+                        members.remove(position);
+                        notifyDataSetChanged();
+                        Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
                     }
                 });
         alertDialog.setNegativeButton("Anuluj",

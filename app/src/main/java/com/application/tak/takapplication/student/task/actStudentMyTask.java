@@ -42,7 +42,7 @@ public class actStudentMyTask extends Fragment {
 
     User client = new User();
     Task_V task;
-    GetAllClientTasks tasks;
+    GetAllStudentTasks tasks;
     GetAllClientTasksByStatus stustak;
 
     public actStudentMyTask()
@@ -62,19 +62,21 @@ public class actStudentMyTask extends Fragment {
 
 
         User u = new User();
-        u.set_Id(1);
+        u.set_Id(2);
 
-        tasks = new GetAllClientTasks(getContext(),u);
+        tasks = new GetAllStudentTasks(getContext(),u);
 
         tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
             @Override
             public void onDBRequestFinished() {
-                if (tasks._tasks != null) {
-                    Config.ClientTasks = tasks._tasks;
+               if (tasks._tasks != null) {
+                    //Config.ClientTasks = tasks._tasks;
                     for (Task_V task : Config.ClientTasks) {
-                        MyTaskListStudent member = new MyTaskListStudent(task);
-                        memberList.add(member);
+                        if (task.get_StatusName().contains("In realization")) {
+                            MyTaskListStudent member = new MyTaskListStudent(task);
+                            memberList.add(member);
+                        }
                     }
                  }
                 RVAdapterMyTaskStudent adapter = new RVAdapterMyTaskStudent(memberList, getActivity());

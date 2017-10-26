@@ -45,6 +45,7 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
     private User client = new User();
     private  Task_V task;
     private  GetAllClientTasks tasks;
+    private GetAllClientTasksByStatus tasksByStatus;
 
     private List<TaskListNotSelected> memberList;
 
@@ -60,7 +61,7 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
             memberList = new ArrayList<TaskListNotSelected>();
             User u = new User();
             u.set_Id(1);
-            tasks = new GetAllClientTasks(this.getContext(),u);
+            tasksByStatus = new GetAllClientTasksByStatus(this.getContext(),u,1);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
             View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
@@ -69,18 +70,17 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
             recyclerview.setLayoutManager(layoutManager);
 
 
-
-            tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
+            tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
                 @Override
                 public void onDBRequestFinished() {
-if(tasks._tasks != null)
+if(tasksByStatus._tasks != null)
 {
-    Config.ClientTasks = tasks._tasks;
+    Config.ClientTasks = tasksByStatus._tasks;
     for (Task_V task : Config.ClientTasks) {
 
-        TaskListNotSelected member = new TaskListNotSelected(task);
-        memberList.add(member);
+            TaskListNotSelected member = new TaskListNotSelected(task);
+            memberList.add(member);
     }
     RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
     recyclerview.setAdapter(adapter);

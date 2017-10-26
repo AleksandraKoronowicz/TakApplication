@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.application.tak.takapplication.adapters.RVAdapter;
 import com.application.tak.takapplication.data_access.Config;
 import com.application.tak.takapplication.data_access.GetAllClientTasks;
+import com.application.tak.takapplication.data_access.GetAllClientTasksByStatus;
 import com.application.tak.takapplication.data_list.TaskList;
 import com.application.tak.takapplication.data_list.TaskListNotSelected;
 import com.application.tak.takapplication.data_model.Task_V;
@@ -34,7 +35,8 @@ import java.util.List;
 
     User client = new User();
     Task_V task;
-    GetAllClientTasks tasks;
+
+    GetAllClientTasksByStatus tasksByStatus;
 
         public actClientTaskToDo()
         {
@@ -52,24 +54,24 @@ import java.util.List;
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             recyclerview.setLayoutManager(layoutManager);
 
-
             User u = new User();
             u.set_Id(1);
-            tasks = new GetAllClientTasks(getActivity(),u);
-            tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
+            tasksByStatus = new GetAllClientTasksByStatus(getActivity(),u,2);
+            tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
 
                 @Override
                 public void onDBRequestFinished() {
-                    if (tasks._tasks != null) {
-                        Config.ClientTasks = tasks._tasks;
-                        for (Task_V task : Config.ClientTasks) {
-//to dobre
-                            String x = task.get_CategoryName();
-                            TaskList member = new TaskList(task,"klasa:2f");
+                    if (tasksByStatus._tasks != null) {
 
-                            memberList.add(member);
-                        }
+                            Config.ClientTasks = tasksByStatus._tasks;
+                            for (Task_V task : Config.ClientTasks) {
+
+                                String x = task.get_CategoryName();
+                                TaskList member = new TaskList(task);
+
+                                memberList.add(member);
+                            }
 
                         RVAdapter adapter = new RVAdapter(memberList, getActivity());
                         recyclerview.setAdapter(adapter);
@@ -77,15 +79,6 @@ import java.util.List;
                 }
             });
                     return view;
-    /*        memberList = new ArrayList<TaskList>();
-            TaskList member = new TaskList("Szkoła im. Fryderyka Chopina, Niechałkowice", "Sie 31", "13:00-16:00", "Magłorzata Kicha", "Klasa: 3f","504 444 213");
-            memberList.add(member);
-            TaskList member4 = new TaskList("Szkoła im. Fryderyka Chopina, Niechałkowice", "Sie 31", "13:00-16:00", "Aleksandra Koronowicz", "Klasa: 3f","504 444 213");
-            memberList.add(member4);
-*/
-
-
-
 
             }
 }

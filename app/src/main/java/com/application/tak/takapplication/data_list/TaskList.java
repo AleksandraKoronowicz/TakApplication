@@ -17,17 +17,17 @@ public class TaskList {
     public String dataTask;
     public String dataTime;
     public String executorName;
-    public String executorClass = "2F";
+    public String executorClass;
     public String executorPhone;
 
-    public TaskList(Task_V sup, String executorClass)//String school, String dataTask, String dataTime, String executorName, String executorClass, String executorPhone)
+    public TaskList(Task_V sup)//String school, String dataTask, String dataTime, String executorName, String executorClass, String executorPhone)
     {
         tsk = sup;
         this.dataTask = DateFormat.getDateInstance().format(tsk.get_TimeFrom().getTime()).toString();
-        this.executorSchool = tsk.get_ExecutorRoad();
+        this.executorSchool = tsk.get_ExecutorSchoolName();
         this.dataTime = getCzas();
         this.executorName = tsk.get_ExecutorFName() + " " + tsk.get_ExecutorLName();
-        this.executorClass = executorClass;
+        this.executorClass = "klasa: " +  tsk.get_ExecutorClassName();
         this.executorPhone = executorPhone;
     }
     public  int getId(){return this.id;}

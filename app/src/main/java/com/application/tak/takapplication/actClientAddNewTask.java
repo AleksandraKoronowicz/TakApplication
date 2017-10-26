@@ -192,7 +192,7 @@ String timeTo = dateTime.getTime() + " " + time.getTime();
         t.set_TimeFrom(dateTime.getTime());
         t.set_TimeTo(timeto.getTime());
         String xxxx = selectedItem;
-        t.set_CategoryId(1);
+        t.set_CategoryId(1); // get category it ??
         t.set_CreationTime(cal.getTime());
         t.set_CreatorId(1);//u.get_Id());
         t.set_IsApproved(0);
