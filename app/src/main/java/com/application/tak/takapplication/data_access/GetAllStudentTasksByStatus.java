@@ -2,13 +2,18 @@ package com.application.tak.takapplication.data_access;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.application.tak.takapplication.data_access.GetJSONData;
+
 import com.application.tak.takapplication.data_model.Task_V;
 import com.application.tak.takapplication.data_model.User;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -16,12 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by azielinska on 10.06.2017.
+ * Created by azielinska on 26.06.2017.
  */
-public class GetAllClientTasksByStatus extends GetJSONData
-{
-    private static final String URL = Config.SERVER_NAME +"get_all_client_tasks_by_status.php";
-    private static final String TAG_RESULTS="creator_tasks";
+
+public class GetAllStudentTasksByStatus extends GetJSONData {
+    private static final String URL = Config.SERVER_NAME +"get_all_student_tasks_by_status.php";
+    private static final String TAG_RESULTS="executor_tasks";
     private static final String TAG_ID="ID";
     private static final String TAG_CATEGORY_NAME="CATEGORY_NAME";
     private static final String TAG_TIME_FROM="TIME_FROM";
@@ -61,10 +66,10 @@ public class GetAllClientTasksByStatus extends GetJSONData
 
     public List<Task_V> _tasks;
 
-    public GetAllClientTasksByStatus(Context ctx, User client, Integer status)
+    public GetAllStudentTasksByStatus(Context ctx, User student, Integer status)
     {
         super(ctx);
-        execute(URL, client.get_Id().toString(), status.toString());
+        execute(URL, student.get_Id().toString(), status.toString());
     }
 
     @Override
@@ -86,8 +91,8 @@ public class GetAllClientTasksByStatus extends GetJSONData
 
             String data=
                     URLEncoder.encode("creator_id","UTF-8")+"="+URLEncoder.encode(client_id,"UTF-8")+"&"+
-            URLEncoder.encode("status_id","UTF-8")+"="+URLEncoder.encode(status_id,"UTF-8")+"&"+
-            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
+                            URLEncoder.encode("status_id","UTF-8")+"="+URLEncoder.encode(status_id,"UTF-8")+"&"+
+                            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
 
             BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
             bufferedWriter.write(data);
@@ -177,6 +182,5 @@ public class GetAllClientTasksByStatus extends GetJSONData
         pDialog.dismiss();
         mListener.onDBRequestFinished();
     }
-
 
 }

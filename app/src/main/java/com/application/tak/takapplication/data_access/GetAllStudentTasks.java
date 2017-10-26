@@ -20,7 +20,7 @@ import java.util.List;
 public class GetAllStudentTasks extends GetJSONData
 {
     private static final String URL = Config.SERVER_NAME +"get_all_student_tasks.php";
-    private static final String TAG_RESULTS="result";
+    private static final String TAG_RESULTS="executor_tasks";
     private static final String TAG_ID="ID";
     private static final String TAG_CATEGORY_NAME="CATEGORY_NAME";
     private static final String TAG_TIME_FROM="TIME_FROM";
@@ -83,7 +83,8 @@ public class GetAllStudentTasks extends GetJSONData
             OutputStream os=con.getOutputStream();
 
             String data=
-                    URLEncoder.encode("executor_id","UTF-8")+"="+URLEncoder.encode(executor_id,"UTF-8");
+                    URLEncoder.encode("executor_id","UTF-8")+"="+URLEncoder.encode(executor_id,"UTF-8")+"&"+
+            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
 
             BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
             bufferedWriter.write(data);
