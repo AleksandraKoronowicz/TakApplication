@@ -5,6 +5,7 @@
         <item name="colorPrimary">@android:color/holo_blue_light</item>
         <item name="colorPrimaryDark">@android:color/holo_blue_light</item>
         <item name="colorAccent">@android:color/holo_orange_light</item>
+        <item name="android:colorForeground">@color/foreground_material_light</item>
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -17,5 +18,20 @@
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+
+
+<style name="spinnerItemStyle">
+<item name="android:padding">10dp</item>
+<item name="android:textSize">20sp</item>
+<item name="android:textColor">#FFFFFF</item>
+</style>
+
+<style name="spinnerDropDownItemStyle">
+<item name="android:padding">20dp</item>
+<item name="android:textSize">30sp</item>
+<item name="android:textColor">#FFFFFF</item>
+</style>
 
 </resources>

@@ -162,4 +162,6 @@
     <string name="title_activity_act_client_task_add_new">actClientTaskAddNew</string>
     <string name="title_activity_act_client_login_only">Zaloguj się</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="podaj_kod">Podaj kod</string>
+    <string name="title_activity_act_student_regulation">actStudentRegulation</string>
 </resources>

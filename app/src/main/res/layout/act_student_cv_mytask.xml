@@ -8,55 +8,29 @@
     <android.support.v7.widget.CardView
             android:id="@+id/cv_student_mytask"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:cardElevation="3dp"
+            app:cardMaxElevation="10dp"
 
+            app:contentPadding="18dp" android:filterTouchesWhenObscured="false" android:animateLayoutChanges="true"
+            android:alpha="10">
+
+        <android.support.design.widget.FloatingActionButton
+                android:clickable="true"
+                app:srcCompat="@android:drawable/ic_menu_call"
+                android:id="@+id/fabmytaskPhone"
+                android:layout_width="95dp"
+                app:fabSize="normal" android:layout_alignParentTop="true"
+                android:layout_marginLeft="100dp" android:layout_marginTop="45dp" android:layout_height="95dp"
+                app:elevation="11dp" app:rippleColor="?android:attr/colorActivatedHighlight"/>
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
                 android:padding="9dp">
 
-            <TextView
-                    android:id="@+id/client_adress"
-                    android:text="Adres wykonania zadania"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-            <TextView
-                    android:id="@+id/task_date_mytask"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="25 lipca"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-            <TextView
-                    android:id="@+id/task_time_mytask"
-                    android:text="16:00 d0 17:00"
-                    android:textSize="10sp"
-                    android:textStyle="normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_alignBottom="@+id/imageView5" android:layout_toRightOf="@+id/imageView5"
-                    android:layout_toEndOf="@+id/imageView5"/>
-            <TextView
-                    android:id="@+id/client_name_mytask"
-                    android:text="Aleksandra Koronowicz"
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/imageView7" android:layout_toRightOf="@+id/imageView7"
-                    android:layout_toEndOf="@+id/imageView7"/>
-            <TextView
-                    android:id="@+id/client_phone_mytask"
-                    android:text="509 728 212"
-                    android:textSize="15sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/imageView8" android:layout_toRightOf="@+id/imageView7"
-                    android:layout_toEndOf="@+id/imageView7"/>
             <TextView
                     android:id="@+id/task_topic_mytask"
                     android:text="Wyrzuć śmieci"
@@ -64,26 +38,79 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true" android:layout_toRightOf="@+id/client_adress"
-                    android:layout_toEndOf="@+id/client_adress"/>
+                    android:layout_above="@+id/buttonMenuMyTask" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
             <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_myplaces"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" app:srcCompat="@android:drawable/ic_menu_myplaces"
                     android:id="@+id/imageView7"
-                    android:layout_centerVertical="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
+                    android:layout_alignBottom="@+id/client_name_mytask"
+                    android:layout_toRightOf="@+id/client_name_mytask" android:layout_toEndOf="@+id/client_name_mytask"
+                    android:layout_marginLeft="24dp" android:layout_marginStart="24dp"/>
             <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:srcCompat="@android:drawable/stat_sys_phone_call_on_hold"
-                    android:id="@+id/imageView8"
-                    android:layout_below="@+id/imageView7" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:srcCompat="?android:attr/textSelectHandleLeft"
-                    android:id="@+id/imageView5"
+                    app:srcCompat="@drawable/pointorange"
+                    android:id="@+id/imageView10"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_above="@+id/client_adress" android:layout_centerHorizontal="true"/>
+            <Button
+                    android:id="@+id/buttonMenuMyTask" android:background="@drawable/settings"
+                    android:elevation="3dp"
+                    android:layout_width="23dp" android:textAlignment="textEnd"
                     android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_alignParentEnd="true" android:layout_height="23dp"/>
+            <TextView
+                    android:id="@+id/day_name_mytask"
+                    android:layout_width="267dp"
+                    android:layout_height="wrap_content"
+                    android:text="Czwartek"
+                    android:textStyle="bold"
+                    android:textSize="35sp"
+                    android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toLeftOf="@+id/buttonMenuMyTask" android:layout_toStartOf="@+id/buttonMenuMyTask"/>
+            <TextView
+                    android:id="@+id/client_name_mytask"
+                    android:text="Aleksandra Koronowicz"
+                    android:textSize="22sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:layout_below="@+id/dateMyTask" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <TextView
+                    android:id="@+id/client_adress"
+                    android:text="Gliwice, Kwiatowa 55/2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textAlignment="center"
+                    android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <TextView
+                    android:id="@+id/dateMyTask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25 lipiec"
+                    android:textSize="22sp"
+
+                    android:textAlignment="viewStart"
+                    android:layout_below="@+id/day_name_mytask" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <TextView
+                    android:id="@+id/task_time_mytask"
+                    android:text="16:00 do 17:00"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:textAlignment="textEnd"
+                    android:layout_alignBaseline="@+id/dateMyTask" android:layout_alignBottom="@+id/dateMyTask"
+                    android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+                    android:layout_alignLeft="@+id/imageView10" android:layout_alignStart="@+id/imageView10"/>
+
 
         </RelativeLayout>
 

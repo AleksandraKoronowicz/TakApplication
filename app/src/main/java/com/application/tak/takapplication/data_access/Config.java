@@ -18,12 +18,12 @@ import java.util.List;
  */
 public class Config
 {
-    public static final String SERVER_NAME = "http://192.168.1.91:80/";
+    public static final String SERVER_NAME = "http://192.168.0.12/";
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd_HHmm");
     public static final String ApplicationId = "9736362253343859";
     public static Client_V LoggedInClient = null;
     public static List<Task_V> ClientTasks = null;
-
+public static List<Task_V> StudentTask = null;
 
     private static final String ALGO = "AES";
     private static final byte[] keyValue = new String(ApplicationId).getBytes();

@@ -2,16 +2,24 @@ package com.application.tak.takapplication.adapters;
 
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.application.tak.takapplication.R;
 import com.application.tak.takapplication.data_list.TaskListNotSelected;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,31 +42,86 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         private TextView time_tv;
         private TextView date_tv;
         private TextView title_tv;
-        private TextView place_tv;
+        private TextView day_name_tv;
         private ImageButton option;
+        private FloatingActionButton del;
+        private FloatingActionButton edit;
 
 
         public MemberViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cv2);
             title_tv = (TextView) itemView.findViewById(R.id.task_topic2);
-            place_tv = (TextView) itemView.findViewById(R.id.client_adress2);
+            day_name_tv = (TextView) itemView.findViewById(R.id.client_nameOfaDay);
             time_tv = (TextView) itemView.findViewById(R.id.task_time2);
             date_tv = (TextView) itemView.findViewById(R.id.task_to_do2);
             option = (ImageButton) itemView.findViewById(R.id.option);
-
+            del = (FloatingActionButton) itemView.findViewById(R.id.fabClientDelete);
+            edit = (FloatingActionButton) itemView.findViewById(R.id.fabClientEdit);
         }
     }
 
     @Override
     public void onBindViewHolder(final MemberViewHolder memberViewHolder, final int i) {
         final TaskListNotSelected item = members.get(i);
-        memberViewHolder.place_tv.setText(members.get(i).getTaskPlace());
+        memberViewHolder.day_name_tv.setText(ChangeDateString(members.get(i).getData(),"EEEE"));
         memberViewHolder.title_tv.setText(members.get(i).getTitle());
-        memberViewHolder.date_tv.setText(members.get(i).getData());
+        memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"dd MMMM"));
         memberViewHolder.time_tv.setText(members.get(i).getTime());
-        memberViewHolder.option.setOnClickListener(new View.OnClickListener() {
+        memberViewHolder.del.hide();
+        memberViewHolder.edit.hide();
 
+   memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+
+       @Override
+       public void onClick(View v) {
+
+           CardView fadeOutCard = (CardView) v.findViewById(R.id.cv2);
+           TextView data = (TextView) v.findViewById(R.id.task_to_do2);
+           TextView topic = (TextView) v.findViewById(R.id.task_topic2);
+           TextView time = (TextView) v.findViewById(R.id.task_time2);
+           TextView day_month = (TextView) v.findViewById(R.id.client_nameOfaDay);
+
+           //  fadeOutCard.setCardBackgroundColor(Color.LTGRAY);
+           fadeOutCard.setCardBackgroundColor(Color.rgb(212,212,212));
+
+           data.setAlpha(0.09f);
+           topic.setAlpha(0.09f);
+           time.setAlpha(0.09f);
+           day_month.setAlpha(0.09f);
+
+           Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_in);
+           Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
+
+           FloatingActionButton trasz = (FloatingActionButton) v.findViewById(R.id.fabClientDelete);
+           FloatingActionButton edit = (FloatingActionButton) v.findViewById(R.id.fabClientEdit);
+           if (trasz.getVisibility() != View.VISIBLE) {
+               trasz.startAnimation(slideUp);
+               trasz.setVisibility(View.VISIBLE);
+
+               edit.startAnimation(slideUp);
+               edit.setVisibility(View.VISIBLE);
+
+           } else {
+               trasz.startAnimation(slideDown);
+               trasz.setVisibility(View.INVISIBLE);
+
+               edit.startAnimation(slideDown);
+               edit.setVisibility(View.INVISIBLE);
+
+               data.setAlpha(1f);
+               topic.setAlpha(1f);
+               time.setAlpha(1f);
+               day_month.setAlpha(1f);
+
+               fadeOutCard.setCardBackgroundColor(Color.WHITE);
+           }
+       } });
+
+
+
+   ///////////////////////////////////////popmenu action///////////////////////////////////////
+   /*     memberViewHolder.option.setOnClickListener(new View.OnClickListener() {
             final int position = i;
             @Override
             public void onClick(View v) {
@@ -86,8 +149,27 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
             }
 
         });
-
+*/
     }
+
+    public String ChangeDateString(String dataToConvert, String resultFormat )
+    {
+
+        //   String strDateFormat = "dd MMMM";
+        SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
+
+        DateFormat format = new SimpleDateFormat("MMM d,yyyy");
+        Date result = null;
+        try {
+            result = format.parse(dataToConvert);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return sdf.format(result).toString();
+    }
+
+
         @Override
         public MemberViewHolder onCreateViewHolder (ViewGroup viewGroup,int i){
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.act_client_cardview_notselected, viewGroup, false);

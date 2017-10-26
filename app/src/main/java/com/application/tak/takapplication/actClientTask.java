@@ -12,6 +12,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import com.application.tak.takapplication.adapters.ViewPagerAdapter;
+import com.application.tak.takapplication.data_access.GetAllClientTasks;
+import com.application.tak.takapplication.data_model.User;
+import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +39,17 @@ public class actClientTask extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new actClientTaskNotSelected(),"Oczekujące");
         viewPagerAdapter.addFragments(new actClientTaskToDo(),"Zaakceptowane");
-        viewPagerAdapter.addFragments(new actClientTaskAddFragment(),"Nowe zadanie");
+        viewPagerAdapter.addFragments(new actClientAddNewTask(),"Nowe zadanie");
 
+User u = new User();
+u.set_Id(1);
+        GetAllClientTasks clientTasks = new GetAllClientTasks(this,u);
+clientTasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
+    @Override
+    public void onDBRequestFinished() {
 
+    }
+});
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

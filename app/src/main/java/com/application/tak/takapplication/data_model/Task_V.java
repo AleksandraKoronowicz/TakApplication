@@ -5,6 +5,30 @@ package com.application.tak.takapplication.data_model;
  */
 public class Task_V extends Task
 {
+<<<<<<< HEAD
+    private String _CreatorLName;
+    private String _CreatorFName;
+    private String _CreatorUsername;
+    private String _CreatorPhoneNo;
+    private Integer _CreatorAdressId;
+    private String _CreatorCity;
+    private String _CreatorRoad;
+    private String _CreatorPostCode;
+    private String _CreatorRoadNo;
+
+
+    private String _ExecutorLName;
+    private String _ExecutorFName;
+    private String _ExecutorUsername;
+    private String _ExecutorPhoneNo;
+    private Integer _ExecutorAdressId;
+    private String _ExecutorCity;
+    private String _ExecutorRoad;
+    private String _ExecutorPostCode;
+    private String _ExecutorRoadNo;
+
+    private String _CategoryName;
+=======
     public String _CreatorLName;
     public String _CreatorFName;
     public String _CreatorUsername;
@@ -31,6 +55,7 @@ public class Task_V extends Task
     public String _ExecutorSchoolName;
 
     public String _CategoryName;
+>>>>>>> origin/master
     public String _StatusName;
 
     public String get_CreatorLName() {

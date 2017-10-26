@@ -2,6 +2,6 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.application.tak.takapplication.actClientTask">
-    <item android:id="@+id/task_delete" android:title="Usuń"/>
-    <item android:id="@+id/task_edit" android:title="Edytuj"/>
+    <item android:id="@+id/task_delete" android:title="Ustawienia"/>
+    <item android:id="@+id/task_edit" android:title="Wyloguj"/>
 </menu>

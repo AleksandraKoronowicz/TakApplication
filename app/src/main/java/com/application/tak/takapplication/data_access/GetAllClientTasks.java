@@ -20,7 +20,7 @@ import java.util.List;
 public class GetAllClientTasks extends GetJSONData
 {
     private static final String URL = Config.SERVER_NAME +"get_all_client_tasks.php";
-    private static final String TAG_RESULTS="client_taska";
+    private static final String TAG_RESULTS="client_tasks";
     private static final String TAG_ID="ID";
     private static final String TAG_CATEGORY_NAME="CATEGORY_NAME";
     private static final String TAG_TIME_FROM="TIME_FROM";

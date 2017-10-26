@@ -58,19 +58,19 @@ public class actStudentLogin extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+       // FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.abGoToStudentTaSK);
+       // fab.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+        //    public void onClick(View view) {
                 //    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //     .setAction("Action", null).show();
-                startActivity(new Intent(view.getContext(), actStudentMainAllTaskListActivity.class));
+             //   startActivity(new Intent(view.getContext(), actStudentMainAllTaskListActivity.class));
                 //   Intent i = new Intent( null, actStudentMainAllTaskListActivity.class);
                 // startActivity(i);
 
 
-            }
-        });
+           // }
+      //  });
 
     }
 

@@ -1,84 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:padding="6dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp">
 
 
     <android.support.v7.widget.CardView
-            android:id="@+id/cv2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:id="@+id/cv2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="3dp"
+        app:cardMaxElevation="8dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="15dp">
 
         <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="149dp"
-                android:padding="9dp">
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
 
-            <TextView
-                    android:id="@+id/client_name2"
-                    android:text="Aleksandra Koronowicz"
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"/>
-            <TextView
-                    android:id="@+id/task_topic2"
-                    android:text="Wyrzuć śmieci"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView12"
-                    android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"/>
-            <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp" app:srcCompat="@android:drawable/presence_away"
-                    android:id="@+id/imageView8"
-                    android:layout_below="@+id/task_topic2" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-            <TextView
-                    android:id="@+id/client_adress2"
-                    android:text="Adres wykonania zadania"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/client_name2" android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"/>
-            <TextView
-                    android:id="@+id/task_time2"
-                    android:text="16:00 d0 17:00"
-                    android:textSize="15sp"
-                    android:textStyle="normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+            android:padding="9dp">
 
-                    android:layout_alignBottom="@+id/imageView8" android:layout_toRightOf="@+id/imageView8"
-                    android:layout_toEndOf="@+id/imageView8"/>
-            <TextView
-                    android:id="@+id/task_to_do2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="25 lipca"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/imageView8" android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true" />
+
             <ImageButton
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:srcCompat="@drawable/message"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" android:layout_marginRight="11dp"
-                    android:layout_marginEnd="11dp" android:id="@+id/option"/>
+                android:id="@+id/option"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignEnd="@+id/imageView12"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/imageView12"
+                android:layout_below="@+id/fabClientDelete"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+            <TextView
+                android:id="@+id/task_topic2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+
+                android:text="Wyrzuć śmieci"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabClientEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/client_nameOfaDay"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/imageView12"
+                android:layout_toStartOf="@+id/client_nameOfaDay"
+                android:clickable="true"
+                app:fabSize="normal"
+                app:srcCompat="@android:drawable/ic_menu_edit" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabClientDelete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/client_nameOfaDay"
+                android:layout_alignEnd="@+id/imageView12"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/imageView12"
+                android:layout_toEndOf="@+id/client_nameOfaDay"
+                android:layout_toRightOf="@+id/client_nameOfaDay"
+                android:clickable="true"
+                app:fabSize="normal"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
+
+            <TextView
+                android:id="@+id/task_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="16:00 do 17:00"
+
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/task_topic2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                app:srcCompat="@drawable/calendar64" />
+
+            <TextView
+                android:id="@+id/task_to_do2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView8"
+                android:layout_centerHorizontal="true"
+                android:text="25 wrzesień"
+                android:textAlignment="center"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/client_nameOfaDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/task_to_do2"
+                android:layout_centerHorizontal="true"
+                android:text="Czwartek"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="normal|bold" />
 
         </RelativeLayout>
 
