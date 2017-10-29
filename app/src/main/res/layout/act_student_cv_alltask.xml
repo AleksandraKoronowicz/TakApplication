@@ -57,7 +57,7 @@
                 android:textSize="14sp" />
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabPhone"
+                android:id="@+id/fabChooseTask"
                 android:layout_width="75dp"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"

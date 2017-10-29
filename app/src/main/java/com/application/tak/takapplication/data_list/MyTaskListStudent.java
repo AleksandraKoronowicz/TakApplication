@@ -12,6 +12,7 @@ import java.util.GregorianCalendar;
  */
 public class MyTaskListStudent {
 
+
     public String mytitletask;
     public String dataTask;
     public String dataTime;
@@ -23,13 +24,17 @@ public class MyTaskListStudent {
     public String homeNumber;
     public String posteCode;
 
+    public int creatorid;
+    public int categoryid;
+    public int isapproved;
+
     public Task_V tsk;
     public int id;
 
     public MyTaskListStudent(Task_V sup)//(String mytitletask, String dataTask, String dataTime, String myclientName, String myclientPhone, String mytaskPlace)
     {
          tsk = sup;
-
+this.id = tsk.get_Id();
         this.dataTask =  DateFormat.getDateInstance().format(tsk.get_TimeFrom().getTime()).toString();
         this.mytitletask = tsk.get_CategoryName(); ;
         this.dataTime = getCzas();
@@ -40,6 +45,10 @@ public class MyTaskListStudent {
         this.homeNumber = tsk.get_CreatorRoadNo();
         this.posteCode = tsk.get_CreatorPostCode();
         this.mytaskPlace = getTaskPlace();
+
+        this.creatorid = tsk.get_CreatorId();
+        this.isapproved = tsk.get_IsApproved();
+        this.categoryid = tsk.get_CategoryId();
     }
 
 
@@ -65,6 +74,7 @@ public class MyTaskListStudent {
         return this.mytaskPlace;
     }
 
+    public int getId(){return  this.id;}
     public String getmytitletask()
     {
         return this.mytitletask;

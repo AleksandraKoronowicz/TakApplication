@@ -23,11 +23,14 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.application.tak.takapplication.R;
+import com.application.tak.takapplication.data_access.UpdateTask;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
+import com.application.tak.takapplication.data_model.Task_V;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +58,7 @@ public class RVAdapterAllTaskStudent extends RecyclerView.Adapter<RVAdapterAllTa
         private TextView date_tv;
         private TextView title_tv;
         private TextView place_tv;
-        private FloatingActionButton phone;
+        private FloatingActionButton fab_choose;
         private TextView question;
         private Button google_map;
 private String task_place;
@@ -67,7 +70,7 @@ private String task_place;
             title_tv = (TextView) itemView.findViewById(R.id.student_task_topic);
             time_tv = (TextView) itemView.findViewById(R.id.student_task_time);
             date_tv = (TextView) itemView.findViewById(R.id.student_date_task);
-            phone = (FloatingActionButton) itemView.findViewById(R.id.fabPhone);
+            fab_choose = (FloatingActionButton) itemView.findViewById(R.id.fabChooseTask);
             question =  (TextView) itemView.findViewById(R.id.student_question);
             google_map = (Button) itemView.findViewById(R.id.btnAdresMap);
 
@@ -82,7 +85,7 @@ private String task_place;
         memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"dd MMMM"));
         memberViewHolder.time_tv.setText(members.get(i).getTime());
 
-        memberViewHolder.phone.hide();
+        memberViewHolder.fab_choose.hide();
         memberViewHolder.question.setVisibility(View.INVISIBLE);
         memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
@@ -103,14 +106,15 @@ private String task_place;
                                                              topic.setAlpha(0.0f);
                                                              time.setAlpha(0.3f);
                                                              name.setAlpha(0.3f);
-google_map.setAlpha(0.3f);
+                                                             google_map.setAlpha(0.3f);
+
                                                              Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_in);
                                                              Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
 
 
                                                              if (!isShow) {
 
-                                                                 FloatingActionButton ph = (FloatingActionButton) v.findViewById(R.id.fabPhone);
+                                                                 FloatingActionButton ph = (FloatingActionButton) v.findViewById(R.id.fabChooseTask);
                                                                  if (ph.getVisibility() != View.VISIBLE) {
 
                                                                      ph.startAnimation(slideUp);
@@ -141,18 +145,28 @@ google_map.setAlpha(0.3f);
                                                      }
         );
 
+
+        memberViewHolder.fab_choose.setOnClickListener(new View.OnClickListener()
+         {
+         @Override
+          public void onClick(View view)
+          {
+            ChooseTask(members, i);
+          }
+         });
+
         memberViewHolder.google_map.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
 
-Integer id = memberViewHolder.google_map.getId();
-String place = members.get(i).getTaskPlace();
+                Integer id = memberViewHolder.google_map.getId();
+                String place = members.get(i).getTaskPlace();
 
-                  String map = "http://maps.google.co.in/maps?q=" + place; //"Katowice ul Sowińskiego 9";
-                  Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(map));
-                 context.startActivity(intent);
+                String map = "http://maps.google.co.in/maps?q=" + place; //"Katowice ul Sowińskiego 9";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(map));
+                context.startActivity(intent);
             }
         });
 
@@ -174,6 +188,30 @@ String place = members.get(i).getTaskPlace();
 
         return sdf.format(result).toString();
     }
+
+    public void ChooseTask(List<AllTaskListStudent> members, int position)
+    {
+        Task_V task = new Task_V();
+        int taskid = members.get(position).getTaskId();
+        task.set_IsApproved(0);
+       task.set_CategoryId(members.get(position).categoryid);
+
+        task.set_TimeFrom(Calendar.getInstance().getTime());
+        task.set_TimeTo(Calendar.getInstance().getTime());
+        task.set_Id(taskid) ;
+        task.set_StatusId(2);
+
+        task.set_ExecutorId(2);
+        task.set_CreatorId(members.get(position).creatorid);
+        task.set_ExecutionTime(null);
+
+        members.remove(position);
+
+        UpdateTask updateTask = new UpdateTask();
+        updateTask.UpdateTask(task);
+
+    }
+
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.act_student_cv_alltask, viewGroup, false);

@@ -25,6 +25,8 @@ public class TaskListNotSelected //extends Task_V
     public String homeNumber;
     public String posteCode;
 
+    public int categoryid;
+
     public TaskListNotSelected(Task_V sup)
     {
         tsk = sup;
@@ -36,6 +38,7 @@ public class TaskListNotSelected //extends Task_V
         this.city = tsk.get_CreatorCity();
         this.homeNumber = tsk.get_CreatorRoadNo();
         this.posteCode = tsk.get_CreatorPostCode();
+        this.categoryid = tsk.get_CategoryId();
     }
 
     public  int getId(){return this.id;}

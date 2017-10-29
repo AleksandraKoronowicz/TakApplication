@@ -23,11 +23,16 @@ public class AllTaskListStudent {
     public String homeNumber;
     public String posteCode;
 
+    public int creatorid;
+    public int categoryid;
+    public int isapproved;
+
+
 
     public AllTaskListStudent(Task_V sup)//String title, String dataTask, String dataTime, String clientName,  String taskPlace)
     {
         tsk = sup;
-
+this.id = tsk.get_Id();
         this.title = tsk.get_CategoryName();
         this.dataTime = getCzas();
         this.dataTask = DateFormat.getDateInstance().format(tsk.get_TimeFrom().getTime()).toString();
@@ -38,6 +43,10 @@ public class AllTaskListStudent {
         this.city = tsk.get_CreatorCity();
         this.homeNumber = tsk.get_CreatorRoadNo();
         this.posteCode = tsk.get_CreatorPostCode();
+
+        this.creatorid = tsk.get_CreatorId();
+        this.isapproved = tsk.get_IsApproved();
+        this.categoryid = tsk.get_CategoryId();
     }
 
     public String getCzas()
@@ -79,6 +88,7 @@ public class AllTaskListStudent {
     {
         return this.clientName;
     }
+public int getTaskId() {return this.id;}
 
 
     public void settitle(String title) {

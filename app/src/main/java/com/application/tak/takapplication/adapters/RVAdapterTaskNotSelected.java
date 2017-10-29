@@ -2,8 +2,10 @@ package com.application.tak.takapplication.adapters;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,11 +16,16 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.application.tak.takapplication.R;
+import com.application.tak.takapplication.data_access.UpdateTask;
+import com.application.tak.takapplication.data_list.MyTaskListStudent;
 import com.application.tak.takapplication.data_list.TaskListNotSelected;
+import com.application.tak.takapplication.data_model.Task_V;
+import com.application.tak.takapplication.data_model.User;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -70,6 +77,15 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         memberViewHolder.time_tv.setText(members.get(i).getTime());
         memberViewHolder.del.hide();
         memberViewHolder.edit.hide();
+
+        memberViewHolder.del.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                ShowMessageBox(members, i);
+            }
+        });
 
    memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
@@ -150,6 +166,57 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
         });
 */
+    }
+
+    public void DeleteTask(List<TaskListNotSelected> members, int position)
+    {
+        Task_V task = new Task_V();
+        User u = new User();
+
+        int taskid = members.get(position).getId();
+        task.set_IsApproved(0);
+        task.set_CategoryId(members.get(position).categoryid);
+        task.set_TimeFrom(Calendar.getInstance().getTime());
+        task.set_TimeTo(Calendar.getInstance().getTime());
+        task.set_Id(taskid);
+        task.set_StatusId(4);
+        task.set_CreatorId(u.get_Id());
+
+        task.set_CreationTime(null);
+        task.set_ExecutorId(null);
+
+        members.remove(position);
+
+        UpdateTask updateTask = new UpdateTask();
+        updateTask.UpdateTask(task);
+
+    }
+
+    public void ShowMessageBox(List<TaskListNotSelected> member, final int position)
+    {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        alertDialog.setMessage("Napewno chcesz usunąć zadanie?");
+        alertDialog.setIcon(R.drawable.question);
+        alertDialog.setPositiveButton("Tak",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+
+                        notifyDataSetChanged();
+                        DeleteTask(members, position);
+
+                        Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
+                    }
+                });
+        alertDialog.setNegativeButton("Anuluj",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.show();
     }
 
     public String ChangeDateString(String dataToConvert, String resultFormat )

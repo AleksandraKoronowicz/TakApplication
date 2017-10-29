@@ -23,12 +23,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.application.tak.takapplication.R;
+import com.application.tak.takapplication.data_access.UpdateTask;
 import com.application.tak.takapplication.data_list.MyTaskListStudent;
 import com.application.tak.takapplication.data_list.TaskList;
+import com.application.tak.takapplication.data_model.Task_V;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -216,6 +219,28 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
     }
 
+    public void DeleteTask(List<MyTaskListStudent> members, int position)
+    {
+        Task_V task = new Task_V();
+        int taskid = members.get(position).getId();
+        task.set_IsApproved(0);
+        task.set_CategoryId(members.get(position).categoryid);
+        // task.set_ExecutionTime(Calendar.getInstance().getTime());
+        task.set_TimeFrom(Calendar.getInstance().getTime());
+        task.set_TimeTo(Calendar.getInstance().getTime());
+        task.set_Id(taskid);
+        task.set_StatusId(4);
+        task.set_ExecutorId(2);
+        task.set_CreatorId(members.get(position).creatorid);
+
+
+        members.remove(position);
+
+        UpdateTask updateTask = new UpdateTask();
+        updateTask.UpdateTask(task);
+
+    }
+
     public String ChangeDateString(String dataToConvert, String resultFormat )
     {
         SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
@@ -243,8 +268,10 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int which) {
-                        members.remove(position);
+
                         notifyDataSetChanged();
+                        DeleteTask(members, position);
+
                         Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
                     }
                 });
