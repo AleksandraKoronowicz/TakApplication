@@ -17,7 +17,7 @@ public class User
     private String _Password;
 
     //for local db purposes
-    public Integer _IsLoggedIn;
+    private Integer _IsLoggedIn;
 
     public Integer get_Id() {
         return _Id;

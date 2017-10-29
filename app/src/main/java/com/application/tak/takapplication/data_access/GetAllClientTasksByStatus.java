@@ -1,6 +1,8 @@
 package com.application.tak.takapplication.data_access;
 
 import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.widget.Toast;
 import com.application.tak.takapplication.data_access.GetJSONData;
 import com.application.tak.takapplication.data_model.Task_V;
@@ -64,7 +66,12 @@ public class GetAllClientTasksByStatus extends GetJSONData
     public GetAllClientTasksByStatus(Context ctx, User client, Integer status)
     {
         super(ctx);
-        execute(URL, client.get_Id().toString(), status.toString());
+        //execute(URL, client.get_Id().toString(), status.toString());
+
+       // if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
+            executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,URL, client.get_Id().toString(), status.toString());
+       // else
+        //    execute(URL, client.get_Id().toString(), status.toString());
     }
 
     @Override

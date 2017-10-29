@@ -79,7 +79,7 @@ public class TaskList {
         calendar2.get(Calendar.MINUTE); // gets hour in 24h format
         calendar2.get(Calendar.HOUR);        // gets hour in 12h format
 
-        String czas =  calendar.get(Calendar.HOUR) + ":" +  calendar.get(Calendar.MINUTE) + " do " + calendar2.get(Calendar.HOUR) + ":" +  calendar2.get(Calendar.MINUTE);
+        String czas =  calendar.get(Calendar.HOUR) + ":" + String.format("%02d", calendar.get(Calendar.MINUTE))   + " do " + calendar2.get(Calendar.HOUR) + ":" +  String.format("%02d", calendar2.get(Calendar.MINUTE)) ;
         return  czas;
     }
 

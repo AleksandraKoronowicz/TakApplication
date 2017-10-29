@@ -158,15 +158,16 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         //   String strDateFormat = "dd MMMM";
         SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
 
-        DateFormat format = new SimpleDateFormat("MMM d,yyyy");
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         Date result = null;
         try {
             result = format.parse(dataToConvert);
+            return sdf.format(result);
         } catch (ParseException e) {
             e.printStackTrace();
+            return"";
         }
 
-        return sdf.format(result).toString();
     }
 
 

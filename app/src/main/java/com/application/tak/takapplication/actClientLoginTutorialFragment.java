@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.application.tak.takapplication.data_access.Config;
+import com.application.tak.takapplication.services.LoginStatus;
+
 import java.nio.channels.FileLock;
 
 /**
@@ -27,9 +30,14 @@ public class actClientLoginTutorialFragment extends Fragment {
         @Override
         public void onClick(View view) {
             //startActivity(new Intent(view.getContext(), actStudentMainAllTaskListActivity.class));
+
+            LoginStatus loginStatus = new LoginStatus(view.getContext());
+            if(loginStatus.NewClient(Config.LoggedInClient,Config.LoggedInClient.get_Adress()))
+            {
             Intent i = new Intent(view.getContext(), actClientTask.class);
             startActivity(i);
             getActivity().finish();
+            }
 
         }
     });

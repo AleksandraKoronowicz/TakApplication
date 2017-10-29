@@ -55,8 +55,6 @@ public class actClientLogin extends AppCompatActivity {
         setContentView(R.layout.act_client_login);
         ctx = this;
 
-        final LocalDB localDb = new LocalDB(this.getApplicationContext());
-        List<User> users = localDb.GetAllUsers();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -223,7 +221,6 @@ public class actClientLogin extends AppCompatActivity {
             switch (position) {
                 case 0:
                     actClinetLoginMainFragment clientMain = new actClinetLoginMainFragment();
-
                     return clientMain;
                 case 1:
                     actClientLoginRegulationFragment clientCode = new actClientLoginRegulationFragment();

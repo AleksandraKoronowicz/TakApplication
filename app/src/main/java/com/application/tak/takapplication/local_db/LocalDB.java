@@ -38,7 +38,7 @@ public class LocalDB extends SQLiteOpenHelper {
         values.put(colPassword,u.get_Password());
         values.put(colUserId, u.get_Id());
         values.put(colAccountType, u.get_RoleId());
-        values.put(colIsLoggedIn,u._IsLoggedIn);
+        values.put(colIsLoggedIn,u.get_IsLoggedIn());
         db.insert(tableUser,null,values);
     }
 
@@ -69,9 +69,9 @@ public class LocalDB extends SQLiteOpenHelper {
         db.update(tableUser, contentValues, colUserId+" = ? ", new String[] { Integer.toString(userId) } );
     }
 
-    public List<User> GetAllUsers()
+    public ArrayList<User> GetAllUsers()
     {
-        List<User> users = new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<User>();
         String query = "SELECT * from "+tableUser;
         SQLiteDatabase db = getReadableDatabase();
         Cursor res =  db.rawQuery( query, null );
