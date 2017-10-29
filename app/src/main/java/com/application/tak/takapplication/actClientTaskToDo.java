@@ -1,5 +1,6 @@
 package com.application.tak.takapplication;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,7 +33,8 @@ import java.util.List;
 
     private RecyclerView recyclerview;
     private List<TaskList> memberList;
-
+    private Activity _activity;
+    private RVAdapter adapter;
     User client = new User();
     Task_V task;
 
@@ -50,16 +52,15 @@ import java.util.List;
 
             View view = inflater.inflate(R.layout.act_client_task_todo, container, false);
             memberList = new ArrayList<TaskList>();
+            _activity = getActivity();
             recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            LinearLayoutManager layoutManager = new LinearLayoutManager(_activity);
             recyclerview.setLayoutManager(layoutManager);
 
             User u = new User();
-            u.set_Id(1);
-            tasksByStatus = new GetAllClientTasksByStatus(getActivity(),u,2);
+            u.set_Id(2);
+            tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
             tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
-
-
                 @Override
                 public void onDBRequestFinished() {
                     if (tasksByStatus._tasks != null) {
@@ -73,7 +74,7 @@ import java.util.List;
                                 memberList.add(member);
                             }
 
-                        RVAdapter adapter = new RVAdapter(memberList, getActivity());
+                        adapter = new RVAdapter(memberList, _activity);
                         recyclerview.setAdapter(adapter);
                     }
                 }

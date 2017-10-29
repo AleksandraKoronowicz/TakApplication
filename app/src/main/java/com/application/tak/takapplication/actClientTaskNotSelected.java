@@ -1,5 +1,6 @@
 package com.application.tak.takapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -46,6 +47,9 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
     private  Task_V task;
     private  GetAllClientTasks tasks;
     private GetAllClientTasksByStatus tasksByStatus;
+    private Context _ctx;
+    private RVAdapterTaskNotSelected adapter;
+    private Activity _activity;
 
     private List<TaskListNotSelected> memberList;
 
@@ -59,9 +63,11 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
                                  Bundle savedInstanceState) {
 
             memberList = new ArrayList<TaskListNotSelected>();
+            _ctx = getContext();
+            _activity = getActivity();
             User u = new User();
-            u.set_Id(1);
-            tasksByStatus = new GetAllClientTasksByStatus(this.getContext(),u,1);
+            u.set_Id(2);
+            tasksByStatus = new GetAllClientTasksByStatus(_ctx,u,1);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
             View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
@@ -82,7 +88,7 @@ if(tasksByStatus._tasks != null)
             TaskListNotSelected member = new TaskListNotSelected(task);
             memberList.add(member);
     }
-    RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
+    adapter = new RVAdapterTaskNotSelected(memberList, _activity);
     recyclerview.setAdapter(adapter);
 }
 //memberList = Stream.of(memberList.takeWhile(t -> t._StatusName == "fefsd"));

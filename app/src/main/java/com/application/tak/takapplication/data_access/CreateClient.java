@@ -179,6 +179,7 @@ if(!jsonObject.isNull(TAG_RESULTS))
 
                 client.set_Adress(adress);
                 newClient = client;
+                Config.LoggedInClient = newClient;
                 return true;
             }
 
