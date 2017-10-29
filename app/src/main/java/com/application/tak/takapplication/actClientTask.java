@@ -37,19 +37,11 @@ public class actClientTask extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
         viewPagerAdapter.addFragments(new actClientTaskNotSelected(),"Oczekujące");
         viewPagerAdapter.addFragments(new actClientTaskToDo(),"Zaakceptowane");
         viewPagerAdapter.addFragments(new actClientAddNewTask(),"Nowe zadanie");
 
-User u = new User();
-u.set_Id(1);
-        GetAllClientTasks clientTasks = new GetAllClientTasks(this,u);
-clientTasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
-    @Override
-    public void onDBRequestFinished() {
-
-    }
-});
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

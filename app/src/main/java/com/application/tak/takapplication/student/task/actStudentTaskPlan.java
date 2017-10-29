@@ -51,7 +51,7 @@ public class actStudentTaskPlan extends Fragment {
 
     User client = new User();
     Task_V task;
-    GetAllClientTasks tasks;
+    GetAllStudentTasks tasks;
 
     public actStudentTaskPlan()
     {
@@ -70,9 +70,9 @@ public class actStudentTaskPlan extends Fragment {
         recyclerview.setLayoutManager(layoutManager);
 
         User u = new User();
-        u.set_Id(1);
+        u.set_Id(2);
 
-        tasks = new GetAllClientTasks(getContext(),u);
+        tasks = new GetAllStudentTasks(getContext(),u);
         tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
             @Override

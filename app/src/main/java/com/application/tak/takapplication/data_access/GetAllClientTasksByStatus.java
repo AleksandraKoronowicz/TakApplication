@@ -1,6 +1,7 @@
 package com.application.tak.takapplication.data_access;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.widget.Toast;
 import com.application.tak.takapplication.data_access.GetJSONData;
 import com.application.tak.takapplication.data_model.Task_V;
@@ -21,11 +22,8 @@ import java.util.List;
 public class GetAllClientTasksByStatus extends GetJSONData
 {
     private static final String URL = Config.SERVER_NAME +"get_all_client_tasks_by_status.php";
-<<<<<<< HEAD
-    private static final String TAG_RESULTS="results";
-=======
+
     private static final String TAG_RESULTS="creator_tasks";
->>>>>>> origin/master
     private static final String TAG_ID="ID";
     private static final String TAG_CATEGORY_NAME="CATEGORY_NAME";
     private static final String TAG_TIME_FROM="TIME_FROM";
@@ -68,7 +66,9 @@ public class GetAllClientTasksByStatus extends GetJSONData
     public GetAllClientTasksByStatus(Context ctx, User client, Integer status)
     {
         super(ctx);
-        execute(URL, client.get_Id().toString(), status.toString());
+      //  execute(URL, client.get_Id().toString(), status.toString());
+    executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, URL, client.get_Id().toString(), status.toString());
+
     }
 
     @Override

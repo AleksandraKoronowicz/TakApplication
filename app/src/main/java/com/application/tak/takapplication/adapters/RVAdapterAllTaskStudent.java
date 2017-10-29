@@ -192,24 +192,16 @@ private String task_place;
     public void ChooseTask(List<AllTaskListStudent> members, int position)
     {
         Task_V task = new Task_V();
+        task = members.get(position).tsk;
         int taskid = members.get(position).getTaskId();
-        task.set_IsApproved(0);
-       task.set_CategoryId(members.get(position).categoryid);
 
-        task.set_TimeFrom(Calendar.getInstance().getTime());
-        task.set_TimeTo(Calendar.getInstance().getTime());
-        task.set_Id(taskid) ;
         task.set_StatusId(2);
-
         task.set_ExecutorId(2);
-        task.set_CreatorId(members.get(position).creatorid);
-        task.set_ExecutionTime(null);
-
-        members.remove(position);
 
         UpdateTask updateTask = new UpdateTask();
         updateTask.UpdateTask(task);
 
+        members.remove(position);
     }
 
     @Override

@@ -171,19 +171,9 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
     public void DeleteTask(List<TaskListNotSelected> members, int position)
     {
         Task_V task = new Task_V();
-        User u = new User();
 
-        int taskid = members.get(position).getId();
-        task.set_IsApproved(0);
-        task.set_CategoryId(members.get(position).categoryid);
-        task.set_TimeFrom(Calendar.getInstance().getTime());
-        task.set_TimeTo(Calendar.getInstance().getTime());
-        task.set_Id(taskid);
+        task = members.get(position).tsk;
         task.set_StatusId(4);
-        task.set_CreatorId(u.get_Id());
-
-        task.set_CreationTime(null);
-        task.set_ExecutorId(null);
 
         members.remove(position);
 

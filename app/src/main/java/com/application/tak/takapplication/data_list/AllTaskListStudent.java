@@ -44,9 +44,6 @@ this.id = tsk.get_Id();
         this.homeNumber = tsk.get_CreatorRoadNo();
         this.posteCode = tsk.get_CreatorPostCode();
 
-        this.creatorid = tsk.get_CreatorId();
-        this.isapproved = tsk.get_IsApproved();
-        this.categoryid = tsk.get_CategoryId();
     }
 
     public String getCzas()
