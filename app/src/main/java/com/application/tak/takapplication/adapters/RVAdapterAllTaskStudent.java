@@ -84,9 +84,11 @@ private String task_place;
         memberViewHolder.title_tv.setText(members.get(i).getTitle());
         memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"dd MMMM"));
         memberViewHolder.time_tv.setText(members.get(i).getTime());
-
+        memberViewHolder.fab_choose.setVisibility(View.INVISIBLE);
         memberViewHolder.fab_choose.hide();
         memberViewHolder.question.setVisibility(View.INVISIBLE);
+        SetNormalLayout(memberViewHolder);
+        memberViewHolder.cardView.setCardBackgroundColor(Color.WHITE);
         memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
                                                          @Override
@@ -110,9 +112,6 @@ private String task_place;
 
                                                              Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_in);
                                                              Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
-
-
-                                                             if (!isShow) {
 
                                                                  FloatingActionButton ph = (FloatingActionButton) v.findViewById(R.id.fabChooseTask);
                                                                  if (ph.getVisibility() != View.VISIBLE) {
@@ -139,8 +138,6 @@ private String task_place;
 
                                                                      fadeOutCard.setCardBackgroundColor(Color.WHITE);
                                                                  }
-
-                                                             }
                                                          }
                                                      }
         );
@@ -151,7 +148,9 @@ private String task_place;
          @Override
           public void onClick(View view)
           {
+              SetChooseActionLayoutAnimation(memberViewHolder);
             ChooseTask(members, i);
+          onBindViewHolder(memberViewHolder,i);
           }
          });
 
@@ -174,11 +173,9 @@ private String task_place;
 
     public String ChangeDateString(String dataToConvert, String resultFormat )
     {
-
-        //   String strDateFormat = "dd MMMM";
         SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
 
-        DateFormat format = new SimpleDateFormat("MMM d,yyyy");
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         Date result = null;
         try {
             result = format.parse(dataToConvert);
@@ -193,15 +190,29 @@ private String task_place;
     {
         Task_V task = new Task_V();
         task = members.get(position).tsk;
-        int taskid = members.get(position).getTaskId();
 
         task.set_StatusId(2);
-        task.set_ExecutorId(2);
+        task.set_ExecutorId(1);
 
         UpdateTask updateTask = new UpdateTask();
         updateTask.UpdateTask(task);
-
         members.remove(position);
+    }
+
+    public void SetNormalLayout(MemberViewHolder mv)
+    {
+        mv.date_tv.setAlpha(1f);
+        mv.title_tv.setAlpha(1f);
+        mv.name_tv.setAlpha(1f);
+        mv.time_tv.setAlpha(1f);
+        mv.google_map.setAlpha(1f);
+        mv.google_map.setEnabled(true);
+    }
+
+    public void SetChooseActionLayoutAnimation(MemberViewHolder mv)
+    {
+        Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
+mv.cardView.setAnimation(slideDown);
     }
 
     @Override
@@ -210,6 +221,7 @@ private String task_place;
         MemberViewHolder memberViewHolder = new MemberViewHolder(view);
         return memberViewHolder;
     }
+
 
     @Override
     public int getItemCount() {

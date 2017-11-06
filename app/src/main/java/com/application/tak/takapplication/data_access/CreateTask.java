@@ -23,61 +23,63 @@ public class CreateTask extends AsyncTask<String,Void,String>
 
     public boolean InsertTask(Task t)
     {
+
         String date_from = Config.DATE_FORMAT.format(t.get_TimeFrom());
         String date_to = Config.DATE_FORMAT.format(t.get_TimeTo());
-        execute(new String[]{t.get_CreatorId().toString(),t.get_StatusId().toString(),t.get_CreatorId().toString(),date_from,date_to});
-       return true;
+        //executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,new String[]{t.get_CreatorId().toString(),t.get_StatusId().toString(),t.get_CreatorId().toString(),date_from,date_to});
+        executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,new String[]{t.get_CategoryId().toString(),t.get_StatusId().toString(),t.get_CreatorId().toString(),date_from,date_to});
+        return true;
     }
 
     @Override
     protected String doInBackground(String... params)
     {       String result = "";
 
-            String category_id=params[0];
+        String category_id=params[0];
         String status_id=params[1];
         String creator_id=params[2];
         String time_from=params[3];
         String time_to=params[4];
-        String app_id = Config.ApplicationId;
-            try {
-                URL url=new URL(URI);
-                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                OutputStream os=httpURLConnection.getOutputStream();
 
-                String data= URLEncoder.encode("category_id","UTF-8")+"="+URLEncoder.encode(category_id,"UTF-8")+"&"+
-                        URLEncoder.encode("status_id","UTF-8")+"="+URLEncoder.encode(status_id,"UTF-8")+"&"+
-                        URLEncoder.encode("creator_id","UTF-8")+"="+URLEncoder.encode(creator_id,"UTF-8")+"&"+
-                        URLEncoder.encode("time_from","UTF-8")+"="+URLEncoder.encode(time_from,"UTF-8")+"&"+
-                        URLEncoder.encode("time_to","UTF-8")+"="+URLEncoder.encode(time_to,"UTF-8")+"&"+
-                URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(app_id,"UTF-8");
+        try {
+            URL url=new URL(URI);
+            HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setDoOutput(true);
+            OutputStream os=httpURLConnection.getOutputStream();
 
-                BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
-                bufferedWriter.write(data);
-                bufferedWriter.flush();
+            String data= URLEncoder.encode("category_id","UTF-8")+"="+URLEncoder.encode(category_id,"UTF-8")+"&"+
+                    URLEncoder.encode("status_id","UTF-8")+"="+URLEncoder.encode(status_id,"UTF-8")+"&"+
+                    URLEncoder.encode("creator_id","UTF-8")+"="+URLEncoder.encode(creator_id,"UTF-8")+"&"+
+                    URLEncoder.encode("time_from","UTF-8")+"="+URLEncoder.encode(time_from,"UTF-8")+"&"+
+                    URLEncoder.encode("time_to","UTF-8")+"="+URLEncoder.encode(time_to,"UTF-8")+"&"+
+                    URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
 
-                int statusCode = httpURLConnection.getResponseCode();
-                if (statusCode == 200)
-                {
+            BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
+            bufferedWriter.write(data);
+            bufferedWriter.flush();
 
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
-                    StringBuilder sb = new StringBuilder();
-                    String line;
+            int statusCode = httpURLConnection.getResponseCode();
+            if (statusCode == 200)
+            {
 
-                    while ((line = reader.readLine()) != null)
-                        sb.append(line).append("\n");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line;
 
-                    result = sb.toString();
-                    bufferedWriter.close();
-                }
+                while ((line = reader.readLine()) != null)
+                    sb.append(line).append("\n");
 
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                result = sb.toString();
+                bufferedWriter.close();
             }
+
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return result;
     }

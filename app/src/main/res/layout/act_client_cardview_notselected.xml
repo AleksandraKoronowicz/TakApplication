@@ -26,6 +26,16 @@
 
             android:padding="9dp">
 
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabClientDelete"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                app:fabSize="normal"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
+
             <ImageView
                 android:id="@+id/imageView12"
                 android:layout_width="wrap_content"
@@ -39,9 +49,9 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignEnd="@+id/imageView12"
-                android:layout_alignParentBottom="true"
                 android:layout_alignRight="@+id/imageView12"
-                android:layout_below="@+id/fabClientDelete"
+                android:layout_below="@+id/client_nameOfaDay"
+                android:visibility="invisible"
                 app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
             <TextView
@@ -56,33 +66,6 @@
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabClientEdit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignBottom="@+id/client_nameOfaDay"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/imageView12"
-                android:layout_toStartOf="@+id/client_nameOfaDay"
-                android:clickable="true"
-                app:fabSize="normal"
-                app:srcCompat="@android:drawable/ic_menu_edit" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabClientDelete"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignBottom="@+id/client_nameOfaDay"
-                android:layout_alignEnd="@+id/imageView12"
-                android:layout_alignParentTop="true"
-                android:layout_alignRight="@+id/imageView12"
-                android:layout_toEndOf="@+id/client_nameOfaDay"
-                android:layout_toRightOf="@+id/client_nameOfaDay"
-                android:clickable="true"
-                app:fabSize="normal"
-                app:srcCompat="@android:drawable/ic_menu_delete" />
 
             <TextView
                 android:id="@+id/task_time2"

@@ -18,6 +18,8 @@ import com.application.tak.takapplication.actStudentMainAllTaskListActivity;
 import com.application.tak.takapplication.adapters.RVAdapter;
 import com.application.tak.takapplication.adapters.RVAdapterAllTaskStudent;
 import com.application.tak.takapplication.data_access.Config;
+import com.application.tak.takapplication.data_access.GetAllStudentTasks;
+import com.application.tak.takapplication.data_access.GetAllStudentTasksByStatus;
 import com.application.tak.takapplication.data_access.GetAllTasks;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
 import com.application.tak.takapplication.data_list.TaskList;
@@ -40,7 +42,7 @@ public class actStudentAllTask extends Fragment {
 
     User client = new User();
     Task_V task;
-   GetAllTasks tasks;
+   GetAllStudentTasks tasks;
 
     public actStudentAllTask()
     {
@@ -62,21 +64,20 @@ public class actStudentAllTask extends Fragment {
         recyclerview.setLayoutManager(layoutManager);
 
         User u = new User();
-        u.set_Id(2);
-        tasks = new GetAllTasks(getActivity());
+        u.set_Id(1);
+        tasks = new GetAllStudentTasks(getContext(),u);
 
         tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
                                                @Override
                                                public void onDBRequestFinished() {
                                                    if (tasks._tasks != null) {
-                                                      // Config.ClientTasks = tasks._tasks;
+                                                      Config.ClientTasks = tasks._tasks;
                                                        for (Task_V task :  Config.ClientTasks ) {
-if (task.get_StatusName().contains("Pending")) {
+
                                                            AllTaskListStudent member = new AllTaskListStudent(task);
                                                              memberList.add(member);
 
-}
                                                        }
                                                    }
                                                    RVAdapterAllTaskStudent adapter = new RVAdapterAllTaskStudent(memberList, getActivity());

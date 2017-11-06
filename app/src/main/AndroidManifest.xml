@@ -19,6 +19,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
 
+
         <activity
             android:name=".actClientTask"
             android:label="Panel główny"
@@ -29,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <activity
+               <activity
             android:name=".actStudentTask"
             android:label="Panel Użytkownika - zadania"
             android:theme="@style/AppTheme.NoActionBar">

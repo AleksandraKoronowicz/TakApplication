@@ -24,6 +24,32 @@
             android:padding="9dp">
 
             <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabClientPhoneTaskToDo"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/imageView7"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_toLeftOf="@+id/imageView14"
+                android:layout_toStartOf="@+id/imageView14"
+                android:clickable="true"
+                app:elevation="4dp"
+                app:fabSize="normal"
+                app:srcCompat="@android:drawable/ic_menu_call" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabClientDeleteTaskToDo"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/imageView7"
+                android:layout_toEndOf="@+id/task_time"
+                android:layout_toRightOf="@+id/task_time"
+                android:clickable="true"
+                app:elevation="4dp"
+                app:fabSize="normal"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
+
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/floatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,32 +147,6 @@
                 android:layout_below="@+id/executor_name"
                 android:text="Zespół szkół im. Adama Mickiewicza, Gliwice"
                 android:textSize="15sp" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabClientPhoneTaskToDo"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_alignTop="@+id/imageView7"
-                android:layout_marginEnd="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_toLeftOf="@+id/imageView14"
-                android:layout_toStartOf="@+id/imageView14"
-                android:clickable="true"
-                app:elevation="4dp"
-                app:fabSize="normal"
-                app:srcCompat="@android:drawable/ic_menu_call" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabClientDeleteTaskToDo"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_alignTop="@+id/imageView7"
-                android:layout_toEndOf="@+id/task_time"
-                android:layout_toRightOf="@+id/task_time"
-                android:clickable="true"
-                app:elevation="4dp"
-                app:fabSize="normal"
-                app:srcCompat="@android:drawable/ic_menu_delete" />
 
         </RelativeLayout>
 

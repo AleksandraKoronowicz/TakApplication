@@ -12,4 +12,5 @@
     <color name="btncolorgrey">#32dcdbdb</color>
     <color name="greyimage">#49ebeaea</color>
     <color name="spinercolor">#4ce6e6e6</color>
+    <color name="txtLessImportantData">#c7c7c7</color>
 </resources>
