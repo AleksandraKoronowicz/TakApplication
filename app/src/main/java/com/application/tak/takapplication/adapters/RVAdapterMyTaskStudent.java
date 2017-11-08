@@ -252,8 +252,10 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int which) {
+
                         SetChooseActionLayoutAnimation(mm);
                         notifyDataSetChanged();
+                        SetChooseActionLayoutAnimation(mm);
                         DeleteTask(members, position);
 
                     }
@@ -275,9 +277,11 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
         mv.name_tv.setAlpha(1f);
         mv.time_tv.setAlpha(1f);
         mv.place_tv.setAlpha(1f);
-mv.dayandmonth_tv.setAlpha(1f);
+        mv.dayandmonth_tv.setAlpha(1f);
+        mv.place_tv.setEnabled(true);
         mv.cardView.setCardBackgroundColor(Color.WHITE);
     }
+
 
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

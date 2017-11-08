@@ -41,7 +41,7 @@ public class actClientLogin extends AppCompatActivity {
     private Context ctx;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     public void gotoTutorial(View v){
-        Intent tutorialPage = new Intent (this, actStudentMainAllTaskListActivity.class);
+        Intent tutorialPage = new Intent (this, actClientTask.class);
         startActivity(tutorialPage);
     }
     /**

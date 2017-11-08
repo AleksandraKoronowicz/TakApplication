@@ -210,7 +210,7 @@ public class actClientAddNewTask extends Fragment {
         SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH),time.get(Calendar.HOUR),time.get(Calendar.MINUTE));
+        calendar.set(dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH),time.get(Calendar.HOUR_OF_DAY),time.get(Calendar.MINUTE));
 
         Calendar cal = Calendar.getInstance();
        Calendar timeto = calendar;

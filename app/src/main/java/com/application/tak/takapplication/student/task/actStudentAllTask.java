@@ -1,29 +1,19 @@
 package com.application.tak.takapplication.student.task;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
+
 import com.application.tak.takapplication.R;
-import com.application.tak.takapplication.actStudentMainAllTaskListActivity;
-import com.application.tak.takapplication.adapters.RVAdapter;
 import com.application.tak.takapplication.adapters.RVAdapterAllTaskStudent;
 import com.application.tak.takapplication.data_access.Config;
 import com.application.tak.takapplication.data_access.GetAllStudentTasks;
-import com.application.tak.takapplication.data_access.GetAllStudentTasksByStatus;
-import com.application.tak.takapplication.data_access.GetAllTasks;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
-import com.application.tak.takapplication.data_list.TaskList;
-import com.application.tak.takapplication.data_list.TaskListNotSelected;
 import com.application.tak.takapplication.data_model.Task_V;
 import com.application.tak.takapplication.data_model.User;
 import com.application.tak.takapplication.interfaces.OnDBRequestFinished;

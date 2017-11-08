@@ -148,9 +148,11 @@ private String task_place;
          @Override
           public void onClick(View view)
           {
+
+              onBindViewHolder(memberViewHolder,i);
               SetChooseActionLayoutAnimation(memberViewHolder);
-            ChooseTask(members, i);
-          onBindViewHolder(memberViewHolder,i);
+              ChooseTask(members, i);
+
           }
          });
 

@@ -21,8 +21,18 @@
 
 
         <activity
+            android:name=".actFirstUsage"
+            android:label="Logowanie"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".actClientTask"
-            android:label="Panel główny"
+            android:label="Panel klienta - zadania"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -32,7 +42,7 @@
 
                <activity
             android:name=".actStudentTask"
-            android:label="Panel Użytkownika - zadania"
+            android:label="Panel ucznia - zadania"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -65,20 +75,6 @@
         </activity>
 
         <activity android:name=".act_Student_Main_Manu">
-        </activity>
-        <activity
-                android:name=".actStudentMainAllTaskListActivity"
-                android:label="@string/title_actstudentmainalltask_list"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-                android:name=".actStudentMainAllTaskDetailActivity"
-                android:label="@string/title_actstudentmainalltask_detail"
-                android:parentActivityName=".actStudentMainAllTaskDetailActivity"
-                android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.application.tak.takapplication.actStudentMainAllTaskListActivity"/>
         </activity>
         <activity
                 android:name=".LoginActivity"

@@ -70,7 +70,7 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
     @Override
     public void onBindViewHolder(final MemberViewHolder memberViewHolder, final int i) {
-        final TaskListNotSelected item = members.get(i);
+        //final TaskListNotSelected item = members.get(i);
        memberViewHolder.del.setVisibility(View.INVISIBLE);
         memberViewHolder.cardView.setCardBackgroundColor(Color.WHITE);
         memberViewHolder.day_name_tv.setText(ChangeDateString(members.get(i).getData(),"EEEE"));
@@ -171,10 +171,10 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         UpdateTask updateTask = new UpdateTask();
         updateTask.UpdateTask(task);
 
-        members.remove(position);
+      //  members.remove(position);
     }
 
-    public void ShowMessageBox(List<TaskListNotSelected> member, final int position, final MemberViewHolder mv)
+    public void ShowMessageBox(final List<TaskListNotSelected> member, final int position, final MemberViewHolder mv)
     {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         alertDialog.setMessage("Napewno chcesz usunąć zadanie?");
@@ -183,9 +183,13 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int which) {
-                        SetDeleteAnimation(mv);
-                        DeleteTask(members, position);
+
                         onBindViewHolder(mv,position);
+                        SetDeleteAnimation(mv);
+                        DeleteTask(member, position);
+                        member.remove(position);
+
+                      //
                     }
                 });
         alertDialog.setNegativeButton("Anuluj",
@@ -205,6 +209,8 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         mv.day_name_tv.setAlpha(1f);
         mv.time_tv.setAlpha(1f);
         mv.title_tv.setAlpha(1f);
+        mv.del.setVisibility(View.INVISIBLE);
+        mv.del.hide();
 
     }
 

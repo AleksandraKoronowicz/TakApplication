@@ -14,10 +14,14 @@
             android:theme="@style/AppTheme.AppBarOverlay">
 
         <TextView
-                android:text="R E G U A M I N"
-                android:layout_width="match_parent"
-                android:layout_height="35dp" android:id="@+id/textView3" android:layout_weight="1"
-                android:textSize="25sp" android:textColor="@color/colorWhite"/>
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:text="Regulamin"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp" />
         <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"

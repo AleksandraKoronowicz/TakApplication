@@ -173,9 +173,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
 
                     public void onClick(DialogInterface dialog, int which) {
 
+
+                        onBindViewHolder(memberViewHolder,i);
                         SetDeleteAnimation(memberViewHolder);
                         DeleteTask(members,i);
-                        onBindViewHolder(memberViewHolder,i);
+
                     }
                 });
 
