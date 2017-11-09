@@ -3,6 +3,7 @@ package com.application.tak.takapplication;
 import android.graphics.Movie;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
@@ -11,6 +12,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.application.tak.takapplication.adapters.ViewPagerAdapter;
 import com.application.tak.takapplication.data_access.GetAllClientTasks;
 import com.application.tak.takapplication.data_model.User;
@@ -25,6 +29,7 @@ public class actClientTask extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
+    Menu menu;
 
 
     @Override
@@ -34,6 +39,7 @@ public class actClientTask extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -42,9 +48,36 @@ public class actClientTask extends AppCompatActivity {
         viewPagerAdapter.addFragments(new actClientTaskToDo(),"Zaakceptowane");
         viewPagerAdapter.addFragments(new actClientAddNewTask(),"Nowe zadanie");
 
-
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_client_overall, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_logout) {
+            return true;
+        }
+        if (id == R.id.action_problem)
+        {
+            SendMail();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void SendMail()
+    {
+
     }
 }
 /*

@@ -75,22 +75,13 @@ public class actFirstUsage extends AppCompatActivity {
 
         final List<User> users = localDB.GetAllUsers();
 
-        User u = getLoggedUser(users);
 
-        if(u != null)
-        {
-            if(u.get_RoleId() == 1)
-            {
+        ///////////////////////////////////////Jezeli juz jest Zalogowany i dał wyloguj to otworz od razu
+        /////////////////////////////spr local db czy sa dane -> tak
+        ////                                                    - spr, ktróry user ma aktywną sesję i
+        ///                                                     - weź role i otwórz act..Task
+        ////////////////////////////                           -> nie otworz okno logowania act.FirstUsage
 
-            }
-            else if(u.get_RoleId() == 2)
-            {
-                Intent i = new Intent(ctx, actClientTask.class);
-                i.putExtra("user_id",u.get_Id());
-                startActivity(i);
-            }
-
-        }
 
        /* btnClient.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,9 +134,58 @@ public class actFirstUsage extends AppCompatActivity {
 
                 if (mode.getText() == "Klient")
                 {
-                    if(checkUsersRights(users,2))
+                    if (users != null)
                     {
-                        if(users.size() > 0)
+                        // spr czy są uż z uprawnieniami Student, jezeli tak to odmow logowania i rejestracji!
+
+                        if(checkUsersRights(users,1))
+                        {
+                            ///////////////////////////czy dobry user i pass
+                            if (  CheckUserAuthentication(email.getText().toString(),password.getText().toString()))
+                            {
+                                // update user as Is_LogIN
+                                Intent i = new Intent(ctx,actClientTask.class);
+                                startActivity(i);
+                                // this finish
+                            }
+
+                            else {
+                                Toast t =Toast.makeText(ctx,"Błędne dane do logowania. Spróbuj jeszcze raz :)",Toast.LENGTH_LONG);
+                                t.show();
+                                email.setText("");
+                                password.setText("");
+                            }
+                        }
+                        else
+                        {
+                            //konto uzytkownika z innym role_id,
+                            Toast t =Toast.makeText(ctx,"Na urządzeniu istnieją już użytkownicy z innymi uprawnieniami. Nie można utworzyć nowego konta typu KLIENT",Toast.LENGTH_LONG);
+                            t.show();
+                        }
+
+                    }
+                    /////////////////////local db jest pusta ale użytkownik juz ma swoje konto więc trzeba mu pozwolic na zalogowanie sie 
+                    else
+                    {
+                        if (  CheckUserAuthentication(email.getText().toString(),password.getText().toString()))
+                        {
+                            // update user as Is_LogIN
+                            Intent i = new Intent(ctx,actClientTask.class);
+                            startActivity(i);
+                            // this finish
+                        }
+
+                        else {
+                            Toast t =Toast.makeText(ctx,"Błędne dane do logowania. Spróbuj jeszcze raz :)",Toast.LENGTH_LONG);
+                            t.show();
+                            email.setText("");
+                            password.setText("");
+                        }
+                    }
+
+                  /*  if(checkUsersRights(users,2))
+                    {
+                         if(users.size() > 0)
                         {
 
                           if (  CheckUserAuthentication(email.getText().toString(),password.getText().toString()))
@@ -170,7 +210,7 @@ public class actFirstUsage extends AppCompatActivity {
                             t.show();
                         }
 
-                    }
+                    }*/
 
                 }
                 else if (mode.getText() == "Uczeń")
@@ -285,7 +325,8 @@ rbFace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
     private boolean checkUsersRights(List<User> users, Integer roleId)
     {
-        Integer role_id = 0;
+       // Integer role_id = 0;
+        Boolean canLogin = true;
         for (User u:users)
         {
             if(u.get_RoleId() == roleId)
