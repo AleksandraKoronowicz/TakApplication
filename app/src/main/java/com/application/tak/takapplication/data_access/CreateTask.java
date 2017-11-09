@@ -38,7 +38,7 @@ public class CreateTask extends AsyncTask<String,Void,String>
         String creator_id=params[2];
         String time_from=params[3];
         String time_to=params[4];
-        String app_id = Config.ApplicationId;
+
             try {
                 URL url=new URL(URI);
                 HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
@@ -50,8 +50,8 @@ public class CreateTask extends AsyncTask<String,Void,String>
                         URLEncoder.encode("status_id","UTF-8")+"="+URLEncoder.encode(status_id,"UTF-8")+"&"+
                         URLEncoder.encode("creator_id","UTF-8")+"="+URLEncoder.encode(creator_id,"UTF-8")+"&"+
                         URLEncoder.encode("time_from","UTF-8")+"="+URLEncoder.encode(time_from,"UTF-8")+"&"+
-                        URLEncoder.encode("time_to","UTF-8")+"="+URLEncoder.encode(time_to,"UTF-8")+"&"+
-                URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(app_id,"UTF-8");
+                        URLEncoder.encode("time_to","UTF-8")+"="+URLEncoder.encode(time_to,"UTF-8");
+             //  URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(app_id,"UTF-8");
 
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
                 bufferedWriter.write(data);
