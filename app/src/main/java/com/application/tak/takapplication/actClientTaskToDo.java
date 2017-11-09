@@ -2,7 +2,6 @@ package com.application.tak.takapplication;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -58,7 +57,6 @@ import java.util.List;
             LinearLayoutManager layoutManager = new LinearLayoutManager(_activity);
             recyclerview.setLayoutManager(layoutManager);
 
-
             User u = new User();
             u.set_Id(2);
             tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
@@ -70,44 +68,19 @@ import java.util.List;
                             Config.ClientTasks = tasksByStatus._tasks;
                             for (Task_V task : Config.ClientTasks) {
 
-                               TaskList member = new TaskList(task);
+                                String x = task.get_CategoryName();
+                                TaskList member = new TaskList(task);
 
                                 memberList.add(member);
                             }
+
+                        adapter = new RVAdapter(memberList, _activity);
+                        recyclerview.setAdapter(adapter);
                     }
-                    adapter = new RVAdapter(memberList, _activity);
-                    recyclerview.setAdapter(adapter);
                 }
             });
                     return view;
 
             }
-
-            public void RefreashView()
-            {
-                User u = new User();
-                u.set_Id(2);
-                tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
-                tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
-                    @Override
-                    public void onDBRequestFinished() {
-                        if (tasksByStatus._tasks != null) {
-
-                            Config.ClientTasks = tasksByStatus._tasks;
-                            for (Task_V task : Config.ClientTasks) {
-
-                                TaskList member = new TaskList(task);
-
-                                memberList.add(member);
-                            }
-                        }
-                        adapter = new RVAdapter(memberList, _activity);
-                        recyclerview.setAdapter(adapter);
-                    }
-                });
-
-            }
-
-
 }
 

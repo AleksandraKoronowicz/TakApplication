@@ -28,18 +28,6 @@
             android:layout_height="179dp"
             android:padding="9dp">
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabChooseTask"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:clickable="true"
-
-                app:elevation="5dp"
-                app:fabSize="normal"
-                app:srcCompat="@drawable/cooltext242812233487143" />
-
             <TextView
                 android:id="@+id/student_question"
                 android:layout_width="wrap_content"
@@ -48,7 +36,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="Pomożesz mi?"
                 android:textColor="@android:color/white"
-                android:textSize="28sp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <Button
@@ -66,8 +54,19 @@
                 android:lineSpacingExtra="20sp"
                 android:text="Tu mnie znajdziesz"
                 android:textAlignment="inherit"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="14sp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabChooseTask"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+
+                app:elevation="5dp"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/cooltext242812233487143" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -88,7 +87,7 @@
                 android:layout_below="@+id/student_question"
                 android:text="25 lipca"
                 android:textAlignment="center"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/student_task_topic"
@@ -105,29 +104,26 @@
 
             <TextView
                 android:id="@+id/student_task_time"
-                android:layout_width="140dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/student_name"
-                android:layout_alignBottom="@+id/student_name"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/student_name"
                 android:text="16:00 do 17:00"
-                android:textAlignment="textStart"
-                android:textColor="@color/txtLessImportantData"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/student_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/btnAdresMap"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/student_date_task"
                 android:text="Aleksandra Koronowicz"
-                android:textAlignment="textEnd"
-                android:textColor="@color/txtLessImportantData"
-                android:textSize="16sp" />
+                android:textAlignment="textStart"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 

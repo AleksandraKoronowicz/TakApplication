@@ -88,15 +88,48 @@ if(tasksByStatus._tasks != null)
             TaskListNotSelected member = new TaskListNotSelected(task);
             memberList.add(member);
     }
-
+    adapter = new RVAdapterTaskNotSelected(memberList, _activity);
+    recyclerview.setAdapter(adapter);
 }
-                    adapter = new RVAdapterTaskNotSelected(memberList, _activity);
-                    recyclerview.setAdapter(adapter);
+//memberList = Stream.of(memberList.takeWhile(t -> t._StatusName == "fefsd"));
+
 
                 }
             });
 
 
-          return view;
+
+        /*    client.set_Id(1);
+            clientTask = new GetAllClientTasks(getContext(),client);
+            clientTask.setDBRequestFinishedListener(new OnDBRequestFinished() {
+                @Override
+                public void onDBRequestFinished() {
+                    categoriesList = categories._categories;
+                    if(categories._categories != null)
+                    {
+                        awayStrings = new String[categoriesList.size()];
+                        int i= 0;
+                        for(Category c: categoriesList)
+                        {
+                            awayStrings[i] = c.get_CategoryName();
+                            i++;
+
+                        }
+      */
+         /*   TaskListNotSelected member = new TaskListNotSelected()
+            memberList.add(member);
+            TaskListNotSelected member2 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
+            memberList.add(member2);
+            TaskListNotSelected member3 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
+            memberList.add(member3);*/
+
+       //     recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
+     //       LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+    //        recyclerview.setLayoutManager(layoutManager);
+
+          //  RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
+         ///   recyclerview.setAdapter(adapter);
+
+            return view;
         }
     }

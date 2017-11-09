@@ -89,6 +89,7 @@ public class RVAdapterCalendarCardStudent extends RecyclerView.Adapter<RVAdapter
                                                              fab_msg.setVisibility(View.INVISIBLE);
                                                              FloatingActionButton fab_ph = (FloatingActionButton) v.findViewById(R.id.fabCalendarPhone);
                                                              fab_ph.setVisibility(View.INVISIBLE);
+
 */
                 fadeOutCard.setCardBackgroundColor(Color.rgb(212,212,212));
 
@@ -156,6 +157,8 @@ public class RVAdapterCalendarCardStudent extends RecyclerView.Adapter<RVAdapter
         });
 
     }
+
+
 
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

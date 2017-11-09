@@ -24,6 +24,10 @@ public class MyTaskListStudent {
     public String homeNumber;
     public String posteCode;
 
+    public int creatorid;
+    public int categoryid;
+    public int isapproved;
+
     public Task_V tsk;
     public int id;
 
@@ -36,11 +40,15 @@ this.id = tsk.get_Id();
         this.dataTime = getCzas();
         this.myclientName = tsk.get_CreatorFName() + " " + tsk.get_CreatorLName();
         this.myclientPhone = tsk.get_CreatorPhoneNo();
-        this.road = tsk.get_CreatorRoad();
+         this.road = tsk.get_CreatorRoad();
         this.city = tsk.get_CreatorCity();
         this.homeNumber = tsk.get_CreatorRoadNo();
         this.posteCode = tsk.get_CreatorPostCode();
         this.mytaskPlace = getTaskPlace();
+
+        this.creatorid = tsk.get_CreatorId();
+        this.isapproved = tsk.get_IsApproved();
+        this.categoryid = tsk.get_CategoryId();
     }
 
 

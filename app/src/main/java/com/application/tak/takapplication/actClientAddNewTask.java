@@ -3,13 +3,11 @@ package com.application.tak.takapplication;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.StringDef;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,11 +27,9 @@ import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 public class actClientAddNewTask extends Fragment {
 
@@ -63,7 +59,9 @@ public class actClientAddNewTask extends Fragment {
     String[] awayStrings;
 
 
-    public actClientAddNewTask() {}
+    public actClientAddNewTask() {
+    }
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,22 +83,15 @@ public class actClientAddNewTask extends Fragment {
         {
             @Override public void onClick(View v)
             {
+                Animation slideup = AnimationUtils.loadAnimation(ctx, R.anim.slide_up);
 
-                if(!tv_data.getText().toString().contains("Wybierz datę")) {
-                    Animation slideup = AnimationUtils.loadAnimation(ctx, R.anim.slide_up);
-                    tp.setVisibility(View.VISIBLE);
-                    updateTime();
-                    tv.setVisibility(View.INVISIBLE);
-                    done.setAnimation(slideup);
-                    done.show();
-                    question.setAnimation(slideup);
-                    question.setVisibility(View.VISIBLE);
-                }
-                else
-                {
-                    ShowMessage();
-                }
-
+                tp.setVisibility(View.VISIBLE);
+                updateTime();
+                tv.setVisibility(View.INVISIBLE);
+                done.setAnimation(slideup);
+                done.show();
+                question.setAnimation(slideup);
+                question.setVisibility(View.VISIBLE);
             }});
 
         tv = (TextView) view.findViewById(R.id.tvchoosetime);
@@ -139,16 +130,6 @@ public class actClientAddNewTask extends Fragment {
                     spinner.setAdapter(adapter);}
             }});
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                selectedItem = parent.getItemAtPosition(position).toString();
-            }
-            public void onNothingSelected(AdapterView<?> parent)
-            {
-
-            }});
-
         done.setOnClickListener(new View.OnClickListener(){@Override public void onClick(View v) {
             insertTask();
             ClearData();
@@ -156,24 +137,18 @@ public class actClientAddNewTask extends Fragment {
 
         }});
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    {
+      selectedItem = parent.getItemAtPosition(position).toString();
+    }
+    public void onNothingSelected(AdapterView<?> parent)
+    {
 
-        tp.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-
-            @Override
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                view.setIs24HourView(true);
-
-                time.set(Calendar.HOUR, hourOfDay);
-                time.set(Calendar.MINUTE, minute);
-            }
-      });
-
-
-
+    }
+});
  return view;
     }
-
-
 
     private void updateTextButton()
     {
@@ -191,7 +166,7 @@ public class actClientAddNewTask extends Fragment {
 
     private void updateTime()
     {
-  //    new TimePickerDialog(this.getActivity(),t,  time.get(Calendar.HOUR),  time.get(Calendar.MINUTE),true).show();
+      //  new TimePickerDialog(this.getActivity(),t,  time.get(Calendar.HOUR),  time.get(Calendar.MINUTE),true).show();
 
 
     }
@@ -206,22 +181,20 @@ public class actClientAddNewTask extends Fragment {
         Task t = new Task();
         User u = new User();
 
-//String timeFromTimePicker = dateTime.get(Calendar.DAY_OF_MONTH) + "/" + dateTime.get(Calendar.MONTH)+ "/" + dateTime.get(Calendar.YEAR) + " " + time.get(Calendar.HOUR) + ":" +time.get(Calendar.MINUTE);
-        SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+String timeTo = dateTime.getTime() + " " + time.getTime();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH),time.get(Calendar.HOUR_OF_DAY),time.get(Calendar.MINUTE));
 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
-       Calendar timeto = calendar;
-       timeto.add(calendar.HOUR,1);
+        Calendar timeto = Calendar.getInstance();
+        timeto.add(dateTime.HOUR,1);
 
-
-        t.set_TimeFrom(calendar.getTime());
+        t.set_TimeFrom(dateTime.getTime());
         t.set_TimeTo(timeto.getTime());
-        t.set_CategoryId( FindCategoryId());
+        String xxxx = selectedItem;
+        t.set_CategoryId(1); // get category it ??
         t.set_CreationTime(cal.getTime());
-        t.set_CreatorId(2);//u.get_Id());
+        t.set_CreatorId(1);//u.get_Id());
         t.set_IsApproved(0);
         t.set_ExecutorId(null);
         t.set_StatusId(1);
@@ -253,41 +226,20 @@ public class actClientAddNewTask extends Fragment {
         }
     };
 
-    public Integer FindCategoryId()
-    {
-        Integer idCategory = 1;
-        for(Category c: categoriesList)
-        {
-            if (c.get_CategoryName() == selectedItem)
-            {
-                idCategory = c.get_Id();
-            }
+    TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener() {
 
+
+
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            view.setIs24HourView(true);
+            view.setLayoutMode(1);
+
+            time.set(Calendar.HOUR, hourOfDay);
+            time.set(Calendar.MINUTE, minute);
+            updateTextTimeButton();
         }
-      return idCategory;
-    }
+    };
 
-public void ShowMessage()
-{
-    AlertDialog.Builder alertDialog = new AlertDialog.Builder(ctx);
-    alertDialog.setTitle("Brak wybranego terminu wykonania zadania");
-    alertDialog.setMessage("Wybierz datę zadania");
-    alertDialog.setIcon(R.drawable.calendar64);
-    alertDialog.setPositiveButton("OK",
-            new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog,
-                                    int which) {
-                    updateDate();
-                }
-            });
-    /*alertDialog.setNegativeButton("Anuluj",
-            new DialogInterface.OnClickListener() {
-
-                public void onClick(DialogInterface dialog,
-                                    int which) {
-                    dialog.cancel();
-                }
-            });*/
-    alertDialog.show();
-}
 }

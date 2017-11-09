@@ -1,26 +1,23 @@
 package com.application.tak.takapplication.data_access;
 
-import android.content.Context;
-import android.widget.Toast;
-import com.application.tak.takapplication.data_model.Adress;
-import com.application.tak.takapplication.data_model.Category;
-import com.application.tak.takapplication.data_model.Client_V;
-import com.application.tak.takapplication.data_model.School;
-import com.application.tak.takapplication.data_model.Student_V;
-import com.application.tak.takapplication.data_model.User;
-import org.json.JSONArray;
-import org.json.JSONObject;
+        import android.content.Context;
+        import android.widget.Toast;
+        import com.application.tak.takapplication.data_model.Adress;
+        import com.application.tak.takapplication.data_model.Category;
+        import com.application.tak.takapplication.data_model.Client_V;
+        import com.application.tak.takapplication.data_model.School;
+        import com.application.tak.takapplication.data_model.Student_V;
+        import com.application.tak.takapplication.data_model.User;
+        import org.json.JSONArray;
+        import org.json.JSONObject;
 
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.List;
+        import java.io.*;
+        import java.net.HttpURLConnection;
+        import java.net.URL;
+        import java.net.URLEncoder;
+        import java.util.List;
 
-/**
- * Created by azielinska on 04/07/2017.
- */
-public class GetUserById extends GetJSONData
+public class GetUserByUsername extends GetJSONData
 {
     private static String URL = Config.SERVER_NAME ;
     private static final String TAG_ID="ID";
@@ -49,24 +46,24 @@ public class GetUserById extends GetJSONData
     public Client_V _client;
     public DB_result dbResult;
 
-    public GetUserById(String userType,Integer id,Context ctx)
+    public GetUserByUsername(String userType,String username,Context ctx)
     {
         super(ctx);
         switch (userType)
         {
             case "Client":
-                URL = URL+"get_client_by_id.php";
+                URL = URL+"get_client_by_username.php";
                 break;
             case "Student":
-                URL = URL+"get_student_by_id.php";
+                URL = URL+"get_student_by_username.php";
                 break;
             case "Teacher":
-                URL = URL+"get_teacher_by_id.php";
+                URL = URL+"get_teacher_by_username.php";
                 break;
-            default: URL = Config.SERVER_NAME +"get_user_by_id.php";
-            break;
+            default: URL = Config.SERVER_NAME +"get_user_by_username.php";
+                break;
         }
-        execute(new String[]{URL,id.toString(),userType});
+        execute(new String[]{URL,username,userType});
     }
 
     @Override
@@ -74,7 +71,7 @@ public class GetUserById extends GetJSONData
     {
         String result = "";
         String uri = params[0];
-        String id = params[1];
+        String username = params[1];
         String userType = params[2];
 
         BufferedReader bufferedReader = null;
@@ -87,8 +84,8 @@ public class GetUserById extends GetJSONData
             OutputStream os=con.getOutputStream();
 
             String data=
-                    URLEncoder.encode("id","UTF-8")+"="+URLEncoder.encode(id,"UTF-8")+"&"+
-            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
+                    URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
+                            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
 
             BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
             bufferedWriter.write(data);
@@ -121,40 +118,40 @@ public class GetUserById extends GetJSONData
 
     }
 
-private void ProcessClient(String data)
+    private void ProcessClient(String data)
 {
     try{
-    JSONObject jsonObject = new JSONObject(data.substring(data.indexOf("{"), data.lastIndexOf("}") + 1));
-    if(!jsonObject.isNull("client"))
-    {
-        JSONArray jsonUser = jsonObject.getJSONArray("client");
-
-        if(jsonUser.length() == 1)
+        JSONObject jsonObject = new JSONObject(data.substring(data.indexOf("{"), data.lastIndexOf("}") + 1));
+        if(!jsonObject.isNull("client"))
         {
-            Client_V client = new Client_V();
-            Adress adress = new Adress();
-            JSONObject c = jsonUser.getJSONObject(0);
-            client.set_Id(c.getInt(TAG_ID));
-            client.set_LName(c.getString(TAG_LNAME));
-            client.set_FName(c.getString(TAG_FNAME));
-            client.set_Username(c.getString(TAG_USERNAME));
-            client.set_RoleId(c.getInt(TAG_ROLE_ID));
-            client.set_AdressId(c.getInt(TAG_ADRESS_ID));
-            client.set_IsActive(1);
-            client.set_PhoneNo(c.getString(TAG_PHONE_NO));
-            adress.set_Id(client.get_AdressId());
-            adress.set_City(c.getString(TAG_CITY));
-            adress.set_PostCode(c.getString(TAG_POSTCODE));
-            adress.set_RoadNo(c.getString(TAG_ROAD_NO));
-            adress.set_Road(c.getString(TAG_ROAD));
+            JSONArray jsonUser = jsonObject.getJSONArray("client");
 
-            client.set_Adress(adress);
-            _client = client;
-            _user = client;
+            if(jsonUser.length() == 1)
+            {
+                Client_V client = new Client_V();
+                Adress adress = new Adress();
+                JSONObject c = jsonUser.getJSONObject(0);
+                client.set_Id(c.getInt(TAG_ID));
+                client.set_LName(c.getString(TAG_LNAME));
+                client.set_FName(c.getString(TAG_FNAME));
+                client.set_Username(c.getString(TAG_USERNAME));
+                client.set_RoleId(c.getInt(TAG_ROLE_ID));
+                client.set_AdressId(c.getInt(TAG_ADRESS_ID));
+                client.set_IsActive(1);
+                client.set_PhoneNo(c.getString(TAG_PHONE_NO));
+                adress.set_Id(client.get_AdressId());
+                adress.set_City(c.getString(TAG_CITY));
+                adress.set_PostCode(c.getString(TAG_POSTCODE));
+                adress.set_RoadNo(c.getString(TAG_ROAD_NO));
+                adress.set_Road(c.getString(TAG_ROAD));
+
+                client.set_Adress(adress);
+                _client = client;
+                _user = client;
+            }
         }
     }
-}
-        catch (Exception ex)
+    catch (Exception ex)
     {
         Toast t = Toast.makeText( _context, ex.toString(), Toast.LENGTH_LONG);
         t.show();
@@ -257,3 +254,4 @@ private void ProcessClient(String data)
     }
 
 }
+

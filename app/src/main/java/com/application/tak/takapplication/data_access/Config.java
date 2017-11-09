@@ -2,7 +2,9 @@ package com.application.tak.takapplication.data_access;
 
 import android.util.Base64;
 import com.application.tak.takapplication.data_model.Client_V;
+import com.application.tak.takapplication.data_model.Student_V;
 import com.application.tak.takapplication.data_model.Task_V;
+import com.application.tak.takapplication.data_model.User;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -18,14 +20,14 @@ import java.util.List;
  */
 public class Config
 {
-    public static final String SERVER_NAME = "http://klasterinnowacjispolecznych.pl/";   //"http://192.168.0.12/";//klasterinnowacjispolecznych.pl/";
-
+    public static final String SERVER_NAME = "http://klasterinnowacjispolecznych.pl/";
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd_HHmm");
     public static final String ApplicationId = "9736362253343859";
     public static Client_V LoggedInClient = null;
-    public static Client_V LoggedInStudent = null;
+    public static Student_V LoggedInStudent = null;
     public static List<Task_V> ClientTasks = null;
     public static List<Task_V> StudentTask = null;
+    private static User LoggedInUser = null;
 
     private static final String ALGO = "AES";
     private static final byte[] keyValue = new String(ApplicationId).getBytes();

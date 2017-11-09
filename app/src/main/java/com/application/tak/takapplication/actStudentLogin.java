@@ -32,7 +32,7 @@ public class actStudentLogin extends AppCompatActivity {
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     public void gotoTutorial(View v){
-        Intent tutorialPage = new Intent (this, actStudentRegulation.class);
+        Intent tutorialPage = new Intent (this, actStudentMainAllTaskListActivity.class);
         startActivity(tutorialPage);
     }
     /**

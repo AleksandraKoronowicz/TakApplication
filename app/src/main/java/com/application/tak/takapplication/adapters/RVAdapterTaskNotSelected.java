@@ -64,28 +64,26 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
             date_tv = (TextView) itemView.findViewById(R.id.task_to_do2);
             option = (ImageButton) itemView.findViewById(R.id.option);
             del = (FloatingActionButton) itemView.findViewById(R.id.fabClientDelete);
-
+            edit = (FloatingActionButton) itemView.findViewById(R.id.fabClientEdit);
         }
     }
 
     @Override
     public void onBindViewHolder(final MemberViewHolder memberViewHolder, final int i) {
-        //final TaskListNotSelected item = members.get(i);
-       memberViewHolder.del.setVisibility(View.INVISIBLE);
-        memberViewHolder.cardView.setCardBackgroundColor(Color.WHITE);
+        final TaskListNotSelected item = members.get(i);
         memberViewHolder.day_name_tv.setText(ChangeDateString(members.get(i).getData(),"EEEE"));
         memberViewHolder.title_tv.setText(members.get(i).getTitle());
         memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"dd MMMM"));
         memberViewHolder.time_tv.setText(members.get(i).getTime());
         memberViewHolder.del.hide();
-               SetNormalLayout(memberViewHolder);
+        memberViewHolder.edit.hide();
+
         memberViewHolder.del.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                ShowMessageBox(members, i, memberViewHolder);
-
+                ShowMessageBox(members, i);
             }
         });
 
@@ -100,6 +98,7 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
            TextView time = (TextView) v.findViewById(R.id.task_time2);
            TextView day_month = (TextView) v.findViewById(R.id.client_nameOfaDay);
 
+           //  fadeOutCard.setCardBackgroundColor(Color.LTGRAY);
            fadeOutCard.setCardBackgroundColor(Color.rgb(212,212,212));
 
            data.setAlpha(0.09f);
@@ -111,14 +110,20 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
            Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
 
            FloatingActionButton trasz = (FloatingActionButton) v.findViewById(R.id.fabClientDelete);
+           FloatingActionButton edit = (FloatingActionButton) v.findViewById(R.id.fabClientEdit);
            if (trasz.getVisibility() != View.VISIBLE) {
                trasz.startAnimation(slideUp);
                trasz.setVisibility(View.VISIBLE);
 
-           }
-           else {
+               edit.startAnimation(slideUp);
+               edit.setVisibility(View.VISIBLE);
+
+           } else {
                trasz.startAnimation(slideDown);
                trasz.setVisibility(View.INVISIBLE);
+
+               edit.startAnimation(slideDown);
+               edit.setVisibility(View.INVISIBLE);
 
                data.setAlpha(1f);
                topic.setAlpha(1f);
@@ -128,6 +133,8 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
                fadeOutCard.setCardBackgroundColor(Color.WHITE);
            }
        } });
+
+
 
    ///////////////////////////////////////popmenu action///////////////////////////////////////
    /*     memberViewHolder.option.setOnClickListener(new View.OnClickListener() {
@@ -168,13 +175,14 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         task = members.get(position).tsk;
         task.set_StatusId(4);
 
+        members.remove(position);
+
         UpdateTask updateTask = new UpdateTask();
         updateTask.UpdateTask(task);
 
-      //  members.remove(position);
     }
 
-    public void ShowMessageBox(final List<TaskListNotSelected> member, final int position, final MemberViewHolder mv)
+    public void ShowMessageBox(List<TaskListNotSelected> member, final int position)
     {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         alertDialog.setMessage("Napewno chcesz usunąć zadanie?");
@@ -184,12 +192,10 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
                     public void onClick(DialogInterface dialog,
                                         int which) {
 
-                        onBindViewHolder(mv,position);
-                        SetDeleteAnimation(mv);
-                        DeleteTask(member, position);
-                        member.remove(position);
+                        notifyDataSetChanged();
+                        DeleteTask(members, position);
 
-                      //
+                        Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
                     }
                 });
         alertDialog.setNegativeButton("Anuluj",
@@ -203,21 +209,12 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         alertDialog.show();
     }
 
-    public void SetNormalLayout(MemberViewHolder mv)
-    {
-        mv.date_tv.setAlpha(1f);
-        mv.day_name_tv.setAlpha(1f);
-        mv.time_tv.setAlpha(1f);
-        mv.title_tv.setAlpha(1f);
-        mv.del.setVisibility(View.INVISIBLE);
-        mv.del.hide();
-
-    }
-
     public String ChangeDateString(String dataToConvert, String resultFormat )
     {
 
+        //   String strDateFormat = "dd MMMM";
         SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
+
         DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         Date result = null;
         try {
@@ -230,11 +227,7 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
     }
 
-    public void SetDeleteAnimation(MemberViewHolder mv)
-    {
-        Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
-        mv.cardView.setAnimation(slideDown);
-    }
+
         @Override
         public MemberViewHolder onCreateViewHolder (ViewGroup viewGroup,int i){
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.act_client_cardview_notselected, viewGroup, false);

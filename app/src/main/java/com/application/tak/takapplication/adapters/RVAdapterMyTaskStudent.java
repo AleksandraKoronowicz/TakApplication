@@ -67,6 +67,7 @@ public class RVAdapterMyTaskStudent extends RecyclerView.Adapter<RVAdapterMyTask
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cv_student_mytask);
             name_tv = (TextView) itemView.findViewById(R.id.client_name_mytask);
+            title_tv = (TextView) itemView.findViewById(R.id.task_topic_mytask);
             place_tv = (TextView) itemView.findViewById(R.id.client_adress);
             time_tv = (TextView) itemView.findViewById(R.id.task_time_mytask);
             date_tv = (TextView) itemView.findViewById(R.id.day_name_mytask);
@@ -80,13 +81,11 @@ public class RVAdapterMyTaskStudent extends RecyclerView.Adapter<RVAdapterMyTask
     public void onBindViewHolder(final MemberViewHolder memberViewHolder, final int i) {
         memberViewHolder.name_tv.setText(members.get(i).getmyclientName());
         memberViewHolder.place_tv.setText(members.get(i).getmytaskPlace());
+        memberViewHolder.title_tv.setText(members.get(i).getmytitletask());
         memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"EEEE"));
         memberViewHolder.time_tv.setText(members.get(i).getTime());
         memberViewHolder.dayandmonth_tv.setText( ChangeDateString(members.get(i).getData(), "dd MMMM"));
-        memberViewHolder.fab_phone.setVisibility(View.INVISIBLE);
         memberViewHolder.fab_phone.hide();
-        SetNormalLayout(memberViewHolder);
-
         memberViewHolder.option.setOnClickListener(new View.OnClickListener() {
 
             final int position = i;
@@ -101,8 +100,7 @@ public class RVAdapterMyTaskStudent extends RecyclerView.Adapter<RVAdapterMyTask
 
                         switch (item.getItemId()) {
                             case R.id.mytask_delete:
-                                ShowMessageBox(members, position, memberViewHolder);
-                                onBindViewHolder(memberViewHolder,i);
+                                ShowMessageBox(members, position);
 
                         }
                         return false;
@@ -166,21 +164,33 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // Setting Dialog Title
                 alertDialog.setTitle("Mapy");
-                alertDialog.setMessage("Czy chcesz sprawdzić miejsce wykonania zadania na mapie google?");
+
+                // Setting Dialog Message
+                alertDialog.setMessage("Czy chcesz sprawdzić miejsce wykonania zadania na mapie goole?");
+
+                // Setting Icon to Dialog
                 alertDialog.setIcon(R.drawable.googlemaps);
+
+                // Setting Positive Yes Button
                 alertDialog.setPositiveButton("Jasne!",
                         new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog,
                                                 int which) {
                                 String place = members.get(i).getmytaskPlace();
+
                                 String map = "http://maps.google.co.in/maps?q=" + place; //"Katowice ul Sowińskiego 9";
                                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(map));
                                 context.startActivity(intent);
+
                             }
                         });
+                // Setting Negative No Button... Neutral means in between yes and cancel button
 
+                // Setting Positive "Cancel" Button
                 alertDialog.setNegativeButton("Anuluj",
                         new DialogInterface.OnClickListener() {
 
@@ -198,6 +208,7 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
+           //     Intent phoneIntent = new Intent(Intent.ACTION_CALL);
                 String phone = members.get(i).getmyclientPhonee();
                 int permissionCheck = ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE
                 );
@@ -211,21 +222,30 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
     public void DeleteTask(List<MyTaskListStudent> members, int position)
     {
         Task_V task = new Task_V();
-        task = members.get(position).tsk;
-        task.set_StatusId(1);
-        task.set_ExecutorId(null);
+        int taskid = members.get(position).getId();
+        task.set_IsApproved(0);
+        task.set_CategoryId(members.get(position).categoryid);
+        // task.set_ExecutionTime(Calendar.getInstance().getTime());
+        task.set_TimeFrom(Calendar.getInstance().getTime());
+        task.set_TimeTo(Calendar.getInstance().getTime());
+        task.set_Id(taskid);
+        task.set_StatusId(4);
+        task.set_ExecutorId(2);
+        task.set_CreatorId(members.get(position).creatorid);
+
+
+        members.remove(position);
 
         UpdateTask updateTask = new UpdateTask();
         updateTask.UpdateTask(task);
 
-        members.remove(position);
     }
 
     public String ChangeDateString(String dataToConvert, String resultFormat )
     {
         SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
 
-        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        DateFormat format = new SimpleDateFormat("MMM d,yyyy");
         Date result = null;
         try {
             result = format.parse(dataToConvert);
@@ -236,12 +256,8 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
         return sdf.format(result).toString();
     }
 
-    public void SetChooseActionLayoutAnimation(MemberViewHolder mv)
-    {
-        Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
-        mv.cardView.setAnimation(slideDown);
-    }
-    public void ShowMessageBox(List<MyTaskListStudent> member, final int position, final MemberViewHolder mm)
+
+    public void ShowMessageBox(List<MyTaskListStudent> member, final int position)
     {
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
@@ -253,11 +269,10 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int which) {
 
-                        SetChooseActionLayoutAnimation(mm);
                         notifyDataSetChanged();
-                        SetChooseActionLayoutAnimation(mm);
                         DeleteTask(members, position);
 
+                        Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
                     }
                 });
         alertDialog.setNegativeButton("Anuluj",
@@ -270,18 +285,6 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                 });
         alertDialog.show();
     }
-
-    public void SetNormalLayout(MemberViewHolder mv)
-    {
-        mv.date_tv.setAlpha(1f);
-        mv.name_tv.setAlpha(1f);
-        mv.time_tv.setAlpha(1f);
-        mv.place_tv.setAlpha(1f);
-        mv.dayandmonth_tv.setAlpha(1f);
-        mv.place_tv.setEnabled(true);
-        mv.cardView.setCardBackgroundColor(Color.WHITE);
-    }
-
 
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

@@ -20,7 +20,6 @@ import com.application.tak.takapplication.adapters.RVAdapterCalendarStudent;
 import com.application.tak.takapplication.data_access.Config;
 import com.application.tak.takapplication.data_access.GetAllClientTasks;
 import com.application.tak.takapplication.data_access.GetAllStudentTasks;
-import com.application.tak.takapplication.data_access.GetAllStudentTasksByStatus;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
 import com.application.tak.takapplication.data_list.MyTaskListStudent;
 import com.application.tak.takapplication.data_model.Task_V;
@@ -31,7 +30,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -45,19 +43,15 @@ public class actStudentTaskPlan extends Fragment {
     private static final String TAG = "Calendar";
     private RecyclerView recyclerview;
     private CalendarView calendar;
-    // whole data
+    private ListView listingsView;
     private List<MyTaskListStudent> memberList;
-    //for calendar day
     private List<MyTaskListStudent> memberList2;
-    //for current day
-    private List<MyTaskListStudent> memberListCurrentDay;
     private String date;
-    private RVAdapterCalendarStudent adapter;
-    private String currentTime;
+    private  RVAdapterCalendarStudent adapter;
 
-   private User student;
+    User client = new User();
     Task_V task;
-    GetAllStudentTasksByStatus tasks;
+    GetAllStudentTasks tasks;
 
     public actStudentTaskPlan()
     {
@@ -70,39 +64,43 @@ public class actStudentTaskPlan extends Fragment {
 
         View view = inflater.inflate(R.layout.act_student_calendar, container, false);
         memberList = new ArrayList<MyTaskListStudent>();
-        memberListCurrentDay = new ArrayList<MyTaskListStudent>();
 
         recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview_plantask);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerview.setLayoutManager(layoutManager);
-      currentTime = DateFormat.getDateInstance().format(new Date()).toString();// ChangeDateString(DateFormat.getDateInstance().format(new Date()).toString(),"MM/dd"); //new SimpleDateFormat("MM/dd").format(Calendar.getInstance().getTime());
-        student = new User();
-        student.set_Id(1);
-        tasks = new GetAllStudentTasksByStatus(getContext(),student,2);
+
+        User u = new User();
+        u.set_Id(2);
+
+        tasks = new GetAllStudentTasks(getContext(),u);
         tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
             @Override
             public void onDBRequestFinished() {
                 if (tasks._tasks != null) {
                     Config.ClientTasks = tasks._tasks;
-                    for (Task_V task : Config.ClientTasks)
-                    {
+                    for (Task_V task : Config.ClientTasks) {
+
                         MyTaskListStudent member = new MyTaskListStudent(task);
                         memberList.add(member);
 
-                        String taskDate = ChangeDateString(member.getData().toString(),"dd.MM.yyyy");//new SimpleDateFormat("MM/dd").format(task.get_TimeFrom()).toString();
-                       if (taskDate != null) {
-                           if (taskDate.equals(currentTime)) {
-                               memberListCurrentDay.add(member);
-                           }
-                       }
                     }
                 }
-                RVAdapterCalendarCardStudent adapter2 = new RVAdapterCalendarCardStudent(memberListCurrentDay, getActivity());
+                RVAdapterCalendarCardStudent adapter2 = new RVAdapterCalendarCardStudent(memberList, getActivity());
                 recyclerview.setAdapter(adapter2);
             }
 
         });
+       /*
+        MyTaskListStudent member = new MyTaskListStudent("Wyrzuć śmieci", "2017/09/10", "13:00 d0 16:00", "Magłorzata Nowak", "504 444 444", "Gliwice, Kwiatowa 43");
+        memberList.add(member);
+        final MyTaskListStudent member2 = new MyTaskListStudent("Umyj okna", "2017/09/10", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213", "Gliwice, Ostrudźka 43");
+        memberList.add(member2);
+        MyTaskListStudent member3 = new MyTaskListStudent("Wyrzuć śmieci", "2017/09/12", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213", "Gliwice, Ostrudźka 43");
+        memberList.add(member3);
+        MyTaskListStudent member4 = new MyTaskListStudent("Wyrzuć śmieci", "2017/09/15", "13:00 d0 16:00", "Magłorzata Kicha", "504 444 213", "Gliwice, Ostrudźka 43");
+        memberList.add(member4);*/
+
 
         calendar = (CalendarView) view.findViewById(R.id.calendarVTask);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -116,23 +114,21 @@ public class actStudentTaskPlan extends Fragment {
 
                 month = month+1;
                 String calendarDate= month+"/"+dayOfMonth;
+
                 memberList2 = new ArrayList<MyTaskListStudent>();
 
+for (MyTaskListStudent d : memberList)
+{
+    String taskDate = ChangeDateString(d.dataTask, "MM/dd");
 
-                for (MyTaskListStudent d : memberList) {
-                    String taskDate = ChangeDateString(d.getData().toString(),"MM/d");
-                    if (taskDate != null) {
-                        if (taskDate.contains(calendarDate.toString())) {
-                            memberList2.add(d);
-                        }
-                    }
-                }
-
+    if (taskDate.equals(calendarDate))
+    {
+        memberList2.add(d);
+    }
+}
                 if (memberList2 == null) {
 
-                    Task_V t = new Task_V();
-                    t.set_CategoryName("Brak zadań");
-                    MyTaskListStudent member_2 = new MyTaskListStudent(t);
+                    MyTaskListStudent member_2 = new MyTaskListStudent(null);
                     memberList2.add(member_2);
                 }
 
@@ -149,8 +145,8 @@ public class actStudentTaskPlan extends Fragment {
     public String ChangeDateString(String dataToConvert, String resultFormat )
     {
         SimpleDateFormat sdf = new SimpleDateFormat(resultFormat);
-        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 
+        DateFormat format = new SimpleDateFormat("MMM d,yyyy");
         Date result = null;
         try {
             result = format.parse(dataToConvert);

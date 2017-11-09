@@ -16,7 +16,6 @@ import com.application.tak.takapplication.data_access.Config;
 import com.application.tak.takapplication.data_access.GetAllClientTasks;
 import com.application.tak.takapplication.data_access.GetAllClientTasksByStatus;
 import com.application.tak.takapplication.data_access.GetAllStudentTasks;
-import com.application.tak.takapplication.data_access.GetAllStudentTasksByStatus;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
 import com.application.tak.takapplication.data_list.MyTaskListStudent;
 import com.application.tak.takapplication.data_list.TaskList;
@@ -41,10 +40,10 @@ public class actStudentMyTask extends Fragment {
     private RecyclerView recyclerview;
     private List<MyTaskListStudent> memberList;
 
-    User student = new User();
+    User client = new User();
     Task_V task;
-    GetAllStudentTasksByStatus tasks;
-
+    GetAllStudentTasks tasks;
+    GetAllClientTasksByStatus stustak;
 
     public actStudentMyTask()
     {
@@ -61,28 +60,29 @@ public class actStudentMyTask extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerview.setLayoutManager(layoutManager);
 
-        User student = new User();
-        student.set_Id(1);
 
-        tasks = new GetAllStudentTasksByStatus(getContext(),student,2);
+        User u = new User();
+        u.set_Id(2);
+
+        tasks = new GetAllStudentTasks(getContext(),u);
 
         tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
             @Override
             public void onDBRequestFinished() {
                if (tasks._tasks != null) {
-
+                    //Config.ClientTasks = tasks._tasks;
                     for (Task_V task : Config.ClientTasks) {
-
+                        if (task.get_StatusName().contains("In realization")) {
                             MyTaskListStudent member = new MyTaskListStudent(task);
                             memberList.add(member);
-
+                        }
                     }
                  }
                 RVAdapterMyTaskStudent adapter = new RVAdapterMyTaskStudent(memberList, getActivity());
                 recyclerview.setAdapter(adapter);
-
-            }});
+            }
+        });
 
    /*     memberList = new ArrayList<MyTaskListStudent>();
         MyTaskListStudent member = new MyTaskListStudent("Wyrzuć śmieci", "25/08/2017", "13:00 d0 16:00", "Magłorzata Kicha", "509728212", "Gliwice, Ostrudźka 43");

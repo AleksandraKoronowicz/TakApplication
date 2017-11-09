@@ -2,27 +2,15 @@ package com.application.tak.takapplication;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.net.sip.SipSession;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.application.tak.takapplication.adapters.RVAdapterTaskNotSelected;
 import com.application.tak.takapplication.data_model.User;
 import com.application.tak.takapplication.local_db.LocalDB;
 
@@ -35,20 +23,6 @@ public class actFirstUsage extends AppCompatActivity {
     Button btnClient;
     Button btnStudent;
     Context ctx;
-
-    private EditText email;
-    private EditText password;
-    private Button btnLogin;
-    private Button btnRegister;
-    private Switch switchLoginModel;
-    private ImageView imgclient;
-    private ImageView imgstudent;
-    private RadioButton rbFace;
-    private RadioButton rbGoogle;
-    private TextView mode;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,18 +33,7 @@ public class actFirstUsage extends AppCompatActivity {
         ctx = this.getApplicationContext();
         btnClient = (Button)findViewById(R.id.btnClient);
         btnStudent = (Button) findViewById(R.id.btnStudent);
-        email = (EditText) findViewById(R.id.tbEmail) ;
-        password = (EditText) findViewById(R.id.tbPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnRegister = (Button) findViewById(R.id.btnRegister);
-        switchLoginModel = (Switch) findViewById(R.id.switchLoginType);
-        imgclient = (ImageView) findViewById(R.id.imgClientMode);
-        imgclient.setVisibility(View.INVISIBLE);
-        imgstudent = (ImageView) findViewById(R.id.imgStudentMode);
-        mode = (TextView) findViewById(R.id.lbMode);
 
-        rbGoogle = (RadioButton) findViewById(R.id.rbGoogle);
-                rbFace = (RadioButton) findViewById(R.id.rbFacebook);
         LocalDB localDB = new LocalDB(this.getApplicationContext());
 
         final List<User> users = localDB.GetAllUsers();
@@ -83,16 +46,16 @@ public class actFirstUsage extends AppCompatActivity {
         ////////////////////////////                           -> nie otworz okno logowania act.FirstUsage
 
 
-       /* btnClient.setOnClickListener(new View.OnClickListener() {
+        btnClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
                 if(checkUsersRights(users,2))
                 {
                     if(users.size() > 0)
                     {
-///////////////////////////////////otwiera sie autentykacja przez api
-////////////////////////////////////pozytywne zalogowanie
-                        Intent i = new Intent(ctx,actClientTask.class);
+                        //okno logowania i rejestracji
+
+                        Intent i = new Intent(ctx,actClientLogin.class);
                         startActivity(i);
 
                     }
@@ -113,9 +76,9 @@ public class actFirstUsage extends AppCompatActivity {
                 {
                     if(users.size() > 0)
                     {
-                        ///////////////////////////////////otwiera sie autentykacja przez api
-////////////////////////////////////pozytywne zalogowanie
-                        Intent i = new Intent(ctx,actClientTask.class);
+                        //okno logowania i rejestracji
+
+                        Intent i = new Intent(ctx,actStudentLogin.class);
                         startActivity(i);
 
                 }
@@ -126,10 +89,12 @@ public class actFirstUsage extends AppCompatActivity {
                     t.show();
                 }
 
-            }}});*/
+            }}});
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
+<<<<<<< HEAD
             public void onClick(View v) {
 
                 if (mode.getText() == "Klient")
@@ -319,6 +284,11 @@ rbFace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 {
                     rbGoogle.setAlpha(1f);
                 }
+=======
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+>>>>>>> origin/master
             }
         });
     }
@@ -358,12 +328,6 @@ rbFace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             }
         }
         return loggedInUser;
-    }
-
-    private Boolean CheckUserAuthentication(String emali, String password)
-    {
-      Boolean canLogin = true;
-        return canLogin;
     }
 
 }
