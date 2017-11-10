@@ -10,7 +10,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="75dp"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <ImageView
@@ -30,7 +30,6 @@
             app:srcCompat="@color/colorFadeColor" />
 
         <TextView
-<<<<<<< HEAD
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
@@ -39,20 +38,15 @@
             android:text="Regulamin"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
-            android:textSize="25sp" />
-=======
+            android:textSize="25sp" /><![CDATA[
+
                 android:text="R E G U A M I N"
                 android:layout_width="match_parent"
                 android:layout_height="35dp" android:id="@+id/textView3" android:layout_weight="1"
                 android:textSize="25sp" android:textColor="@color/colorWhite"/>
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" android:elevation="6dp"/>
->>>>>>> origin/master
+        >>>>>>> origin/master
 
+    ]]>
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_act_student_regulation"/>

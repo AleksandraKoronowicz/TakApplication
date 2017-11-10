@@ -19,14 +19,12 @@ public class actClientLoginRegulation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_client_login_regulation);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
         _ctx = this.getApplicationContext();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 LoginStatus loginStatus = new LoginStatus(_ctx);
                 loginStatus.NewClient(Config.LoggedInClient,Config.LoggedInClient.get_Adress());
