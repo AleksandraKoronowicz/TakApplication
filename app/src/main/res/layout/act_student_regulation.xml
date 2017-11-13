@@ -21,14 +21,6 @@
             android:layout_weight="1"
             app:srcCompat="?attr/homeAsUpIndicator" />
 
-        <ImageView
-            android:id="@+id/imageView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_weight="1"
-            app:srcCompat="@color/colorFadeColor" />
-
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
@@ -38,17 +30,9 @@
             android:text="Regulamin"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
-            android:textSize="25sp" /><![CDATA[
-
-                android:text="R E G U A M I N"
-                android:layout_width="match_parent"
-                android:layout_height="35dp" android:id="@+id/textView3" android:layout_weight="1"
-                android:textSize="25sp" android:textColor="@color/colorWhite"/>
-        >>>>>>> origin/master
-
-    ]]>
+            android:textSize="25sp" />
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_act_student_regulation"/>
+    <include layout="@layout/content_act_client_login_regulation"/>
 
 </android.support.design.widget.CoordinatorLayout>

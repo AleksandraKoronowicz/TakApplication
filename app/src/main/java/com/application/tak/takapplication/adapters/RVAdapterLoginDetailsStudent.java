@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.application.tak.takapplication.R;
-import com.application.tak.takapplication.actStudentMainAllTaskListActivity;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
 
 import java.util.List;

@@ -27,7 +27,6 @@ import com.application.tak.takapplication.data_model.User;
 import com.application.tak.takapplication.local_db.LocalDB;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 public class actFirstUsage extends AppCompatActivity {
 
@@ -57,8 +56,8 @@ public class actFirstUsage extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ctx = this.getApplicationContext();
-        btnClient = (Button)findViewById(R.id.btnClient);
-        btnStudent = (Button) findViewById(R.id.btnStudent);
+     //   btnClient = (Button)findViewById(R.id.btnClient);
+       // btnStudent = (Button) findViewById(R.id.btnStudent);
         email = (EditText) findViewById(R.id.tbEmail) ;
         password = (EditText) findViewById(R.id.tbPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -68,6 +67,7 @@ public class actFirstUsage extends AppCompatActivity {
         imgclient.setVisibility(View.INVISIBLE);
         imgstudent = (ImageView) findViewById(R.id.imgStudentMode);
         mode = (TextView) findViewById(R.id.lbMode);
+        mode.setText("Uczeń");
 
         rbGoogle = (RadioButton) findViewById(R.id.rbGoogle);
                 rbFace = (RadioButton) findViewById(R.id.rbFacebook);
@@ -146,7 +146,8 @@ public class actFirstUsage extends AppCompatActivity {
                                 // update user as Is_LogIN
                                 Intent i = new Intent(ctx,actClientTask.class);
                                 startActivity(i);
-                                // this finish
+                             //   finish();
+
                             }
 
                             else {
@@ -172,7 +173,7 @@ public class actFirstUsage extends AppCompatActivity {
                             // update user as Is_LogIN
                             Intent i = new Intent(ctx,actClientTask.class);
                             startActivity(i);
-                            // this finish
+                           finish();
                         }
 
                         else {
@@ -223,6 +224,7 @@ public class actFirstUsage extends AppCompatActivity {
 
                             Intent i = new Intent(ctx,actStudentLogin.class);
                             startActivity(i);
+                           // finish();
 
                         }
                         else
@@ -242,13 +244,13 @@ public class actFirstUsage extends AppCompatActivity {
 
                     Intent i = new Intent(ctx,actClientLogin.class);
                     startActivity(i);
-                    //fisnish
+                   finish();
                 }
                 else if (mode.getText() == "Uczeń")
                 {
                     Intent i = new Intent(ctx,actStudentLogin.class);
                     startActivity(i);
-                    //finish
+                  //  finish();
                 }
 
             }

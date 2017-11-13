@@ -12,7 +12,7 @@ import android.widget.ImageView;
 public class actStudentRegulation extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_student_regulation);
        // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

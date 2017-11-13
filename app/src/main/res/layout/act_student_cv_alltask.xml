@@ -1,12 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.application.tak.takapplication.actStudentLogin$PlaceholderFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.application.tak.takapplication.actStudentLogin$PlaceholderFragment">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv_student_alltask"
@@ -28,6 +28,18 @@
             android:layout_height="179dp"
             android:padding="9dp">
 
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabChooseTask"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+
+                app:elevation="5dp"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/cooltext242812233487143" />
+
             <TextView
                 android:id="@+id/student_question"
                 android:layout_width="wrap_content"
@@ -36,7 +48,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="Pomożesz mi?"
                 android:textColor="@android:color/white"
-                android:textSize="25dp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <Button
@@ -54,19 +66,8 @@
                 android:lineSpacingExtra="20sp"
                 android:text="Tu mnie znajdziesz"
                 android:textAlignment="inherit"
-                android:textSize="14sp" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabChooseTask"
-                android:layout_width="75dp"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:clickable="true"
-
-                app:elevation="5dp"
-                app:fabSize="normal"
-                app:srcCompat="@drawable/cooltext242812233487143" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -87,7 +88,7 @@
                 android:layout_below="@+id/student_question"
                 android:text="25 lipca"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/student_task_topic"
@@ -104,26 +105,30 @@
 
             <TextView
                 android:id="@+id/student_task_time"
-                android:layout_width="match_parent"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/student_name"
                 android:text="16:00 do 17:00"
-                android:textSize="18sp"
-                android:textStyle="normal" />
+
+                android:textAlignment="textEnd"
+                android:textColor="@color/txtLessImportantData"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                android:layout_alignTop="@+id/student_name"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
             <TextView
                 android:id="@+id/student_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_above="@+id/btnAdresMap"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/student_date_task"
                 android:text="Aleksandra Koronowicz"
+
                 android:textAlignment="textStart"
-                android:textColor="?android:attr/textColorSecondary"
-                android:textSize="20sp" />
+                android:textColor="@color/txtLessImportantData"
+                android:textSize="16sp" />
 
         </RelativeLayout>
 

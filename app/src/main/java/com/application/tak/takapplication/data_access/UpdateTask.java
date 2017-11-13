@@ -23,8 +23,13 @@ public class UpdateTask extends AsyncTask<String,Void,String>
 
     public boolean UpdateTask(Task t)
     {
-        String execution_time = Config.DATE_FORMAT.format(t.get_ExecutionTime());
-        execute(new String[]{t.get_ExecutorId().toString(), t.get_StatusId().toString(),t.get_Id().toString(),execution_time,t.get_IsApproved().toString()});
+        String execution_time = "null";
+        String executor_id = "null";
+        if(t.get_ExecutionTime() != null)
+            execution_time = Config.DATE_FORMAT.format(t.get_ExecutionTime());
+        if(t.get_ExecutorId() != null)
+            executor_id = t.get_ExecutorId().toString();
+        execute(new String[]{executor_id, t.get_StatusId().toString(),t.get_Id().toString(),execution_time,t.get_IsApproved().toString()});
         return true;
     }
 
@@ -46,10 +51,10 @@ public class UpdateTask extends AsyncTask<String,Void,String>
 
             String data= URLEncoder.encode("executor_id","UTF-8")+"="+URLEncoder.encode(executor_id,"UTF-8")+"&"+
                     URLEncoder.encode("status_id","UTF-8")+"="+URLEncoder.encode(status_id,"UTF-8")+"&"+
-            URLEncoder.encode("id","UTF-8")+"="+URLEncoder.encode(task_id,"UTF-8")+"&"+
+                    URLEncoder.encode("id","UTF-8")+"="+URLEncoder.encode(task_id,"UTF-8")+"&"+
                     URLEncoder.encode("execution_time","UTF-8")+"="+URLEncoder.encode(execution_time,"UTF-8")+"&"+
                     URLEncoder.encode("is_approved","UTF-8")+"="+URLEncoder.encode(is_approved,"UTF-8")+"&"+
-            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
+                    URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
 
             BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
             bufferedWriter.write(data);

@@ -13,15 +13,23 @@
     tools:context="com.application.tak.takapplication.actFirstUsage"
     tools:showIn="@layout/activity_act_first_usage">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ScrollView>
+
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="178dp"
         android:layout_height="80dp"
+        android:layout_alignLeft="@+id/btnRegister"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="?android:attr/actionModeSplitBackground"
         android:text="zaloguj" />
+
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="178dp"

@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.application.tak.takapplication.data_access.Config;
-import com.application.tak.takapplication.services.LoginStatus;
+//import com.application.tak.takapplication.services.LoginStatus;
 
 public class actClientLoginRegulation extends AppCompatActivity {
 
@@ -26,8 +26,8 @@ public class actClientLoginRegulation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                LoginStatus loginStatus = new LoginStatus(_ctx);
-                loginStatus.NewClient(Config.LoggedInClient,Config.LoggedInClient.get_Adress());
+             //   LoginStatus loginStatus = new LoginStatus(_ctx);
+               // loginStatus.NewClient(Config.LoggedInClient,Config.LoggedInClient.get_Adress());
             }
         });
     }

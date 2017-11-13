@@ -23,10 +23,9 @@ public class MyTaskListStudent {
     public String city;
     public String homeNumber;
     public String posteCode;
+    public String telefon;
+    public String studentName;
 
-    public int creatorid;
-    public int categoryid;
-    public int isapproved;
 
     public Task_V tsk;
     public int id;
@@ -45,10 +44,9 @@ this.id = tsk.get_Id();
         this.homeNumber = tsk.get_CreatorRoadNo();
         this.posteCode = tsk.get_CreatorPostCode();
         this.mytaskPlace = getTaskPlace();
+        this.telefon = tsk.get_CreatorPhoneNo();
+        this.studentName = tsk.get_ExecutorFName() + " " + tsk.get_ExecutorLName();
 
-        this.creatorid = tsk.get_CreatorId();
-        this.isapproved = tsk.get_IsApproved();
-        this.categoryid = tsk.get_CategoryId();
     }
 
 

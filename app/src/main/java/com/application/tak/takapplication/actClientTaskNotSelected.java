@@ -39,7 +39,7 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-    public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
+public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
 
     private RecyclerView recyclerview;
     private GetAllClientTasks clientTask;
@@ -53,83 +53,50 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
 
     private List<TaskListNotSelected> memberList;
 
-        public actClientTaskNotSelected()
-        {
-        }
-
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-
-            memberList = new ArrayList<TaskListNotSelected>();
-            _ctx = getContext();
-            _activity = getActivity();
-            User u = new User();
-            u.set_Id(2);
-            tasksByStatus = new GetAllClientTasksByStatus(_ctx,u,1);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-
-            View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
-
-            recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
-            recyclerview.setLayoutManager(layoutManager);
-
-
-            tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
-
-                @Override
-                public void onDBRequestFinished() {
-if(tasksByStatus._tasks != null)
-{
-    Config.ClientTasks = tasksByStatus._tasks;
-    for (Task_V task : Config.ClientTasks) {
-
-            TaskListNotSelected member = new TaskListNotSelected(task);
-            memberList.add(member);
+    public actClientTaskNotSelected()
+    {
     }
-    adapter = new RVAdapterTaskNotSelected(memberList, _activity);
-    recyclerview.setAdapter(adapter);
-}
-//memberList = Stream.of(memberList.takeWhile(t -> t._StatusName == "fefsd"));
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        memberList = new ArrayList<TaskListNotSelected>();
+        _ctx = getContext();
+        _activity = getActivity();
+        User u = new User();
+        u.set_Id(2);
+        tasksByStatus = new GetAllClientTasksByStatus(_ctx,u,1);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+
+        View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
+
+        recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
+        recyclerview.setLayoutManager(layoutManager);
+
+
+        tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
+
+            @Override
+            public void onDBRequestFinished() {
+                if(tasksByStatus._tasks != null)
+                {
+                    Config.ClientTasks = tasksByStatus._tasks;
+                    for (Task_V task : Config.ClientTasks) {
+
+                        TaskListNotSelected member = new TaskListNotSelected(task);
+                        memberList.add(member);
+                    }
 
                 }
-            });
+                adapter = new RVAdapterTaskNotSelected(memberList, _activity);
+                recyclerview.setAdapter(adapter);
+
+            }
+        });
 
 
-
-        /*    client.set_Id(1);
-            clientTask = new GetAllClientTasks(getContext(),client);
-            clientTask.setDBRequestFinishedListener(new OnDBRequestFinished() {
-                @Override
-                public void onDBRequestFinished() {
-                    categoriesList = categories._categories;
-                    if(categories._categories != null)
-                    {
-                        awayStrings = new String[categoriesList.size()];
-                        int i= 0;
-                        for(Category c: categoriesList)
-                        {
-                            awayStrings[i] = c.get_CategoryName();
-                            i++;
-
-                        }
-      */
-         /*   TaskListNotSelected member = new TaskListNotSelected()
-            memberList.add(member);
-            TaskListNotSelected member2 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
-            memberList.add(member2);
-            TaskListNotSelected member3 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
-            memberList.add(member3);*/
-
-       //     recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
-     //       LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-    //        recyclerview.setLayoutManager(layoutManager);
-
-          //  RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
-         ///   recyclerview.setAdapter(adapter);
-
-            return view;
-        }
+        return view;
     }
+}

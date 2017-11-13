@@ -2,6 +2,7 @@ package com.application.tak.takapplication;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,7 +30,7 @@ import java.util.List;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-    public class actClientTaskToDo extends android.support.v4.app.Fragment{
+public class actClientTaskToDo extends android.support.v4.app.Fragment{
 
     private RecyclerView recyclerview;
     private List<TaskList> memberList;
@@ -40,47 +41,73 @@ import java.util.List;
 
     GetAllClientTasksByStatus tasksByStatus;
 
-        public actClientTaskToDo()
-        {
+    public actClientTaskToDo()
+    {
 
-        }
+    }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
 
-            View view = inflater.inflate(R.layout.act_client_task_todo, container, false);
-            memberList = new ArrayList<TaskList>();
-            _activity = getActivity();
-            recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(_activity);
-            recyclerview.setLayoutManager(layoutManager);
+        View view = inflater.inflate(R.layout.act_client_task_todo, container, false);
+        memberList = new ArrayList<TaskList>();
+        _activity = getActivity();
+        recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(_activity);
+        recyclerview.setLayoutManager(layoutManager);
 
-            User u = new User();
-            u.set_Id(2);
-            tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
-            tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
-                @Override
-                public void onDBRequestFinished() {
-                    if (tasksByStatus._tasks != null) {
 
-                            Config.ClientTasks = tasksByStatus._tasks;
-                            for (Task_V task : Config.ClientTasks) {
+        User u = new User();
+        u.set_Id(2);
+        tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
+        tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
+            @Override
+            public void onDBRequestFinished() {
+                if (tasksByStatus._tasks != null) {
 
-                                String x = task.get_CategoryName();
-                                TaskList member = new TaskList(task);
+                    Config.ClientTasks = tasksByStatus._tasks;
+                    for (Task_V task : Config.ClientTasks) {
 
-                                memberList.add(member);
-                            }
+                        TaskList member = new TaskList(task);
 
-                        adapter = new RVAdapter(memberList, _activity);
-                        recyclerview.setAdapter(adapter);
+                        memberList.add(member);
                     }
                 }
-            });
-                    return view;
-
+                adapter = new RVAdapter(memberList, _activity);
+                recyclerview.setAdapter(adapter);
             }
+        });
+        return view;
+
+    }
+
+    public void RefreashView()
+    {
+        User u = new User();
+        u.set_Id(2);
+        tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
+        tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
+            @Override
+            public void onDBRequestFinished() {
+                if (tasksByStatus._tasks != null) {
+
+                    Config.ClientTasks = tasksByStatus._tasks;
+                    for (Task_V task : Config.ClientTasks) {
+
+                        TaskList member = new TaskList(task);
+
+                        memberList.add(member);
+                    }
+                }
+                adapter = new RVAdapter(memberList, _activity);
+                recyclerview.setAdapter(adapter);
+            }
+        });
+
+    }
+
+
 }
 
