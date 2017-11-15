@@ -19,14 +19,15 @@
         android:layout_alignLeft="@+id/imageView16"
         android:layout_alignStart="@+id/imageView16"
         android:layout_marginBottom="15dp"
-        tools:ignore="UselessParent">
+        tools:ignore="NotSibling,UselessParent">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            tools:ignore="ObsoleteLayoutParam"
+            android:layout_alignParentLeft="true">
 
             <ImageView
                 android:id="@+id/imageView17"
