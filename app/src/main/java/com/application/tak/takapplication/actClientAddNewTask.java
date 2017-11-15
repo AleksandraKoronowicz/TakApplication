@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 
+import com.application.tak.takapplication.data_access.Config;
 import com.application.tak.takapplication.data_access.CreateTask;
 import com.application.tak.takapplication.data_access.GetCategories;
 import com.application.tak.takapplication.data_model.Category;
@@ -166,6 +167,7 @@ public class actClientAddNewTask extends Fragment {
                 time.set(Calendar.HOUR, hourOfDay);
                 time.set(Calendar.MINUTE, minute);
             }
+ return view;
         });
 
 
@@ -204,7 +206,7 @@ public class actClientAddNewTask extends Fragment {
     private void insertTask()
     {
         Task t = new Task();
-        User u = new User();
+        t.set_CreatorId(Config.LoggedInClient.get_Id());//u.get_Id());
 
 //String timeFromTimePicker = dateTime.get(Calendar.DAY_OF_MONTH) + "/" + dateTime.get(Calendar.MONTH)+ "/" + dateTime.get(Calendar.YEAR) + " " + time.get(Calendar.HOUR) + ":" +time.get(Calendar.MINUTE);
         SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -265,6 +267,22 @@ public class actClientAddNewTask extends Fragment {
             }
 
         }
+      return idCategory;
+    }
+
+public void ShowMessage()
+{
+    AlertDialog.Builder alertDialog = new AlertDialog.Builder(ctx);
+    alertDialog.setTitle("Brak wybranego terminu wykonania zadania");
+    alertDialog.setMessage("Wybierz datę zadania");
+    alertDialog.setIcon(R.drawable.calendar64);
+    alertDialog.setPositiveButton("OK",
+            new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,
+                                    int which) {
+                    updateDate();
+                }
+            });
         return idCategory;
     }
 
@@ -289,6 +307,8 @@ public class actClientAddNewTask extends Fragment {
                     dialog.cancel();
                 }
             });*/
+    alertDialog.show();
+}
         alertDialog.show();
     }
 }

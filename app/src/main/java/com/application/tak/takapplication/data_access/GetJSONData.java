@@ -21,6 +21,7 @@ public class GetJSONData extends AsyncTask<String, Void, String>
     public String JsonResult = "";
     ProgressDialog pDialog;
     Context _context;
+    public boolean showProgressDialog = true;
 
     public void setDBRequestFinishedListener(OnDBRequestFinished eventListener)
     {
@@ -35,11 +36,13 @@ public class GetJSONData extends AsyncTask<String, Void, String>
     protected void onPreExecute()
     {
         super.onPreExecute();
-        pDialog = new ProgressDialog(_context);
-        pDialog.setMessage("ŁADUJĘ...");
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
-        pDialog.show();
+        if(showProgressDialog) {
+            pDialog = new ProgressDialog(_context);
+            pDialog.setMessage("ŁADUJĘ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
     }
 
     @Override
@@ -78,7 +81,8 @@ public class GetJSONData extends AsyncTask<String, Void, String>
     {
         super.onPostExecute(s);
         JsonResult = s;
-        pDialog.dismiss();
+        if(showProgressDialog)
+            pDialog.dismiss();
         mListener.onDBRequestFinished();
     }
 }

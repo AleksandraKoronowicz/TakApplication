@@ -7,3 +7,16 @@
 /build
 /captures
 .externalNativeBuild
+.idea/misc.xml
+.idea/misc.xml
+app/build.gradle
+app/src/main/java/com/application/tak/takapplication/actFirstUsage.java
+app/src/main/java/com/application/tak/takapplication/services/LoginStatus.java
+build.gradle
+gradle/wrapper/gradle-wrapper.properties
+app/src/main/java/com/application/tak/takapplication/actFirstUsage.java
+build.gradle
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.properties
+*.properties

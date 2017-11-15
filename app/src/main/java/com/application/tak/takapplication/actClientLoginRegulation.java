@@ -26,6 +26,8 @@ public class actClientLoginRegulation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //LoginStatus loginStatus = new LoginStatus(_ctx);
+             //   loginStatus.NewClient(Config.LoggedInClient,Config.LoggedInClient.get_Adress());
              //   LoginStatus loginStatus = new LoginStatus(_ctx);
                // loginStatus.NewClient(Config.LoggedInClient,Config.LoggedInClient.get_Adress());
             }

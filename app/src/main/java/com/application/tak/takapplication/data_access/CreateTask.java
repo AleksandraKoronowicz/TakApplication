@@ -41,6 +41,45 @@ public class CreateTask extends AsyncTask<String,Void,String>
         String time_from=params[3];
         String time_to=params[4];
 
+            try {
+                URL url=new URL(URI);
+                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                OutputStream os=httpURLConnection.getOutputStream();
+
+                String data= URLEncoder.encode("category_id","UTF-8")+"="+URLEncoder.encode(category_id,"UTF-8")+"&"+
+                        URLEncoder.encode("status_id","UTF-8")+"="+URLEncoder.encode(status_id,"UTF-8")+"&"+
+                        URLEncoder.encode("creator_id","UTF-8")+"="+URLEncoder.encode(creator_id,"UTF-8")+"&"+
+                        URLEncoder.encode("time_from","UTF-8")+"="+URLEncoder.encode(time_from,"UTF-8")+"&"+
+                        URLEncoder.encode("time_to","UTF-8")+"="+URLEncoder.encode(time_to,"UTF-8")+ "&"+
+               URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
+
+                BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+
+                int statusCode = httpURLConnection.getResponseCode();
+                if (statusCode == 200)
+                {
+
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null)
+                        sb.append(line).append("\n");
+
+                    result = sb.toString();
+                    bufferedWriter.close();
+                }
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+
         try {
             URL url=new URL(URI);
             HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
@@ -75,6 +114,16 @@ public class CreateTask extends AsyncTask<String,Void,String>
             }
 
 
+        } catch (MalformedURLException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
+    }
+        return result;
+}}
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

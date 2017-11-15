@@ -59,6 +59,14 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
         recyclerview.setLayoutManager(layoutManager);
 
 
+            /*User u = new User();
+            u.set_Id(2);*/
+            tasksByStatus = new GetAllClientTasksByStatus(_activity,Config.LoggedInClient,2);
+            tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
+                @Override
+                public void onDBRequestFinished() {
+                    if (tasksByStatus._tasks != null) {
+
         User u = new User();
         u.set_Id(2);
         tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
@@ -67,6 +75,10 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
             public void onDBRequestFinished() {
                 if (tasksByStatus._tasks != null) {
 
+                               TaskList member = new TaskList(task);
+
+                                memberList.add(member);
+                            }
                     Config.ClientTasks = tasksByStatus._tasks;
                     for (Task_V task : Config.ClientTasks) {
 
@@ -74,6 +86,8 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
 
                         memberList.add(member);
                     }
+                    adapter = new RVAdapter(memberList, _activity);
+                    recyclerview.setAdapter(adapter);
                 }
                 adapter = new RVAdapter(memberList, _activity);
                 recyclerview.setAdapter(adapter);
@@ -103,6 +117,31 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
                 }
                 adapter = new RVAdapter(memberList, _activity);
                 recyclerview.setAdapter(adapter);
+            }
+
+            public void RefreashView()
+            {
+               // User u = new User();
+                //u.set_Id(2);
+                tasksByStatus = new GetAllClientTasksByStatus(_activity,Config.LoggedInClient,2);
+                tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
+                    @Override
+                    public void onDBRequestFinished() {
+                        if (tasksByStatus._tasks != null) {
+
+                            Config.ClientTasks = tasksByStatus._tasks;
+                            for (Task_V task : Config.ClientTasks) {
+
+                                TaskList member = new TaskList(task);
+
+                                memberList.add(member);
+                            }
+                        }
+                        adapter = new RVAdapter(memberList, _activity);
+                        recyclerview.setAdapter(adapter);
+                    }
+                });
+
             }
         });
 

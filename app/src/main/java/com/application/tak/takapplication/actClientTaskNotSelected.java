@@ -43,7 +43,7 @@ public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
 
     private RecyclerView recyclerview;
     private GetAllClientTasks clientTask;
-    private User client = new User();
+    //private User client = new User();
     private  Task_V task;
     private  GetAllClientTasks tasks;
     private GetAllClientTasksByStatus tasksByStatus;
@@ -58,6 +58,13 @@ public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
     }
 
 
+            memberList = new ArrayList<TaskListNotSelected>();
+            _ctx = getContext();
+            _activity = getActivity();
+            /*User u = new User();
+            u.set_Id(2);*/
+            tasksByStatus = new GetAllClientTasksByStatus(_ctx,Config.LoggedInClient,1);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

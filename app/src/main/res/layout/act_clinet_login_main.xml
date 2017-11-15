@@ -19,8 +19,18 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp">
+            android:layout_height="match_parent">
             <!-- Login progress -->
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignEnd="@+id/imageView19"
+                android:layout_alignRight="@+id/imageView19"
+                android:layout_below="@+id/cv"
+                android:rotation="270"
+                app:srcCompat="@drawable/arrow"
+                tools:ignore="ContentDescription,UnknownIdInLayout" />
 
             <ImageView
                 android:id="@+id/imageView19"
@@ -34,7 +44,7 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/cv"
                 android:layout_width="wrap_content"
-                android:layout_height="455dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/imageView19"
@@ -48,7 +58,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
 
                     android:padding="9dp">
 
@@ -64,7 +74,6 @@
 
                         <AutoCompleteTextView
                             android:id="@+id/regClientPhoneNo"
-                            android:id="@+id/telefon"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_alignBottom="@+id/miej"
@@ -133,12 +142,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_below="@+id/miescowosc"
-                        android:id="@+id/passwordClient"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/postCode"
-
                         android:layout_marginBottom="2dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp">
@@ -166,18 +169,6 @@
                         android:layout_below="@+id/street"
                         android:layout_marginBottom="2dp"
                         android:layout_marginLeft="30dp">
-                            android:id="@+id/password"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/textInputLayout3"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="Hasło"
-
-                            android:maxLines="1"
-                            android:textSize="15sp"
-
-                            tools:ignore="HardcodedText" />
 
                         <AutoCompleteTextView
                             android:id="@+id/regClientPostCode"
@@ -237,47 +228,6 @@
                             android:layout_alignLeft="@+id/textInputLayout3"
                             android:layout_alignStart="@+id/textInputLayout3"
                             android:hint="nazwa użytkownika"
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/nrDomu"
-
-                        android:layout_width="80dp"
-                        android:layout_height="45dp"
-                        android:layout_alignBottom="@+id/postCode"
-                        android:layout_toEndOf="@+id/postCode"
-                        android:layout_toRightOf="@+id/postCode">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/nr"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:hint="Nr domu"
-                            android:maxLines="1"
-                            android:textSize="15sp"
-                            tools:ignore="HardcodedText" />
-
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/street"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/miescowosc"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/ulica"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/miej"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="Ulica"
                             android:maxLines="1"
                             android:textSize="15sp"
                             tools:ignore="HardcodedText" />
@@ -296,53 +246,12 @@
 
                         <AutoCompleteTextView
                             android:id="@+id/regClientName"
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/postCode"
-
-                        android:layout_width="150dp"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/street"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp"
-                        tools:ignore="RtlHardcoded">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/kodPocztowy"
-                            android:layout_width="150dp"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/miej"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="Kod pocztowy"
-                            android:maxLines="1"
-                            android:textSize="15sp"
-                            tools:ignore="HardcodedText" />
-
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/miescowosc"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/nick"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/miasto"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_alignBottom="@+id/textInputLayout3"
                             android:layout_alignLeft="@+id/textInputLayout3"
                             android:layout_alignStart="@+id/textInputLayout3"
                             android:hint="Imię"
-                            android:hint="Miasto"
                             android:maxLines="1"
                             android:textSize="15sp"
                             tools:ignore="HardcodedText" />
@@ -356,68 +265,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_below="@+id/textInputLayout3"
-                        android:id="@+id/nick"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/nazwiskoti"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                         android:layout_marginBottom="2dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp">
 
                         <AutoCompleteTextView
                             android:id="@+id/regClientLName"
-                            android:id="@+id/email"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/textInputLayout3"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="nazwa użytkownika"
-                            android:maxLines="1"
-                            android:textSize="15sp"
-                            tools:ignore="HardcodedText" />
-
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/textInputLayout3"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/task_to_do2"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginTop="10dp">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/imie"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/textInputLayout3"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="Imię"
-                            android:maxLines="1"
-                            android:textSize="15sp"
-                            tools:ignore="HardcodedText" />
-
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/nazwiskoti"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/textInputLayout3"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/nazwisko"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_alignBottom="@+id/textInputLayout3"
@@ -440,22 +293,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageView8"
                     android:layout_centerHorizontal="true"
-                    android:text="@string/uzupe_nij_szczeg_y"
+                    android:text="Uzupełnij szczegóły"
                     android:textAlignment="center"
                     android:textColor="@color/txtLessImportantData"
                     android:textSize="23sp" />
 
             </android.support.v7.widget.CardView>
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_below="@+id/cv"
-                android:layout_centerHorizontal="true"
-                android:rotation="270"
-                app:srcCompat="@drawable/arrow"
-                tools:ignore="ContentDescription,RtlHardcoded,UnknownIdInLayout" />
 
         </RelativeLayout>
     </ScrollView>

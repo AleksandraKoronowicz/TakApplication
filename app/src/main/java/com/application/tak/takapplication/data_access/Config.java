@@ -20,7 +20,8 @@ import java.util.List;
  */
 public class Config
 {
-    public static final String SERVER_NAME = "http://klasterinnowacjispolecznych.pl/";
+    public static final String SERVER_NAME = "http://klasterinnowacjispolecznych.pl/";   //"http://192.168.0.12/";//klasterinnowacjispolecznych.pl/";
+
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd_HHmm");
     public static final String ApplicationId = "9736362253343859";
     public static Client_V LoggedInClient = null;
