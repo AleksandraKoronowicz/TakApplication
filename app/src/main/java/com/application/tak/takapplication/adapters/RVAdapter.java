@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -38,6 +40,7 @@ import java.util.ArrayList;
 /**
  * Created by Aleksandra on 13.07.2017.
  */
+import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> {
@@ -165,7 +168,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
                 alertDialog.setTitle("Czy chcesz usunąć zadanie?");
 
                 // Setting Dialog Message
-                alertDialog.setMessage("Automatycznie drogą sms uczeń zostanie powiadomiony o wycofaniu zadania");
+                alertDialog.setMessage("Automatycznie zostanie otworzone okno do wysłania wiadomości SMS w celu powiadomienia ucznia o wycofaniu z zadania.");
                 alertDialog.setIcon(R.drawable.edit);
 
                 // Setting Positive Yes Button
@@ -173,11 +176,32 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
 
                     public void onClick(DialogInterface dialog, int which) {
 
+<<<<<<< HEAD
 
                         onBindViewHolder(memberViewHolder,i);
                         SetDeleteAnimation(memberViewHolder);
                         DeleteTask(members,i);
 
+=======
+                        SetDeleteAnimation(memberViewHolder);
+                        notifyItemRemoved(memberViewHolder.getLayoutPosition());
+                        DeleteTask(members,i);
+
+                        String phone = members.get(i).getExecutorPhone();
+                        String msg = String.format
+                                ("Dzień dobry,\n pragnę poinformować o wycofaniu zadania:%1$2s z dnia %2$2s o godzinie %3$2s.\n Pozdrawiam %4$2s"
+                                        ,members.get(i).category
+                                        ,members.get(i).getData()
+                                        ,members.get(i).getCzas()
+                                        ,members.get(i).clientName
+                                );
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone));
+                        intent.putExtra("sms_body", msg);
+                        context.startActivity(intent);
+
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                     }
                 });
 
@@ -207,6 +231,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
         members.remove(position);
     }
 
+<<<<<<< HEAD
+=======
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     public void SetNormalLayout(MemberViewHolder mv)
     {
         mv.shortdate_tv.setAlpha(1f);

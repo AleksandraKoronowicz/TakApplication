@@ -102,7 +102,11 @@ public class RVAdapterMyTaskStudent extends RecyclerView.Adapter<RVAdapterMyTask
                         switch (item.getItemId()) {
                             case R.id.mytask_delete:
                                 ShowMessageBox(members, position, memberViewHolder);
+<<<<<<< HEAD
                                 onBindViewHolder(memberViewHolder,i);
+=======
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
                         }
                         return false;
@@ -253,11 +257,33 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int which) {
 
+<<<<<<< HEAD
                         SetChooseActionLayoutAnimation(mm);
                         notifyDataSetChanged();
                         SetChooseActionLayoutAnimation(mm);
                         DeleteTask(members, position);
 
+=======
+
+                        SetChooseActionLayoutAnimation(mm);
+                        notifyItemRemoved(mm.getLayoutPosition());
+                        DeleteTask(members, position);
+
+                        String phone = members.get(position).telefon;
+                        String msg = String.format
+                                ("Dzień dobry,\n pragnę poinformować o rezygnacji z zadania:%1$2s z dnia %2$2s o godzinie %3$2s.\n Pozdrawiam %4$2s"
+                                        ,members.get(position).mytitletask
+                                       ,members.get(position).getData()
+                                        ,members.get(position).getCzas()
+                                        ,members.get(position).studentName
+                                );
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone));
+                        intent.putExtra("sms_body", msg);
+                        context.startActivity(intent);
+
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                     }
                 });
         alertDialog.setNegativeButton("Anuluj",

@@ -64,7 +64,7 @@ public class GetUserById extends GetJSONData
                 URL = URL+"get_teacher_by_id.php";
                 break;
             default: URL = Config.SERVER_NAME +"get_user_by_id.php";
-            break;
+                break;
         }
         execute(new String[]{URL,id.toString(),userType});
     }
@@ -88,7 +88,7 @@ public class GetUserById extends GetJSONData
 
             String data=
                     URLEncoder.encode("id","UTF-8")+"="+URLEncoder.encode(id,"UTF-8")+"&"+
-            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
+                            URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
 
             BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
             bufferedWriter.write(data);
@@ -121,45 +121,45 @@ public class GetUserById extends GetJSONData
 
     }
 
-private void ProcessClient(String data)
-{
-    try{
-    JSONObject jsonObject = new JSONObject(data.substring(data.indexOf("{"), data.lastIndexOf("}") + 1));
-    if(!jsonObject.isNull("client"))
+    private void ProcessClient(String data)
     {
-        JSONArray jsonUser = jsonObject.getJSONArray("client");
+        try{
+            JSONObject jsonObject = new JSONObject(data.substring(data.indexOf("{"), data.lastIndexOf("}") + 1));
+            if(!jsonObject.isNull("client"))
+            {
+                JSONArray jsonUser = jsonObject.getJSONArray("client");
 
-        if(jsonUser.length() == 1)
+                if(jsonUser.length() == 1)
+                {
+                    Client_V client = new Client_V();
+                    Adress adress = new Adress();
+                    JSONObject c = jsonUser.getJSONObject(0);
+                    client.set_Id(c.getInt(TAG_ID));
+                    client.set_LName(c.getString(TAG_LNAME));
+                    client.set_FName(c.getString(TAG_FNAME));
+                    client.set_Username(c.getString(TAG_USERNAME));
+                    client.set_RoleId(c.getInt(TAG_ROLE_ID));
+                    client.set_AdressId(c.getInt(TAG_ADRESS_ID));
+                    client.set_IsActive(1);
+                    client.set_PhoneNo(c.getString(TAG_PHONE_NO));
+                    adress.set_Id(client.get_AdressId());
+                    adress.set_City(c.getString(TAG_CITY));
+                    adress.set_PostCode(c.getString(TAG_POSTCODE));
+                    adress.set_RoadNo(c.getString(TAG_ROAD_NO));
+                    adress.set_Road(c.getString(TAG_ROAD));
+
+                    client.set_Adress(adress);
+                    _client = client;
+                    _user = client;
+                }
+            }
+        }
+        catch (Exception ex)
         {
-            Client_V client = new Client_V();
-            Adress adress = new Adress();
-            JSONObject c = jsonUser.getJSONObject(0);
-            client.set_Id(c.getInt(TAG_ID));
-            client.set_LName(c.getString(TAG_LNAME));
-            client.set_FName(c.getString(TAG_FNAME));
-            client.set_Username(c.getString(TAG_USERNAME));
-            client.set_RoleId(c.getInt(TAG_ROLE_ID));
-            client.set_AdressId(c.getInt(TAG_ADRESS_ID));
-            client.set_IsActive(1);
-            client.set_PhoneNo(c.getString(TAG_PHONE_NO));
-            adress.set_Id(client.get_AdressId());
-            adress.set_City(c.getString(TAG_CITY));
-            adress.set_PostCode(c.getString(TAG_POSTCODE));
-            adress.set_RoadNo(c.getString(TAG_ROAD_NO));
-            adress.set_Road(c.getString(TAG_ROAD));
-
-            client.set_Adress(adress);
-            _client = client;
-            _user = client;
+            Toast t = Toast.makeText( _context, ex.toString(), Toast.LENGTH_LONG);
+            t.show();
         }
     }
-}
-        catch (Exception ex)
-    {
-        Toast t = Toast.makeText( _context, ex.toString(), Toast.LENGTH_LONG);
-        t.show();
-    }
-}
 
     private void ProcessStudent(String data)
     {

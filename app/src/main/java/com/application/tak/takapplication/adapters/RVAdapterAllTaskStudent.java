@@ -148,13 +148,21 @@ private String task_place;
          @Override
           public void onClick(View view)
           {
+<<<<<<< HEAD
 
               onBindViewHolder(memberViewHolder,i);
               SetChooseActionLayoutAnimation(memberViewHolder);
               ChooseTask(members, i);
 
+=======
+             SetChooseActionLayoutAnimation(memberViewHolder);
+             ChooseTask(members, i);
+             notifyItemRemoved(i);
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
           }
-         });
+
+         }
+         );
 
         memberViewHolder.google_map.setOnClickListener(new View.OnClickListener()
         {

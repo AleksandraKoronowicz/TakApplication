@@ -1,43 +1,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.application.tak.takapplication.actStudentLogin$PlaceholderFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.application.tak.takapplication.actStudentLogin$PlaceholderFragment">
 
     <ScrollView
-            android:id="@+id/login_form2"
-            android:layout_width="match_parent"
-            tools:ignore="UselessParent"
-            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_height="match_parent">
+        android:id="@+id/login_form2"
+        android:layout_width="match_parent"
+        tools:ignore="UselessParent"
+        android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" android:layout_height="match_parent">
 
         <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
-            android:id="@+id/cv"
-            android:layout_width="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" app:cardElevation="7dp"
-            android:layout_marginTop="45dp" android:layout_height="320dp">
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" app:cardElevation="7dp"
+                android:layout_marginTop="45dp" android:layout_height="320dp">
 
 
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="326dp"
-                        tools:ignore="ExtraText">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="326dp"
+                    tools:ignore="ExtraText">
 
-            <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:id="@+id/imageView"
-                    android:contentDescription=""
-                    app:srcCompat="@drawable/student"
-                    android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                    tools:ignore="ContentDescription"/>
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:id="@+id/imageView"
+                        android:contentDescription=""
+                        app:srcCompat="@drawable/student"
+                        android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                        tools:ignore="ContentDescription"/>
 
 
+<<<<<<< HEAD
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
@@ -65,21 +66,79 @@
                 android:id="@+id/textInputLayout2">
                 <AutoCompleteTextView
                         android:id="@+id/phone_input"
+=======
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:maxLines="1" android:textSize="25sp" android:textStyle="normal|bold"
-                        android:textColorLink="?android:attr/textColorHighlightInverse"
-                        android:inputType="phone"
-                        android:layout_centerHorizontal="true"
-                        android:layout_height="50dp"/>
-                <TextView
-                        android:id="@+id/textView4"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginTop="200dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/email_input"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:textColorLink="?android:attr/textColorHighlightInverse"
+                            android:textSize="25sp"
+                            android:textStyle="normal|bold" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="40dp" android:layout_marginRight="40dp"
+                        android:layout_centerVertical="true" android:layout_centerHorizontal="true"
+                        android:id="@+id/textInputLayout2">
+                        <AutoCompleteTextView
+                            android:id="@+id/phone_input"
+                            android:layout_width="match_parent"
+                            android:maxLines="1" android:textSize="25sp" android:textStyle="normal|bold"
+                            android:textColorLink="?android:attr/textColorHighlightInverse"
+                            android:inputType="phone"
+                            android:layout_centerHorizontal="true"
+                            android:layout_height="50dp"/>
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/telefon"
+                            android:textAllCaps="false"
+                            android:layout_below="@+id/textView_kod" android:layout_toRightOf="@+id/imageView"
+                            android:layout_toEndOf="@+id/imageView" android:layout_weight="1"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/textView_kod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/telefon"
-                        android:textAllCaps="false"
-                        android:layout_below="@+id/textView_kod" android:layout_toRightOf="@+id/imageView"
-                        android:layout_toEndOf="@+id/imageView" android:layout_weight="1"/>
+                        android:layout_below="@+id/imageView"
+                        android:layout_centerHorizontal="true"
+                        android:lineSpacingExtra="8sp"
+                        android:text="Uzupełnij szczegóły"
+                        android:textAlignment="center"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textSize="34sp" />
 
+                    <TextView
+                        android:id="@+id/tvgotowe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/imageView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignRight="@+id/imageView"
+                        android:layout_marginBottom="12dp"
+                        android:lineSpacingExtra="8sp"
+                        android:text="Gotowe?"
+                        android:textAlignment="center"
+                        android:textColor="@color/txtLessImportantData"
+                        android:textSize="25sp" />
+
+<<<<<<< HEAD
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -109,11 +168,15 @@
                 android:textSize="25sp" />
 
         </RelativeLayout>
+=======
+                </RelativeLayout>
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
-    </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
 
             <TextView
+<<<<<<< HEAD
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,6 +185,16 @@
                     android:layout_alignParentStart="true" android:layout_marginLeft="11dp"
                     android:layout_marginStart="11dp"
                     android:layout_marginTop="11dp" android:textAllCaps="false"/>
+=======
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Krok 3 - dodaj szczegóły"
+                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="11dp" android:textAllCaps="false"/>
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
             <AutoCompleteTextView
                 android:id="@+id/regulamin"
@@ -138,15 +211,30 @@
                 android:textIsSelectable="false"
                 android:textSize="18sp" />
             <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rbRegulaminAccept"
-                    style="@style/AppTheme"
-                    android:checked="false"
-                    android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rbRegulaminAccept"
+                style="@style/AppTheme"
+                android:checked="false"
+                android:textSize="12sp"
 
-                    android:layout_marginTop="16dp" android:layout_below="@+id/cv"
-                    android:layout_centerHorizontal="true"/>
+                android:layout_marginTop="16dp" android:layout_below="@+id/cv"
+                android:layout_centerHorizontal="true"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabGoToStudentTaSK"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_alignBottom="@+id/rbRegulaminAccept"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="14dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:clickable="true"
+                app:elevation="7dp"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/cooltext242812233487143" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fabGoToStudentTaSK"
@@ -166,5 +254,5 @@
 
         </RelativeLayout>
 
-</ScrollView>
+    </ScrollView>
 </RelativeLayout>

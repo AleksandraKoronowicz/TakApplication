@@ -23,6 +23,8 @@ public class actStudentLoginDetails  extends Fragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.act_student_login_details, container, false);
 
+        final TextView ready = (TextView) rootView.findViewById(R.id.tvgotowe);
+        ready.setVisibility(View.INVISIBLE);
         FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fabGoToStudentTaSK);
         fab.setVisibility(View.INVISIBLE);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +50,7 @@ public class actStudentLoginDetails  extends Fragment {
                                       if (rb.isChecked())
                                       {
                                           fab.show();
+                                          ready.setVisibility(View.VISIBLE);
 
                                       }
                                   }
@@ -59,8 +62,9 @@ public class actStudentLoginDetails  extends Fragment {
             @Override
             public void onClick(View view) {
 
-                    Intent i = new Intent(view.getContext(), actStudentRegulation.class);
-                    startActivity(i);
+                Intent i = new Intent(view.getContext(), actStudentRegulation.class);
+                startActivity(i);
+
 
             }
         });

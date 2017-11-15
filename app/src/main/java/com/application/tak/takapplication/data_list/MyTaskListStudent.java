@@ -23,7 +23,13 @@ public class MyTaskListStudent {
     public String city;
     public String homeNumber;
     public String posteCode;
+    public String telefon;
+    public String studentName;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     public Task_V tsk;
     public int id;
 
@@ -41,6 +47,12 @@ this.id = tsk.get_Id();
         this.homeNumber = tsk.get_CreatorRoadNo();
         this.posteCode = tsk.get_CreatorPostCode();
         this.mytaskPlace = getTaskPlace();
+<<<<<<< HEAD
+=======
+        this.telefon = tsk.get_CreatorPhoneNo();
+        this.studentName = tsk.get_ExecutorFName() + " " + tsk.get_ExecutorLName();
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
 
 

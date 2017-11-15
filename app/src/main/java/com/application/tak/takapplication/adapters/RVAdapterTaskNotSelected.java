@@ -4,6 +4,8 @@ package com.application.tak.takapplication.adapters;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -16,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.application.tak.takapplication.R;
+import com.application.tak.takapplication.actClientTaskNotSelected;
 import com.application.tak.takapplication.data_access.UpdateTask;
 import com.application.tak.takapplication.data_list.MyTaskListStudent;
 import com.application.tak.takapplication.data_list.TaskListNotSelected;
@@ -37,10 +40,12 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
     private List<TaskListNotSelected> members;
     private Context context;
+    public Boolean refreash;
 
     public RVAdapterTaskNotSelected(List<TaskListNotSelected> members, Context context) {
         this.members = members;
         this.context = context;
+        this.refreash = false;
     }
 
     public class MemberViewHolder extends RecyclerView.ViewHolder {
@@ -73,12 +78,29 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         //final TaskListNotSelected item = members.get(i);
        memberViewHolder.del.setVisibility(View.INVISIBLE);
         memberViewHolder.cardView.setCardBackgroundColor(Color.WHITE);
+<<<<<<< HEAD
         memberViewHolder.day_name_tv.setText(ChangeDateString(members.get(i).getData(),"EEEE"));
         memberViewHolder.title_tv.setText(members.get(i).getTitle());
         memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"dd MMMM"));
         memberViewHolder.time_tv.setText(members.get(i).getTime());
         memberViewHolder.del.hide();
                SetNormalLayout(memberViewHolder);
+=======
+        memberViewHolder.del.hide();
+        memberViewHolder.date_tv.setAlpha(1f);
+        memberViewHolder.day_name_tv.setAlpha(1f);
+        memberViewHolder.time_tv.setAlpha(1f);
+        memberViewHolder.title_tv.setAlpha(1f);
+
+
+            memberViewHolder.day_name_tv.setText(ChangeDateString(members.get(i).getData(), "EEEE"));
+            memberViewHolder.title_tv.setText(members.get(i).getTitle());
+            memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(), "dd MMMM"));
+            memberViewHolder.time_tv.setText(members.get(i).getTime());
+
+
+             //  SetNormalLayout(memberViewHolder);
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
         memberViewHolder.del.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -86,6 +108,10 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
                 ShowMessageBox(members, i, memberViewHolder);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
             }
         });
 
@@ -120,6 +146,11 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
                trasz.startAnimation(slideDown);
                trasz.setVisibility(View.INVISIBLE);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                data.setAlpha(1f);
                topic.setAlpha(1f);
                time.setAlpha(1f);
@@ -129,6 +160,7 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
            }
        } });
 
+<<<<<<< HEAD
    ///////////////////////////////////////popmenu action///////////////////////////////////////
    /*     memberViewHolder.option.setOnClickListener(new View.OnClickListener() {
             final int position = i;
@@ -159,6 +191,8 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
         });
 */
+=======
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
 
     public void DeleteTask(List<TaskListNotSelected> members, int position)
@@ -167,16 +201,23 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
         task = members.get(position).tsk;
         task.set_StatusId(4);
+<<<<<<< HEAD
 
         UpdateTask updateTask = new UpdateTask();
         updateTask.UpdateTask(task);
 
       //  members.remove(position);
+=======
+        UpdateTask updateTask = new UpdateTask();
+        updateTask.UpdateTask(task);
+
+      members.remove(position);
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
 
     public void ShowMessageBox(final List<TaskListNotSelected> member, final int position, final MemberViewHolder mv)
     {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         alertDialog.setMessage("Napewno chcesz usunąć zadanie?");
         alertDialog.setIcon(R.drawable.question);
         alertDialog.setPositiveButton("Tak",
@@ -184,11 +225,18 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
                     public void onClick(DialogInterface dialog,
                                         int which) {
 
+<<<<<<< HEAD
                         onBindViewHolder(mv,position);
                         SetDeleteAnimation(mv);
                         DeleteTask(member, position);
                         member.remove(position);
 
+=======
+                        SetDeleteAnimation(mv);
+                        notifyItemRemoved(mv.getLayoutPosition());
+                        DeleteTask(member, mv.getLayoutPosition());
+                      //
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                       //
                     }
                 });
@@ -203,6 +251,7 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         alertDialog.show();
     }
 
+<<<<<<< HEAD
     public void SetNormalLayout(MemberViewHolder mv)
     {
         mv.date_tv.setAlpha(1f);
@@ -211,6 +260,18 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         mv.title_tv.setAlpha(1f);
         mv.del.setVisibility(View.INVISIBLE);
         mv.del.hide();
+=======
+    public void SetNormalLayout(MemberViewHolder memberViewHolder)
+    {
+        memberViewHolder.del.setVisibility(View.INVISIBLE);
+        memberViewHolder.cardView.setCardBackgroundColor(Color.WHITE);
+        memberViewHolder.del.hide();
+        memberViewHolder.date_tv.setAlpha(1f);
+        memberViewHolder.day_name_tv.setAlpha(1f);
+        memberViewHolder.time_tv.setAlpha(1f);
+        memberViewHolder.title_tv.setAlpha(1f);
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
     }
 
@@ -234,6 +295,11 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
     {
         Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
         mv.cardView.setAnimation(slideDown);
+<<<<<<< HEAD
+=======
+      //  mv.cardView.setVisibility(View.INVISIBLE);
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
         @Override
         public MemberViewHolder onCreateViewHolder (ViewGroup viewGroup,int i){

@@ -30,7 +30,7 @@ import java.util.List;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-    public class actClientTaskToDo extends android.support.v4.app.Fragment{
+public class actClientTaskToDo extends android.support.v4.app.Fragment{
 
     private RecyclerView recyclerview;
     private List<TaskList> memberList;
@@ -41,23 +41,24 @@ import java.util.List;
 
     GetAllClientTasksByStatus tasksByStatus;
 
-        public actClientTaskToDo()
-        {
+    public actClientTaskToDo()
+    {
 
-        }
+    }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
 
-            View view = inflater.inflate(R.layout.act_client_task_todo, container, false);
-            memberList = new ArrayList<TaskList>();
-            _activity = getActivity();
-            recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(_activity);
-            recyclerview.setLayoutManager(layoutManager);
+        View view = inflater.inflate(R.layout.act_client_task_todo, container, false);
+        memberList = new ArrayList<TaskList>();
+        _activity = getActivity();
+        recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(_activity);
+        recyclerview.setLayoutManager(layoutManager);
 
+<<<<<<< HEAD
 
             /*User u = new User();
             u.set_Id(2);*/
@@ -66,22 +67,64 @@ import java.util.List;
                 @Override
                 public void onDBRequestFinished() {
                     if (tasksByStatus._tasks != null) {
+=======
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
-                            Config.ClientTasks = tasksByStatus._tasks;
-                            for (Task_V task : Config.ClientTasks) {
+        User u = new User();
+        u.set_Id(2);
+        tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
+        tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
+            @Override
+            public void onDBRequestFinished() {
+                if (tasksByStatus._tasks != null) {
 
+<<<<<<< HEAD
                                TaskList member = new TaskList(task);
 
                                 memberList.add(member);
                             }
+=======
+                    Config.ClientTasks = tasksByStatus._tasks;
+                    for (Task_V task : Config.ClientTasks) {
+
+                        TaskList member = new TaskList(task);
+
+                        memberList.add(member);
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                     }
                     adapter = new RVAdapter(memberList, _activity);
                     recyclerview.setAdapter(adapter);
                 }
-            });
-                    return view;
-
+                adapter = new RVAdapter(memberList, _activity);
+                recyclerview.setAdapter(adapter);
             }
+        });
+        return view;
+
+    }
+
+    public void RefreashView()
+    {
+        User u = new User();
+        u.set_Id(2);
+        tasksByStatus = new GetAllClientTasksByStatus(_activity,u,2);
+        tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
+            @Override
+            public void onDBRequestFinished() {
+                if (tasksByStatus._tasks != null) {
+
+                    Config.ClientTasks = tasksByStatus._tasks;
+                    for (Task_V task : Config.ClientTasks) {
+
+                        TaskList member = new TaskList(task);
+
+                        memberList.add(member);
+                    }
+                }
+                adapter = new RVAdapter(memberList, _activity);
+                recyclerview.setAdapter(adapter);
+            }
+<<<<<<< HEAD
 
             public void RefreashView()
             {
@@ -107,6 +150,11 @@ import java.util.List;
                 });
 
             }
+=======
+        });
+
+    }
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
 
 }

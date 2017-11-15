@@ -167,12 +167,23 @@ public class actClientAddNewTask extends Fragment {
                 time.set(Calendar.HOUR, hourOfDay);
                 time.set(Calendar.MINUTE, minute);
             }
+<<<<<<< HEAD
       });
 
 
 
  return view;
     }
+=======
+        });
+
+
+
+        return view;
+    }
+
+
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
 
 
@@ -192,7 +203,11 @@ public class actClientAddNewTask extends Fragment {
 
     private void updateTime()
     {
+<<<<<<< HEAD
   //    new TimePickerDialog(this.getActivity(),t,  time.get(Calendar.HOUR),  time.get(Calendar.MINUTE),true).show();
+=======
+        //    new TimePickerDialog(this.getActivity(),t,  time.get(Calendar.HOUR),  time.get(Calendar.MINUTE),true).show();
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
 
     }
@@ -209,20 +224,35 @@ public class actClientAddNewTask extends Fragment {
 
 //String timeFromTimePicker = dateTime.get(Calendar.DAY_OF_MONTH) + "/" + dateTime.get(Calendar.MONTH)+ "/" + dateTime.get(Calendar.YEAR) + " " + time.get(Calendar.HOUR) + ":" +time.get(Calendar.MINUTE);
         SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+<<<<<<< HEAD
+=======
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH),time.get(Calendar.HOUR_OF_DAY),time.get(Calendar.MINUTE));
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH),time.get(Calendar.HOUR_OF_DAY),time.get(Calendar.MINUTE));
 
         Calendar cal = Calendar.getInstance();
+<<<<<<< HEAD
        Calendar timeto = calendar;
        timeto.add(calendar.HOUR,1);
+=======
+        Calendar timeto = calendar;
+        timeto.add(calendar.HOUR,1);
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
 
         t.set_TimeFrom(calendar.getTime());
         t.set_TimeTo(timeto.getTime());
         t.set_CategoryId( FindCategoryId());
         t.set_CreationTime(cal.getTime());
+<<<<<<< HEAD
         t.set_CreatorId(Config.LoggedInClient.get_Id());//u.get_Id());
+=======
+        t.set_CreatorId(2);//u.get_Id());
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
         t.set_IsApproved(0);
         t.set_ExecutorId(null);
         t.set_StatusId(1);
@@ -265,6 +295,7 @@ public class actClientAddNewTask extends Fragment {
             }
 
         }
+<<<<<<< HEAD
       return idCategory;
     }
 
@@ -281,6 +312,24 @@ public void ShowMessage()
                     updateDate();
                 }
             });
+=======
+        return idCategory;
+    }
+
+    public void ShowMessage()
+    {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(ctx);
+        alertDialog.setTitle("Brak wybranego terminu wykonania zadania");
+        alertDialog.setMessage("Wybierz datę zadania");
+        alertDialog.setIcon(R.drawable.calendar64);
+        alertDialog.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+                        updateDate();
+                    }
+                });
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     /*alertDialog.setNegativeButton("Anuluj",
             new DialogInterface.OnClickListener() {
 
@@ -289,6 +338,11 @@ public void ShowMessage()
                     dialog.cancel();
                 }
             });*/
+<<<<<<< HEAD
     alertDialog.show();
 }
+=======
+        alertDialog.show();
+    }
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 }

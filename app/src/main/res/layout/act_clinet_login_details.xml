@@ -73,11 +73,7 @@
                         android:layout_marginRight="30dp">
 
                         <AutoCompleteTextView
-<<<<<<< HEAD
-                            android:id="@+id/regClientPhoneNo"
-=======
                             android:id="@+id/telefon"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_alignBottom="@+id/miej"
@@ -88,7 +84,6 @@
                             android:textSize="15sp"
                             tools:ignore="HardcodedText" />
 
-<<<<<<< HEAD
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -104,89 +99,6 @@
                         android:layout_marginRight="30dp">
 
                         <AutoCompleteTextView
-                            android:id="@+id/regClientPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/textInputLayout3"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="Hasło"
-
-                            android:maxLines="1"
-                            android:textSize="15sp"
-
-                            tools:ignore="HardcodedText" />
-
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/nrDomu"
-
-                        android:layout_width="80dp"
-                        android:layout_height="45dp"
-                        android:layout_alignBottom="@+id/postCode"
-                        android:layout_toEndOf="@+id/postCode"
-                        android:layout_toRightOf="@+id/postCode">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/regClientHouseNo"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:hint="Nr domu"
-                            android:maxLines="1"
-                            android:textSize="15sp"
-                            tools:ignore="HardcodedText" />
-
-=======
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-<<<<<<< HEAD
-                        android:id="@+id/street"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/miescowosc"
-=======
-                        android:id="@+id/passwordClient"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/postCode"
-
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp">
-
-                        <AutoCompleteTextView
-<<<<<<< HEAD
-                            android:id="@+id/regClientStreet"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/miej"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="Ulica"
-                            android:maxLines="1"
-                            android:textSize="15sp"
-                            tools:ignore="HardcodedText" />
-
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/postCode"
-
-                        android:layout_width="150dp"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/street"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp">
-=======
                             android:id="@+id/password"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
@@ -199,68 +111,8 @@
                             android:textSize="15sp"
 
                             tools:ignore="HardcodedText" />
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
-
-                        <AutoCompleteTextView
-                            android:id="@+id/regClientPostCode"
-                            android:layout_width="150dp"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/miej"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="Kod pocztowy"
-                            android:maxLines="1"
-                            android:textSize="15sp"
-                            tools:ignore="HardcodedText" />
-
-<<<<<<< HEAD
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/miescowosc"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/nick"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/regClientCity"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/textInputLayout3"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="Miasto"
-                            android:maxLines="1"
-                            android:textSize="15sp"
-                            tools:ignore="HardcodedText" />
 
 
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/nick"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/nazwiskoti"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/regClientUsername"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_alignBottom="@+id/textInputLayout3"
-                            android:layout_alignLeft="@+id/textInputLayout3"
-                            android:layout_alignStart="@+id/textInputLayout3"
-                            android:hint="nazwa użytkownika"
-=======
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -302,27 +154,10 @@
                             android:layout_alignLeft="@+id/textInputLayout3"
                             android:layout_alignStart="@+id/textInputLayout3"
                             android:hint="Ulica"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                             android:maxLines="1"
                             android:textSize="15sp"
                             tools:ignore="HardcodedText" />
 
-<<<<<<< HEAD
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/textInputLayout3"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginTop="10dp">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/regClientName"
-=======
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -362,17 +197,12 @@
 
                         <AutoCompleteTextView
                             android:id="@+id/miasto"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_alignBottom="@+id/textInputLayout3"
                             android:layout_alignLeft="@+id/textInputLayout3"
                             android:layout_alignStart="@+id/textInputLayout3"
-<<<<<<< HEAD
-                            android:hint="Imię"
-=======
                             android:hint="Miasto"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                             android:maxLines="1"
                             android:textSize="15sp"
                             tools:ignore="HardcodedText" />
@@ -381,36 +211,22 @@
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
-<<<<<<< HEAD
-                        android:id="@+id/nazwiskoti"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_below="@+id/textInputLayout3"
-=======
                         android:id="@+id/nick"
 
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_below="@+id/nazwiskoti"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                         android:layout_marginBottom="2dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp">
 
                         <AutoCompleteTextView
-<<<<<<< HEAD
-                            android:id="@+id/regClientLName"
-=======
                             android:id="@+id/email"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_alignBottom="@+id/textInputLayout3"
                             android:layout_alignLeft="@+id/textInputLayout3"
                             android:layout_alignStart="@+id/textInputLayout3"
-<<<<<<< HEAD
-=======
                             android:hint="nazwa użytkownika"
                             android:maxLines="1"
                             android:textSize="15sp"
@@ -460,7 +276,6 @@
                             android:layout_alignBottom="@+id/textInputLayout3"
                             android:layout_alignLeft="@+id/textInputLayout3"
                             android:layout_alignStart="@+id/textInputLayout3"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                             android:hint="Nazwisko"
                             android:maxLines="1"
                             android:textSize="15sp"

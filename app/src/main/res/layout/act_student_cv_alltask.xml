@@ -1,12 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.application.tak.takapplication.actStudentLogin$PlaceholderFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.application.tak.takapplication.actStudentLogin$PlaceholderFragment">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv_student_alltask"
@@ -107,6 +107,7 @@
                 android:id="@+id/student_task_time"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_alignBaseline="@+id/student_name"
                 android:layout_alignBottom="@+id/student_name"
                 android:layout_alignParentLeft="true"
@@ -116,6 +117,17 @@
                 android:textColor="@color/txtLessImportantData"
                 android:textSize="15sp"
                 android:textStyle="normal" />
+=======
+                android:text="16:00 do 17:00"
+
+                android:textAlignment="textEnd"
+                android:textColor="@color/txtLessImportantData"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                android:layout_alignTop="@+id/student_name"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
             <TextView
                 android:id="@+id/student_name"
@@ -125,7 +137,12 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:text="Aleksandra Koronowicz"
+<<<<<<< HEAD
                 android:textAlignment="textEnd"
+=======
+
+                android:textAlignment="textStart"
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                 android:textColor="@color/txtLessImportantData"
                 android:textSize="16sp" />
 

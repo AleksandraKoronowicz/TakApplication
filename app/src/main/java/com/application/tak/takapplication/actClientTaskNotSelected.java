@@ -39,7 +39,7 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-    public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
+public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
 
     private RecyclerView recyclerview;
     private GetAllClientTasks clientTask;
@@ -53,15 +53,12 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
 
     private List<TaskListNotSelected> memberList;
 
-        public actClientTaskNotSelected()
-        {
-        }
+    public actClientTaskNotSelected()
+    {
+    }
 
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-
+<<<<<<< HEAD
             memberList = new ArrayList<TaskListNotSelected>();
             _ctx = getContext();
             _activity = getActivity();
@@ -69,22 +66,29 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
             u.set_Id(2);*/
             tasksByStatus = new GetAllClientTasksByStatus(_ctx,Config.LoggedInClient,1);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+=======
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
-            View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
+        memberList = new ArrayList<TaskListNotSelected>();
+        _ctx = getContext();
+        _activity = getActivity();
+        User u = new User();
+        u.set_Id(2);
+        tasksByStatus = new GetAllClientTasksByStatus(_ctx,u,1);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
-            recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
-            recyclerview.setLayoutManager(layoutManager);
+        View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
+
+        recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
+        recyclerview.setLayoutManager(layoutManager);
 
 
-            tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
+        tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
-                @Override
-                public void onDBRequestFinished() {
-if(tasksByStatus._tasks != null)
-{
-    Config.ClientTasks = tasksByStatus._tasks;
-    for (Task_V task : Config.ClientTasks) {
-
+<<<<<<< HEAD
             TaskListNotSelected member = new TaskListNotSelected(task);
             memberList.add(member);
     }
@@ -99,4 +103,27 @@ if(tasksByStatus._tasks != null)
 
           return view;
         }
+=======
+            @Override
+            public void onDBRequestFinished() {
+                if(tasksByStatus._tasks != null)
+                {
+                    Config.ClientTasks = tasksByStatus._tasks;
+                    for (Task_V task : Config.ClientTasks) {
+
+                        TaskListNotSelected member = new TaskListNotSelected(task);
+                        memberList.add(member);
+                    }
+
+                }
+                adapter = new RVAdapterTaskNotSelected(memberList, _activity);
+                recyclerview.setAdapter(adapter);
+
+            }
+        });
+
+
+        return view;
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
+}

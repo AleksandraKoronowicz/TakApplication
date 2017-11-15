@@ -9,10 +9,11 @@
         tools:context="com.application.tak.takapplication.actStudentRegulation">
 
     <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
+<<<<<<< HEAD
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
@@ -28,16 +29,28 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/AppTheme.PopupOverlay" android:elevation="6dp"/>
+=======
+        <ImageView
+            android:id="@+id/imvBack"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|left"
+            android:layout_weight="1"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_weight="1"
+            android:text="Regulamin"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp" />
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/cooltext242812233487143" app:fabSize="normal"/>
-    <include layout="@layout/content_act_student_regulation"/>
+    <include layout="@layout/content_act_client_login_regulation"/>
 
 </android.support.design.widget.CoordinatorLayout>

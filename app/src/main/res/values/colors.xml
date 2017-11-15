@@ -5,7 +5,7 @@
     <color name="colorAccent">#ff4081</color>
     <color name="colorFadeColor">#b3cfd0d1</color>
     <color name="colorWhite">#fcfcfafa</color>
-    <color name="cardview_light_background">#77fafafa</color>
+    <color name="cardview_light_background">#c4fafafa</color>
     <color name="bluedark">#006399</color>
     <color name="PANEL">#fc004680</color>
     <color name="buttonColor">#93e4ebeb</color>
@@ -14,4 +14,9 @@
     <color name="spinercolor">#4ce6e6e6</color>
     <color name="txtLessImportantData">#c7c7c7</color>
     <color name="GoogleRed">#e50312</color>
+<<<<<<< HEAD
+=======
+
+    <color name="black_overlay">#66000000</color>
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 </resources>

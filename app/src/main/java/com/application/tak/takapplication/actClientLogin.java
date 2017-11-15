@@ -13,19 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
-import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.application.tak.takapplication.data_access.Config;
-import com.application.tak.takapplication.data_access.CreateClient;
-import com.application.tak.takapplication.data_access.DB_result;
-import com.application.tak.takapplication.data_access.Helper;
-import com.application.tak.takapplication.data_model.Adress;
-import com.application.tak.takapplication.data_model.User;
-import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
-import com.application.tak.takapplication.local_db.LocalDB;
-
-import java.util.List;
 
 public class actClientLogin extends AppCompatActivity {
 
@@ -191,7 +179,7 @@ public class actClientLogin extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.act_clinet_login_main, container, false);
+            View rootView = inflater.inflate(R.layout.act_clinet_login_details, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
