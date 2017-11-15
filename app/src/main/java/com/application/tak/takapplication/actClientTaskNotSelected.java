@@ -43,7 +43,7 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
 
     private RecyclerView recyclerview;
     private GetAllClientTasks clientTask;
-    private User client = new User();
+    //private User client = new User();
     private  Task_V task;
     private  GetAllClientTasks tasks;
     private GetAllClientTasksByStatus tasksByStatus;
@@ -65,9 +65,9 @@ import static com.application.tak.takapplication.R.layout.act_client_task_notsel
             memberList = new ArrayList<TaskListNotSelected>();
             _ctx = getContext();
             _activity = getActivity();
-            User u = new User();
-            u.set_Id(2);
-            tasksByStatus = new GetAllClientTasksByStatus(_ctx,u,1);
+            /*User u = new User();
+            u.set_Id(2);*/
+            tasksByStatus = new GetAllClientTasksByStatus(_ctx,Config.LoggedInClient,1);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
             View view = inflater.inflate(R.layout.act_client_task_notselected, container, false);
@@ -88,48 +88,15 @@ if(tasksByStatus._tasks != null)
             TaskListNotSelected member = new TaskListNotSelected(task);
             memberList.add(member);
     }
-    adapter = new RVAdapterTaskNotSelected(memberList, _activity);
-    recyclerview.setAdapter(adapter);
-}
-//memberList = Stream.of(memberList.takeWhile(t -> t._StatusName == "fefsd"));
 
+}
+                    adapter = new RVAdapterTaskNotSelected(memberList, _activity);
+                    recyclerview.setAdapter(adapter);
 
                 }
             });
 
 
-
-        /*    client.set_Id(1);
-            clientTask = new GetAllClientTasks(getContext(),client);
-            clientTask.setDBRequestFinishedListener(new OnDBRequestFinished() {
-                @Override
-                public void onDBRequestFinished() {
-                    categoriesList = categories._categories;
-                    if(categories._categories != null)
-                    {
-                        awayStrings = new String[categoriesList.size()];
-                        int i= 0;
-                        for(Category c: categoriesList)
-                        {
-                            awayStrings[i] = c.get_CategoryName();
-                            i++;
-
-                        }
-      */
-         /*   TaskListNotSelected member = new TaskListNotSelected()
-            memberList.add(member);
-            TaskListNotSelected member2 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
-            memberList.add(member2);
-            TaskListNotSelected member3 = new TaskListNotSelected("Wyrzuć śmieci", "25 lipca", "13:00 do 16:00","Gliwice ul....");
-            memberList.add(member3);*/
-
-       //     recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview2);
-     //       LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-    //        recyclerview.setLayoutManager(layoutManager);
-
-          //  RVAdapterTaskNotSelected adapter = new RVAdapterTaskNotSelected(memberList, getActivity());
-         ///   recyclerview.setAdapter(adapter);
-
-            return view;
+          return view;
         }
     }

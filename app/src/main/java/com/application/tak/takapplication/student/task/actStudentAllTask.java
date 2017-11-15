@@ -1,27 +1,19 @@
 package com.application.tak.takapplication.student.task;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
+
 import com.application.tak.takapplication.R;
-import com.application.tak.takapplication.actStudentMainAllTaskListActivity;
-import com.application.tak.takapplication.adapters.RVAdapter;
 import com.application.tak.takapplication.adapters.RVAdapterAllTaskStudent;
 import com.application.tak.takapplication.data_access.Config;
-import com.application.tak.takapplication.data_access.GetAllTasks;
+import com.application.tak.takapplication.data_access.GetAllStudentTasks;
 import com.application.tak.takapplication.data_list.AllTaskListStudent;
-import com.application.tak.takapplication.data_list.TaskList;
-import com.application.tak.takapplication.data_list.TaskListNotSelected;
 import com.application.tak.takapplication.data_model.Task_V;
 import com.application.tak.takapplication.data_model.User;
 import com.application.tak.takapplication.interfaces.OnDBRequestFinished;
@@ -40,7 +32,7 @@ public class actStudentAllTask extends Fragment {
 
     User client = new User();
     Task_V task;
-   GetAllTasks tasks;
+   GetAllStudentTasks tasks;
 
     public actStudentAllTask()
     {
@@ -62,21 +54,20 @@ public class actStudentAllTask extends Fragment {
         recyclerview.setLayoutManager(layoutManager);
 
         User u = new User();
-        u.set_Id(2);
-        tasks = new GetAllTasks(getActivity());
+        u.set_Id(1);
+        tasks = new GetAllStudentTasks(getContext(),u);
 
         tasks.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
                                                @Override
                                                public void onDBRequestFinished() {
                                                    if (tasks._tasks != null) {
-                                                      // Config.ClientTasks = tasks._tasks;
+                                                      Config.ClientTasks = tasks._tasks;
                                                        for (Task_V task :  Config.ClientTasks ) {
-if (task.get_StatusName().contains("Pending")) {
+
                                                            AllTaskListStudent member = new AllTaskListStudent(task);
                                                              memberList.add(member);
 
-}
                                                        }
                                                    }
                                                    RVAdapterAllTaskStudent adapter = new RVAdapterAllTaskStudent(memberList, getActivity());

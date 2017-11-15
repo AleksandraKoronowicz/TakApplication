@@ -90,7 +90,7 @@ public class GetAllStudentTasksByStatus extends GetJSONData {
             OutputStream os=con.getOutputStream();
 
             String data=
-                    URLEncoder.encode("creator_id","UTF-8")+"="+URLEncoder.encode(client_id,"UTF-8")+"&"+
+                    URLEncoder.encode("executor_id","UTF-8")+"="+URLEncoder.encode(client_id,"UTF-8")+"&"+
                             URLEncoder.encode("status_id","UTF-8")+"="+URLEncoder.encode(status_id,"UTF-8")+"&"+
                             URLEncoder.encode("application_id","UTF-8")+"="+URLEncoder.encode(Config.ApplicationId,"UTF-8");
 

@@ -118,7 +118,7 @@ public class actStudentLoginDetails  extends Fragment {
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
-                    email.setHint("e-mmail");
+                    email.setHint("e-mail");
                 else
                     email.setHint("");
             }

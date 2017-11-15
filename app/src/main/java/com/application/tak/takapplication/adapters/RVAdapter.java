@@ -25,7 +25,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.application.tak.takapplication.R;
+import com.application.tak.takapplication.actClientTaskToDo;
+import com.application.tak.takapplication.data_access.UpdateTask;
 import com.application.tak.takapplication.data_list.TaskList;
+import com.application.tak.takapplication.data_list.TaskListNotSelected;
+import com.application.tak.takapplication.data_model.Task_V;
 
 import java.lang.reflect.Member;
 import java.nio.channels.FileLock;
@@ -63,6 +67,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
         public MemberViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cv);
+
             name_tv = (TextView) itemView.findViewById(R.id.executor_name);
             school_tv = (TextView) itemView.findViewById(R.id.clientTaskToDo_studentSchool);
             class_tv = (TextView) itemView.findViewById(R.id.client_studentClas);
@@ -71,23 +76,24 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
             phone = (FloatingActionButton) itemView.findViewById(R.id.fabClientPhoneTaskToDo);
             delete = (FloatingActionButton) itemView.findViewById(R.id.fabClientDeleteTaskToDo);
 
-
         }
     }
 
     @Override
-    public void onBindViewHolder(MemberViewHolder memberViewHolder, final int i) {
+    public void onBindViewHolder(final MemberViewHolder memberViewHolder, final int i) {
 
-        memberViewHolder.delete.hide();
-        memberViewHolder.phone.hide();
 
+        memberViewHolder.phone.setVisibility(View.INVISIBLE);
+        memberViewHolder.delete.setVisibility(View.INVISIBLE);
         memberViewHolder.name_tv.setText(members.get(i).getExecutorName());
-//        memberViewHolder.phone_tv.setText(members.get(i).getExecutorPhone());
+//      memberViewHolder.phone_tv.setText(members.get(i).getExecutorPhone());
         memberViewHolder.class_tv.setText(members.get(i).getExecutorClass());
         memberViewHolder.school_tv.setText(members.get(i).getExecutorSchool());
         memberViewHolder.shortdate_tv.setText(members.get(i).getData());
         memberViewHolder.time_tv.setText(members.get(i).getTime());
-
+        memberViewHolder.delete.hide();
+        memberViewHolder.phone.hide();
+        SetNormalLayout(memberViewHolder);
         memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 
                                                          @Override
@@ -110,12 +116,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
 
                                                              Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_in);
                                                              Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
+                                                             FloatingActionButton ph = (FloatingActionButton) v.findViewById(R.id.fabClientPhoneTaskToDo);
+                                                             FloatingActionButton del = (FloatingActionButton) v.findViewById(R.id.fabClientDeleteTaskToDo);
 
-
-                                                             if (!isShow) {
-
-                                                                 FloatingActionButton ph = (FloatingActionButton) v.findViewById(R.id.fabClientPhoneTaskToDo);
-                                                                 FloatingActionButton del = (FloatingActionButton) v.findViewById(R.id.fabClientDeleteTaskToDo);
                                                                  if (ph.getVisibility() != View.VISIBLE) {
 
                                                                      ph.startAnimation(slideUp);
@@ -136,11 +139,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
                                                                      name.setAlpha(1f);
                                                                      clas.setAlpha(1f);
 
-
                                                                      fadeOutCard.setCardBackgroundColor(Color.WHITE);
                                                                  }
-
-                                                             }
                                                          }
                                                      }
         );
@@ -148,7 +148,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
         memberViewHolder.phone.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
 
                 String phone = members.get(i).getExecutorPhone();
                 int permissionCheck = ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE);
@@ -174,8 +173,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
 
                     public void onClick(DialogInterface dialog, int which) {
 
-                          members.remove(i);
-                        Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
+
+                        onBindViewHolder(memberViewHolder,i);
+                        SetDeleteAnimation(memberViewHolder);
+                        DeleteTask(members,i);
+
                     }
                 });
 
@@ -193,6 +195,32 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
         });
     }
 
+    public void DeleteTask(List<TaskList> members, int position)
+    {
+        Task_V task = new Task_V();
+
+        task = members.get(position).tsk;
+        task.set_StatusId(4);
+
+        UpdateTask updateTask = new UpdateTask();
+        updateTask.UpdateTask(task);
+        members.remove(position);
+    }
+
+    public void SetNormalLayout(MemberViewHolder mv)
+    {
+        mv.shortdate_tv.setAlpha(1f);
+        mv.school_tv.setAlpha(1f);
+        mv.class_tv.setAlpha(1f);
+        mv.name_tv.setAlpha(1f);
+        mv.time_tv.setAlpha(1f);
+
+    }
+    public void SetDeleteAnimation(MemberViewHolder mv)
+    {
+        Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
+        mv.cardView.setAnimation(slideDown);
+    }
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.act_client_cardview_task_todo, viewGroup, false);

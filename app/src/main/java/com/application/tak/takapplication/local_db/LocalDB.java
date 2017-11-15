@@ -30,12 +30,13 @@ public class LocalDB extends SQLiteOpenHelper {
         super(ctx,db_name,null,db_version);
     }
 
-    public void AddUser(User u)
+    public void AddUser(User u, Integer isLoggedIn)
     {
+        u.set_IsLoggedIn(isLoggedIn);
         SQLiteDatabase db= getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(colUsername,u.get_Username());
-        values.put(colPassword,u.get_Password());
+        //values.put(colPassword,u.get_Password());
         values.put(colUserId, u.get_Id());
         values.put(colAccountType, u.get_RoleId());
         values.put(colIsLoggedIn,u.get_IsLoggedIn());
@@ -53,12 +54,18 @@ public class LocalDB extends SQLiteOpenHelper {
         while(res.isAfterLast() == false){
             u.set_Id(res.getInt(res.getColumnIndex(colUserId)));
             u.set_Username(res.getString(res.getColumnIndex(colUsername)));
-            u.set_Password(res.getString(res.getColumnIndex(colPassword)));
+            //u.set_Password(res.getString(res.getColumnIndex(colPassword)));
             u.set_RoleId(res.getInt(res.getColumnIndex(colAccountType)));
             u.set_IsLoggedIn(res.getColumnIndex(colIsLoggedIn));
             res.moveToNext();
         }
         return u;
+    }
+
+    public void DeleteAllUsers()
+    {
+        SQLiteDatabase db= getWritableDatabase();
+        db.execSQL("delete from "+ tableUser);
     }
 
     public void UpdateUser(Integer userId, Integer isLoggedIn)
@@ -67,6 +74,14 @@ public class LocalDB extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(colIsLoggedIn, isLoggedIn);
         db.update(tableUser, contentValues, colUserId+" = ? ", new String[] { Integer.toString(userId) } );
+    }
+
+    public void LogOutAllUsers()
+    {
+        SQLiteDatabase db= getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(colIsLoggedIn, 0);
+        db.update(tableUser, contentValues, "1 = 1 ", null );
     }
 
     public ArrayList<User> GetAllUsers()
@@ -81,7 +96,7 @@ public class LocalDB extends SQLiteOpenHelper {
             User u = new User();
             u.set_Id(res.getInt(res.getColumnIndex(colUserId)));
             u.set_Username(res.getString(res.getColumnIndex(colUsername)));
-            u.set_Password(res.getString(res.getColumnIndex(colPassword)));
+            //u.set_Password(res.getString(res.getColumnIndex(colPassword)));
             u.set_RoleId(res.getInt(res.getColumnIndex(colAccountType)));
             u.set_IsLoggedIn(res.getColumnIndex(colIsLoggedIn));
             users.add(u);

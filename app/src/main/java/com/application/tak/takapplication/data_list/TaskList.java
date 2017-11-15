@@ -26,9 +26,10 @@ public class TaskList {
         this.dataTask = DateFormat.getDateInstance().format(tsk.get_TimeFrom().getTime()).toString();
         this.executorSchool = tsk.get_ExecutorSchoolName();
         this.dataTime = getCzas();
+        this.executorPhone = tsk.get_ExecutorPhoneNo();
         this.executorName = tsk.get_ExecutorFName() + " " + tsk.get_ExecutorLName();
         this.executorClass = "klasa: " +  tsk.get_ExecutorClassName();
-        this.executorPhone = executorPhone;
+
     }
     public  int getId(){return this.id;}
     public String getExecutorSchool()

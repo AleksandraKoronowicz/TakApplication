@@ -171,15 +171,16 @@ if(!jsonObject.isNull(TAG_RESULTS))
                 client.set_AdressId(c.getInt(TAG_ADRESS_ID));
                 client.set_IsActive(1);
                 client.set_PhoneNo(c.getString(TAG_PHONE_NO));
+                //client.set_Password(c.getString(TAG_PASSWORD));
                 adress.set_Id(client.get_AdressId());
                 adress.set_City(c.getString(TAG_CITY));
                 adress.set_PostCode(c.getString(TAG_POSTCODE));
-                adress.set_RoadNo(c.getString(TAG_ROAD_NO));
+                adress.set_RoadNo(c.isNull(TAG_ROAD_NO)? null: c.getString(TAG_ROAD_NO));
                 adress.set_Road(c.getString(TAG_ROAD));
 
                 client.set_Adress(adress);
                 newClient = client;
-                Config.LoggedInClient = newClient;
+                //Config.LoggedInClient = newClient;
                 return true;
             }
 
