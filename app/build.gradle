@@ -1,4 +1,4 @@
-apply plugin:'com.android.application'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
@@ -11,8 +11,20 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+<<<<<<< HEAD
 
     }
+=======
+        /*  jackOptions {
+            enabled true
+        }*/
+        vectorDrawables.useSupportLibrary = true
+    }
+    /*  compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }*/
+>>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     buildTypes {
         release {
             minifyEnabled false
@@ -30,6 +42,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-vector-drawable:25.4.0'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
