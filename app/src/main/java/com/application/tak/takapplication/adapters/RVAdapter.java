@@ -176,13 +176,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
 
                     public void onClick(DialogInterface dialog, int which) {
 
-<<<<<<< HEAD
-
-                        onBindViewHolder(memberViewHolder,i);
-                        SetDeleteAnimation(memberViewHolder);
-                        DeleteTask(members,i);
-
-=======
                         SetDeleteAnimation(memberViewHolder);
                         notifyItemRemoved(memberViewHolder.getLayoutPosition());
                         DeleteTask(members,i);
@@ -201,7 +194,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
                         context.startActivity(intent);
 
 
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                     }
                 });
 
@@ -231,10 +223,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MemberViewHolder> 
         members.remove(position);
     }
 
-<<<<<<< HEAD
-=======
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     public void SetNormalLayout(MemberViewHolder mv)
     {
         mv.shortdate_tv.setAlpha(1f);

@@ -26,19 +26,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-<<<<<<< HEAD
-
-        <activity
-            android:name=".actFirstUsage"
-            android:label="Logowanie"
-=======
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".actClientTask"
             android:label="Panel klienta - zadania"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,16 +41,6 @@
         </activity>
 
         <activity
-            android:name=".actClientTask"
-            android:label="Panel klienta - zadania"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-               <activity
             android:name=".actStudentTask"
             android:label="Panel ucznia - zadania"
             android:theme="@style/AppTheme.NoActionBar">
@@ -89,14 +72,6 @@
             </intent-filter>
         </activity>
 
-<<<<<<< HEAD
-        <activity android:name=".act_Student_Main_Manu">
-        </activity>
-        <activity
-                android:name=".LoginActivity"
-                android:label="@string/title_activity_login">
-        </activity>
-=======
 
         <activity
             android:name=".actStudentLogin"
@@ -112,7 +87,6 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
         <activity
             android:name=".actStudentRegulation"
             android:label="@string/title_activity_act_student_regulation"
@@ -123,9 +97,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".aaaTestyaaa"
-            android:label="@string/title_activity_aaa_testyaaa"></activity>
+
     </application>
 
 </manifest>

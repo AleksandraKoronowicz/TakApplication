@@ -13,7 +13,6 @@
     tools:context="com.application.tak.takapplication.actFirstUsage"
     tools:showIn="@layout/activity_act_first_usage">
 
-<<<<<<< HEAD
     <Button
         android:id="@+id/btnClient"
         android:layout_width="wrap_content"
@@ -54,7 +53,6 @@
         android:background="?android:attr/actionModeSplitBackground"
         android:text="zaloguj" />
 
-=======
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -81,7 +79,6 @@
         android:layout_alignParentRight="true"
         android:background="?android:attr/actionModeSplitBackground"
         android:text="rejestracja" />
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -211,13 +208,8 @@
                 android:textSize="50sp" />
         </RelativeLayout>
 
-<<<<<<< HEAD
-
     </android.support.v7.widget.CardView>
-
-=======
     </android.support.v7.widget.CardView>
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -227,8 +219,4 @@
         android:text="Jesteś tu pierwszy raz? \n Zarejestru się"
         android:textAlignment="center"
         android:textColor="@color/txtLessImportantData" />
-<<<<<<< HEAD
-
-=======
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 </RelativeLayout>

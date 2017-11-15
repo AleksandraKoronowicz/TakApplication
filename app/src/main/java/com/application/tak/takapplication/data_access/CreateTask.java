@@ -41,7 +41,6 @@ public class CreateTask extends AsyncTask<String,Void,String>
         String time_from=params[3];
         String time_to=params[4];
 
-<<<<<<< HEAD
             try {
                 URL url=new URL(URI);
                 HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
@@ -81,8 +80,6 @@ public class CreateTask extends AsyncTask<String,Void,String>
             } catch (IOException e) {
                 e.printStackTrace();
 
-=======
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
         try {
             URL url=new URL(URI);
             HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
@@ -117,7 +114,6 @@ public class CreateTask extends AsyncTask<String,Void,String>
             }
 
 
-<<<<<<< HEAD
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
@@ -128,7 +124,6 @@ public class CreateTask extends AsyncTask<String,Void,String>
     }
         return result;
 }}
-=======
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -178,4 +173,3 @@ public class CreateTask extends AsyncTask<String,Void,String>
         }
         return result;
     }}
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a

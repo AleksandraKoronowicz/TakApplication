@@ -102,11 +102,7 @@ public class RVAdapterMyTaskStudent extends RecyclerView.Adapter<RVAdapterMyTask
                         switch (item.getItemId()) {
                             case R.id.mytask_delete:
                                 ShowMessageBox(members, position, memberViewHolder);
-<<<<<<< HEAD
-                                onBindViewHolder(memberViewHolder,i);
-=======
 
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
                         }
                         return false;
@@ -257,13 +253,6 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int which) {
 
-<<<<<<< HEAD
-                        SetChooseActionLayoutAnimation(mm);
-                        notifyDataSetChanged();
-                        SetChooseActionLayoutAnimation(mm);
-                        DeleteTask(members, position);
-
-=======
 
                         SetChooseActionLayoutAnimation(mm);
                         notifyItemRemoved(mm.getLayoutPosition());
@@ -283,7 +272,6 @@ memberViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                         context.startActivity(intent);
 
 
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                     }
                 });
         alertDialog.setNegativeButton("Anuluj",

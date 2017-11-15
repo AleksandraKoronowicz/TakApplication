@@ -78,14 +78,6 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         //final TaskListNotSelected item = members.get(i);
        memberViewHolder.del.setVisibility(View.INVISIBLE);
         memberViewHolder.cardView.setCardBackgroundColor(Color.WHITE);
-<<<<<<< HEAD
-        memberViewHolder.day_name_tv.setText(ChangeDateString(members.get(i).getData(),"EEEE"));
-        memberViewHolder.title_tv.setText(members.get(i).getTitle());
-        memberViewHolder.date_tv.setText(ChangeDateString(members.get(i).getData(),"dd MMMM"));
-        memberViewHolder.time_tv.setText(members.get(i).getTime());
-        memberViewHolder.del.hide();
-               SetNormalLayout(memberViewHolder);
-=======
         memberViewHolder.del.hide();
         memberViewHolder.date_tv.setAlpha(1f);
         memberViewHolder.day_name_tv.setAlpha(1f);
@@ -100,7 +92,6 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
 
              //  SetNormalLayout(memberViewHolder);
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
         memberViewHolder.del.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -108,10 +99,7 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
                 ShowMessageBox(members, i, memberViewHolder);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
             }
         });
 
@@ -146,11 +134,8 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
                trasz.startAnimation(slideDown);
                trasz.setVisibility(View.INVISIBLE);
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                data.setAlpha(1f);
                topic.setAlpha(1f);
                time.setAlpha(1f);
@@ -160,39 +145,6 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
            }
        } });
 
-<<<<<<< HEAD
-   ///////////////////////////////////////popmenu action///////////////////////////////////////
-   /*     memberViewHolder.option.setOnClickListener(new View.OnClickListener() {
-            final int position = i;
-            @Override
-            public void onClick(View v) {
-                PopupMenu popupMenu = new PopupMenu(context, memberViewHolder.option);
-                popupMenu.inflate(R.menu.menu_act__client__task);
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.task_edit:
-                                Toast.makeText(context, "Edycja", Toast.LENGTH_LONG).show();
-                                break;
-
-                            case R.id.task_delete:
-                                members.remove(position);
-                                notifyDataSetChanged();
-                                Toast.makeText(context, "Zadanie zostało usunięte", Toast.LENGTH_LONG).show();
-                        }
-                        return false;
-                    }
-
-                });
-           popupMenu.show();
-            }
-
-        });
-*/
-=======
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
 
     public void DeleteTask(List<TaskListNotSelected> members, int position)
@@ -201,18 +153,10 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
 
         task = members.get(position).tsk;
         task.set_StatusId(4);
-<<<<<<< HEAD
-
-        UpdateTask updateTask = new UpdateTask();
-        updateTask.UpdateTask(task);
-
-      //  members.remove(position);
-=======
         UpdateTask updateTask = new UpdateTask();
         updateTask.UpdateTask(task);
 
       members.remove(position);
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
 
     public void ShowMessageBox(final List<TaskListNotSelected> member, final int position, final MemberViewHolder mv)
@@ -225,18 +169,10 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
                     public void onClick(DialogInterface dialog,
                                         int which) {
 
-<<<<<<< HEAD
-                        onBindViewHolder(mv,position);
-                        SetDeleteAnimation(mv);
-                        DeleteTask(member, position);
-                        member.remove(position);
-
-=======
                         SetDeleteAnimation(mv);
                         notifyItemRemoved(mv.getLayoutPosition());
                         DeleteTask(member, mv.getLayoutPosition());
                       //
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                       //
                     }
                 });
@@ -251,16 +187,6 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         alertDialog.show();
     }
 
-<<<<<<< HEAD
-    public void SetNormalLayout(MemberViewHolder mv)
-    {
-        mv.date_tv.setAlpha(1f);
-        mv.day_name_tv.setAlpha(1f);
-        mv.time_tv.setAlpha(1f);
-        mv.title_tv.setAlpha(1f);
-        mv.del.setVisibility(View.INVISIBLE);
-        mv.del.hide();
-=======
     public void SetNormalLayout(MemberViewHolder memberViewHolder)
     {
         memberViewHolder.del.setVisibility(View.INVISIBLE);
@@ -271,7 +197,6 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
         memberViewHolder.time_tv.setAlpha(1f);
         memberViewHolder.title_tv.setAlpha(1f);
 
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
     }
 
@@ -295,11 +220,8 @@ public class RVAdapterTaskNotSelected extends RecyclerView.Adapter<RVAdapterTask
     {
         Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
         mv.cardView.setAnimation(slideDown);
-<<<<<<< HEAD
-=======
       //  mv.cardView.setVisibility(View.INVISIBLE);
 
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
         @Override
         public MemberViewHolder onCreateViewHolder (ViewGroup viewGroup,int i){

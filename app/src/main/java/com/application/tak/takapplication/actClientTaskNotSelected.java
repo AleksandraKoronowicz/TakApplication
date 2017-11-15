@@ -58,7 +58,6 @@ public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
     }
 
 
-<<<<<<< HEAD
             memberList = new ArrayList<TaskListNotSelected>();
             _ctx = getContext();
             _activity = getActivity();
@@ -66,11 +65,9 @@ public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
             u.set_Id(2);*/
             tasksByStatus = new GetAllClientTasksByStatus(_ctx,Config.LoggedInClient,1);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-=======
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
         memberList = new ArrayList<TaskListNotSelected>();
         _ctx = getContext();
@@ -88,22 +85,6 @@ public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
 
         tasksByStatus.setDBRequestFinishedListener(new OnDBRequestFinished() {
 
-<<<<<<< HEAD
-            TaskListNotSelected member = new TaskListNotSelected(task);
-            memberList.add(member);
-    }
-
-}
-                    adapter = new RVAdapterTaskNotSelected(memberList, _activity);
-                    recyclerview.setAdapter(adapter);
-
-                }
-            });
-
-
-          return view;
-        }
-=======
             @Override
             public void onDBRequestFinished() {
                 if(tasksByStatus._tasks != null)
@@ -124,6 +105,5 @@ public class actClientTaskNotSelected extends android.support.v4.app.Fragment {
 
 
         return view;
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
     }
 }

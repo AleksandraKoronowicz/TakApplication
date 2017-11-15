@@ -5,6 +5,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.application.tak.takapplication.adapters.ViewPagerAdapter;
 import com.application.tak.takapplication.student.task.actStudentAllTask;
 import com.application.tak.takapplication.student.task.actStudentMyTask;
@@ -36,6 +39,33 @@ public class actStudentTask extends AppCompatActivity {
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_client_overall, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_logout) {
+            return true;
+        }
+        if (id == R.id.action_problem)
+        {
+            SendMail();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    private void SendMail()
+    {
+
     }
 }
 /*

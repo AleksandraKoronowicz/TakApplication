@@ -58,7 +58,6 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
         LinearLayoutManager layoutManager = new LinearLayoutManager(_activity);
         recyclerview.setLayoutManager(layoutManager);
 
-<<<<<<< HEAD
 
             /*User u = new User();
             u.set_Id(2);*/
@@ -67,8 +66,6 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
                 @Override
                 public void onDBRequestFinished() {
                     if (tasksByStatus._tasks != null) {
-=======
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
         User u = new User();
         u.set_Id(2);
@@ -78,19 +75,16 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
             public void onDBRequestFinished() {
                 if (tasksByStatus._tasks != null) {
 
-<<<<<<< HEAD
                                TaskList member = new TaskList(task);
 
                                 memberList.add(member);
                             }
-=======
                     Config.ClientTasks = tasksByStatus._tasks;
                     for (Task_V task : Config.ClientTasks) {
 
                         TaskList member = new TaskList(task);
 
                         memberList.add(member);
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                     }
                     adapter = new RVAdapter(memberList, _activity);
                     recyclerview.setAdapter(adapter);
@@ -124,7 +118,6 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
                 adapter = new RVAdapter(memberList, _activity);
                 recyclerview.setAdapter(adapter);
             }
-<<<<<<< HEAD
 
             public void RefreashView()
             {
@@ -150,11 +143,9 @@ public class actClientTaskToDo extends android.support.v4.app.Fragment{
                 });
 
             }
-=======
         });
 
     }
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
 
 }

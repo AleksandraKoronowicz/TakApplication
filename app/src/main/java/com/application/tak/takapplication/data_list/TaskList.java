@@ -31,12 +31,9 @@ public class TaskList {
         this.executorPhone = tsk.get_ExecutorPhoneNo();
         this.executorName = tsk.get_ExecutorFName() + " " + tsk.get_ExecutorLName();
         this.executorClass = "klasa: " +  tsk.get_ExecutorClassName();
-<<<<<<< HEAD
-=======
         this.executorPhone = tsk.get_ExecutorPhoneNo();
         this.category = tsk.get_CategoryName();
         this.clientName = tsk.get_CreatorFName() + tsk.get_CreatorLName();
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
     }
     public  int getId(){return this.id;}

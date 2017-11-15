@@ -107,7 +107,6 @@
                 android:id="@+id/student_task_time"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
                 android:layout_alignBaseline="@+id/student_name"
                 android:layout_alignBottom="@+id/student_name"
                 android:layout_alignParentLeft="true"
@@ -117,7 +116,6 @@
                 android:textColor="@color/txtLessImportantData"
                 android:textSize="15sp"
                 android:textStyle="normal" />
-=======
                 android:text="16:00 do 17:00"
 
                 android:textAlignment="textEnd"
@@ -127,7 +125,6 @@
                 android:layout_alignTop="@+id/student_name"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
             <TextView
                 android:id="@+id/student_name"
@@ -137,12 +134,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:text="Aleksandra Koronowicz"
-<<<<<<< HEAD
                 android:textAlignment="textEnd"
-=======
 
                 android:textAlignment="textStart"
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
                 android:textColor="@color/txtLessImportantData"
                 android:textSize="16sp" />
 

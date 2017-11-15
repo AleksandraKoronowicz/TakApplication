@@ -65,8 +65,6 @@ public class actFirstUsage extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ctx = this.getApplicationContext();
-<<<<<<< HEAD
-=======
      //   btnClient = (Button)findViewById(R.id.btnClient);
        // btnStudent = (Button) findViewById(R.id.btnStudent);
         email = (EditText) findViewById(R.id.tbEmail) ;
@@ -83,7 +81,6 @@ public class actFirstUsage extends AppCompatActivity {
         rbGoogle = (RadioButton) findViewById(R.id.rbGoogle);
                 rbFace = (RadioButton) findViewById(R.id.rbFacebook);
         LocalDB localDB = new LocalDB(this.getApplicationContext());
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
         LoginStatus lgStatus = new LoginStatus(ctx);
         /*LocalDB loc = new LocalDB(ctx);
@@ -95,7 +92,6 @@ public class actFirstUsage extends AppCompatActivity {
         loc.AddUser(u,1);
         ArrayList<User> all = loc.GetAllUsers();*/
 
-<<<<<<< HEAD
         User u = lgStatus.IsLoggedIn();
 
         if(u!= null)
@@ -144,7 +140,6 @@ public class actFirstUsage extends AppCompatActivity {
         rbGoogle = (RadioButton) findViewById(R.id.rbGoogle);
         rbFace = (RadioButton) findViewById(R.id.rbFacebook);
 
-=======
 
         ///////////////////////////////////////Jezeli juz jest Zalogowany i dał wyloguj to otworz od razu
         /////////////////////////////spr local db czy sa dane -> tak
@@ -164,7 +159,6 @@ public class actFirstUsage extends AppCompatActivity {
 ////////////////////////////////////pozytywne zalogowanie
                         Intent i = new Intent(ctx,actClientTask.class);
                         startActivity(i);
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,14 +181,12 @@ public class actFirstUsage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mode.getText() == "Klient"){
-=======
                     if(users.size() > 0)
                     {
                         ///////////////////////////////////otwiera sie autentykacja przez api
 ////////////////////////////////////pozytywne zalogowanie
                         Intent i = new Intent(ctx,actClientTask.class);
                         startActivity(i);
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
                     Intent i = new Intent(ctx,actClientLogin.class);
                     startActivity(i);
@@ -207,8 +199,6 @@ public class actFirstUsage extends AppCompatActivity {
                     //finish
                 }
 
-<<<<<<< HEAD
-=======
             }}});*/
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -404,7 +394,6 @@ rbFace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 {
                     rbGoogle.setAlpha(1f);
                 }
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
             }
         });
 
@@ -442,12 +431,10 @@ switchLoginModel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeLi
     }
 });
 
-<<<<<<< HEAD
 rbFace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-=======
     private boolean checkUsersRights(List<User> users, Integer roleId)
     {
        // Integer role_id = 0;
@@ -461,7 +448,6 @@ rbFace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             else{
                 return false;
             }
->>>>>>> 70baa507024866f285093e35a83ce3fa15babb6a
 
         if (isChecked)
         {
